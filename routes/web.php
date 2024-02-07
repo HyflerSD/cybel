@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,4 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root']);
     Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 });
+Route::post('/departments', [DepartmentController::class, 'store']);
