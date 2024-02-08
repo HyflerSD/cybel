@@ -16,14 +16,14 @@
                                 <a href="{{ url('index') }}" class="">
                                     <img src="{{ URL::asset('build/images/logo-sm.svg') }}" alt=""
                                         class="h-8 inline"> <span
-                                        class="text-xl align-middle font-medium ltr:ml-2 rtl:mr-2 dark:text-white">Minia</span>
+                                        class="text-xl align-middle font-medium ltr:ml-2 rtl:mr-2 dark:text-white">Cybel</span>
                                 </a>
                             </div>
 
                             <div class="my-auto">
                                 <div class="text-center">
-                                    <h5 class="text-gray-600 dark:text-gray-100">Welcome Back !</h5>
-                                    <p class="text-gray-500 dark:text-gray-100/60 mt-1">Sign in to continue to Minia.</p>
+                                    <h5 class="text-gray-600 dark:text-gray-100">Welcome!</h5>
+                                    <p class="text-gray-500 dark:text-gray-100/60 mt-1">Sign in to you Cybel account.</p>
                                 </div>
                                 @if (session('status'))
                                     <div class="">
@@ -94,13 +94,7 @@
                                             -</h6>
                                     </div>
 
-                                    <div class="flex justify-center gap-3">
-                                        <a href="" class="h-9 w-9 bg-violet-500 leading-[2.9] rounded-full">
-                                            <i class="mdi mdi-facebook text-lg text-white"></i>
-                                        </a>
-                                        <a href="" class="h-9 w-9 bg-sky-500 leading-[2.9] rounded-full">
-                                            <i class="mdi mdi-twitter text-lg text-white"></i>
-                                        </a>
+                                    <div class="flex justify-center gap-3">                                       
                                         <a href="" class="h-9 w-9 bg-red-400 leading-[2.9] rounded-full">
                                             <i class="mdi mdi-google text-lg text-white"></i>
                                         </a>
@@ -111,16 +105,6 @@
                                     <p class="text-gray-500 dark:text-gray-100">Don't have an account ? <a
                                             href="{{ route('register') }}" class="text-violet-500 font-semibold"> Signup now </a> </p>
                                 </div>
-                            </div>
-
-
-                            <div class=" text-center">
-                                <p class="text-gray-500 dark:text-gray-100 relative mb-5">©
-                                    <script>
-                                        document.write(new Date().getFullYear())
-                                    </script> Minia . Crafted with <i class="mdi mdi-heart text-red-400"></i>
-                                    by Themesbrand
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -148,48 +132,39 @@
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                             <i class="bx bxs-quote-alt-left text-green-600 text-5xl"></i>
-                                            <h3 class="mt-4 text-white text-22">“I feel confident imposing change on
-                                                myself. It's a lot more progressing fun than looking back. That's why I
-                                                ultricies enim at malesuada nibh diam on tortor neaded to throw curve
-                                                balls.”</h3>
+                                            <h3 class="mt-4 text-white text-22">“Being a student is much easier with the help of Cybel. I was able to create my own roadmap to help me have an idea of my degree path.”</h3>
                                             <div class="flex mt-6 mb-10 pt-4">
                                                 <img src="{{ URL::asset('build/images/users/avatar-1.jpg') }}"
                                                     class="h-12 w-12 rounded-full" alt="...">
                                                 <div class="flex-1 ltr:ml-3 rtl:mr-2 mb-4">
-                                                    <h5 class="font-size-18 text-white">Ilse R. Eaton</h5>
-                                                    <p class="mb-0 text-white/50">Manager
+                                                    <h5 class="font-size-18 text-white">Michael Jean</h5>
+                                                    <p class="mb-0 text-white/50">Cobos Favorite Student
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <i class="bx bxs-quote-alt-left text-green-600 text-5xl"></i>
-                                            <h3 class="mt-4 text-white text-22">“I feel confident imposing change on
-                                                myself. It's a lot more progressing fun than looking back. That's why I
-                                                ultricies enim at malesuada nibh diam on tortor neaded to throw curve
-                                                balls.”</h3>
+                                            <h3 class="mt-4 text-white text-22">“I feel confident I have choosen the correct career path with the help of Cybel.”</h3>
                                             <div class="flex mt-6 mb-10 pt-4">
                                                 <img src="{{ URL::asset('build/images/users/avatar-2.jpg') }}"
                                                     class="h-12 w-12 rounded-full" alt="...">
                                                 <div class="flex-1 ltr:ml-3 rtl:mr-2 mb-4">
-                                                    <h5 class="font-size-18 text-white">Mariya Willam</h5>
-                                                    <p class="mb-0 text-white/50">Designer
+                                                    <h5 class="font-size-18 text-white">Patricia Rodriguez</h5>
+                                                    <p class="mb-0 text-white/50">La latina
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <i class="bx bxs-quote-alt-left text-green-600 text-5xl"></i>
-                                            <h3 class="mt-4 text-white text-22">“I feel confident imposing change on
-                                                myself. It's a lot more progressing fun than looking back. That's why I
-                                                ultricies enim at malesuada nibh diam on tortor neaded to throw curve
-                                                balls.”</h3>
+                                            <h3 class="mt-4 text-white text-22">“I dont know how we did it before. Cybel is game changing!”</h3>
                                             <div class="flex mt-6 mb-10 pt-4">
                                                 <img src="{{ URL::asset('build/images/users/avatar-3.jpg') }}"
                                                     class="h-12 w-12 rounded-full" alt="...">
                                                 <div class="flex-1 ltr:ml-3 rtl:mr-2 mb-4">
-                                                    <h5 class="font-size-18 text-white">Jiya Jons</h5>
-                                                    <p class="mb-0 text-white/50">Developer
+                                                    <h5 class="font-size-18 text-white">Sueda Tare</h5>
+                                                    <p class="mb-0 text-white/50">The Albanian
                                                     </p>
                                                 </div>
                                             </div>
