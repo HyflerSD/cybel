@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('course_prerequisite', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('courseID');
-            $table->unsignedBigInteger('prerequisite_id');
+            $table->unsignedBigInteger('prerequisiteID');
             $table->foreign('courseID')->references('courseID')->on('courses')->onDelete('cascade');
             $table->foreign('prerequisiteID')->references('courseID')->on('courses')->onDelete('cascade');
             // Use cascade for onDelete if you want deleting a course to automatically remove its relationships

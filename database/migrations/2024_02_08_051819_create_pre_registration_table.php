@@ -20,8 +20,7 @@ return new class extends Migration
             $table->boolean('reviewedByAdvisor')->default(false);
 
             // Foreign key constraint
-            $table->foreign('studentID')->references('id')->on('students')
-                ->onDelete('set null'); // Set StudentID to null if the referenced student record is deleted
+            $table->foreign('studentID')->references('studentID')->on('students');
         });
     }
 

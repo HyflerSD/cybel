@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('referenceNumber');
             $table->string('courseName', 100);
             $table->unsignedBigInteger('departmentID');
-//            $table->foreign('departmentID')->references('id')->on('departments')->onDelete('cascade');
             $table->integer('credits');
             $table->text('courseDescription');
             $table->string('Session', 50);
@@ -27,10 +26,11 @@ return new class extends Migration
             $table->string('component', 50);
             $table->string('daysAndTimes', 50)->nullable();
             $table->string('room', 50)->nullable();
-//            $table->date('StartEndDate')->nullable();
-//            $table->text('ClassNotes')->nullable();
+            $table->date('StartEndDate')->nullable();
+            $table->text('ClassNotes')->nullable();
             $table->text('enrollmentRequirements')->nullable();
             $table->timestamps();
+            $table->foreign('departmentID')->references('departmentID')->on('departments')->onDelete('cascade');
         });
     }
 
