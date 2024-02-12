@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('advisors', function (Blueprint $table) {
             $table->id('advisorID');
-            $table->string('name');
+            $table->string('fname', 100);
+            $table->string('lname', 100);
             $table->string('email')->unique();
             $table->string('userName')->nullable(false);
             $table->timestamp('email_verified_at')->nullable();
