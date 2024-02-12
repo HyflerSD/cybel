@@ -30,6 +30,7 @@ return new class extends Migration
             $table->integer('Total Credits Earned')->default(0);
             $table->unsignedBigInteger('advisorID')->nullable();
             $table->unsignedBigInteger('campusID');
+            $table->rememberToken();
 
             $table->foreign('campusID')->references('campusID')->on('campus');
             $table->foreign('advisorID')->references('advisorID')->on('advisors')->onDelete('set null'); // Adjust foreign key constraint as necessary
