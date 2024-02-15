@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id('courseID');
             $table->string('prefix', 10);
             $table->unsignedBigInteger('courseNumber');
-            $table->string('sequence');
+            $table->string('sequence');// course in the order they have to be taken
+            //prioty the order we want you to take your classes. level 1 can have corresponding priorities in it
             $table->string('referenceNumber');
             $table->string('courseName', 100);
             $table->unsignedBigInteger('departmentID');

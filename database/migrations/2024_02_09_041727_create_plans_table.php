@@ -11,15 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('plans', function (Blueprint $table) {
+        Schema::create('degree_plans', function (Blueprint $table) {
             $table->id('planID');
             $table->timestamps();
             $table->unsignedBigInteger('campusID');
             $table->unsignedBigInteger('majorID');
-            $table->integer('numberOfCourses');
+            $table->integer('numberOfCourses');// for the degree
             $table->unsignedBigInteger('studentID');
-//            $table->
+            $table->boolean('active')->default(true);
+            $table->json('courses');// or csv format add electives to this as well, structure properly
+            // check electives first then substitutions, must also include the substitutions
 
+            $courses = [
+                'gened' => [],
+                'electives' => ['1','3', 'jj', 'rjj'],
+            ];
             $table->foreign('majorID')->references('majorID')->on('majors');
             $table->foreign('campusID')->references('campusID')->on('campus');
         });
