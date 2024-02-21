@@ -11,13 +11,29 @@
                         @csrf
                         <div class="form-group">
                             <div class="">
-                                <input name="name" type="text" placeholder="Your Name"
+                                <input name="fname" type="text" placeholder="First Name"
                                        class="form-control input-height" />
                                 @error('name')
                                 <span class="help-block" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="">
+                                <input name="lname" type="text" placeholder="Last Name"
+                                       class="form-control input-height" />
+                                @error('name')
+                                <span class="help-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="">
+                                <input name="is_advisor" type="hidden" value=""/>
                             </div>
                         </div>
                         <div class="form-group">
