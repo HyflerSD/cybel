@@ -3,18 +3,13 @@
 @section('content')
     <!-- start page content -->
     <div class="page-content-wrapper">
+
         <div class="page-content">
             <div class="page-bar">
                 <div class="page-title-breadcrumb">
                     <div class=" pull-left">
-                        <div class="page-title">Dashboard</div>
+                        <div class="page-title">Advisor Dashboard</div>
                     </div>
-                    <ol class="breadcrumb page-breadcrumb pull-right">
-                        <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
-                                                               href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
-                        </li>
-                        <li class="active">Dashboard</li>
-                    </ol>
                 </div>
             </div>
             <!-- start widget -->
@@ -42,8 +37,8 @@
                         <div class="info-box bg-b-yellow">
                             <span class="info-box-icon push-bottom"><i data-feather="user"></i></span>
                             <div class="info-box-content">
-                                <span class="info-box-text">New Students</span>
-                                <span class="info-box-number">155</span>
+                                <span class="info-box-text">Pending Maps</span>
+                                <span class="info-box-number">15</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 40%"></div>
                                 </div>
@@ -60,7 +55,7 @@
                         <div class="info-box bg-b-blue">
                             <span class="info-box-icon push-bottom"><i data-feather="book"></i></span>
                             <div class="info-box-content">
-                                <span class="info-box-text">Total Course</span>
+                                <span class="info-box-text">Validated Maps</span>
                                 <span class="info-box-number">52</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 85%"></div>
@@ -79,8 +74,8 @@
 									<span class="info-box-icon push-bottom"><i
                                             class="material-icons">monetization_on</i></span>
                             <div class="info-box-content">
-                                <span class="info-box-text">Fees Collection</span>
-                                <span class="info-box-number">13,921</span><span>$</span>
+                                <span class="info-box-text">Potential Maps</span>
+                                <span class="info-box-number">8</span></span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 50%"></div>
                                 </div>

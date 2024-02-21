@@ -48,5 +48,13 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         //check if admin and redirect to correct page
+        if($user->is_advisor)
+        {
+            return redirect()->route('admin.dashboard');
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
     }
 }

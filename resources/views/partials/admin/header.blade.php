@@ -1,3 +1,6 @@
+@php
+    $user = auth()->user();
+@endphp
 <!-- start header -->
 <div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner ">
@@ -5,7 +8,13 @@
         <div class="page-logo">
             <a href="index.html">
                 <span class="logo-icon material-icons fa-rotate-45">school</span>
-                <span class="logo-default">Smart</span> </a>
+                <span class="logo-default">
+                    @if($user->is_advisor)
+                        Facualty
+                    @else
+                        Student
+                    @endif
+                </span> </a>
         </div>
         <!-- logo end -->
         <ul class="nav navbar-nav navbar-left in">
@@ -30,30 +39,6 @@
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
                 <li><a class="fullscreen-btn"><i data-feather="maximize"></i></a></li>
-                <!-- start language menu -->
-                <li class="dropdown language-switch">
-                    <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> <img
-                            src="/admin/assets/img/flags/gb.png" class="position-left" alt=""> English
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a class="deutsch"><img src="/admin/assets/img/flags/de.png" alt=""> Deutsch</a>
-                        </li>
-                        <li>
-                            <a class="ukrainian"><img src="/admin/assets/img/flags/ua.png" alt=""> Українська</a>
-                        </li>
-                        <li>
-                            <a class="english"><img src="/admin/assets/img/flags/gb.png" alt=""> English</a>
-                        </li>
-                        <li>
-                            <a class="espana"><img src="/admin/assets/img/flags/es.png" alt=""> España</a>
-                        </li>
-                        <li>
-                            <a class="russian"><img src="/admin/assets/img/flags/ru.png" alt=""> Русский</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- end language menu -->
                 <!-- start notification dropdown -->
                 <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
                     <a class="dropdown-toggle" data-bs-toggle="dropdown" data-hover="dropdown"
@@ -216,7 +201,7 @@
                     <a class="dropdown-toggle" data-bs-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
                         <img alt="" class="img-circle " src="/admin/assets/img/dp.jpg" />
-                        <span class="username username-hide-on-mobile"> Sneha
+                        <span class="username username-hide-on-mobile"> {{ $user->fname . ' ' . $user->lname }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
@@ -240,7 +225,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="login.html">
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
                                 <i class="icon-logout"></i> Log Out </a>
                         </li>
                     </ul>
