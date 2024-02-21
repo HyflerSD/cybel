@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Service\UserService;
+use Illuminate\Support\Facades\Log;
 use League\Csv\Reader;
 
 class CreateUsers extends Command
@@ -23,7 +24,8 @@ class CreateUsers extends Command
     protected $description = 'Imports user list via formatted csv';
 
     /**
-     * Execute the console command.
+     * @param UserService $userService
+     * @return void
      */
     public function handle(UserService $userService)
     {
@@ -34,7 +36,7 @@ class CreateUsers extends Command
             $userService->createUsers($csvReader);
         }catch(\Exception $e)
         {
-
+            Log::error($e->getMessage());
         }
     }
 }
