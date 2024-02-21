@@ -7,16 +7,8 @@
             <div class="page-bar">
                 <div class="page-title-breadcrumb">
                     <div class=" pull-left">
-                        <div class="page-title">Professors List</div>
+                        <div class="page-title">Advisees List</div>
                     </div>
-                    <ol class="breadcrumb page-breadcrumb pull-right">
-                        <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
-                                                               href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
-                        </li>
-                        <li><a class="parent-item" href="">Professors</a>&nbsp;<i class="fa fa-angle-right"></i>
-                        </li>
-                        <li class="active">Professors List</li>
-                    </ol>
                 </div>
             </div>
             <div class="row">
@@ -43,7 +35,7 @@
                                     <div class="col-md-12">
                                         <div class="card card-box">
                                             <div class="card-head">
-                                                <header>All Professors</header>
+                                                <header>All Advisees</header>
                                                 <div class="tools">
                                                     <a class="fa fa-repeat btn-color box-refresh"
                                                        href="javascript:;"></a>

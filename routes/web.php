@@ -17,10 +17,10 @@ use App\Http\Middleware\IsAdminUser;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');
 
 Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function (){
-    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\AdvisorsController::class, 'index'])->name('admin.dashboard');
     Route::group(['prefix' => 'professors'], function (){
         Route::get('/', [ProfessorsController::class, 'index'])->name('admin.professors');
     });
