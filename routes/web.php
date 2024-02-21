@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\ProfessorsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\IsAdminUser;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,8 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin'], function (){
-
+Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function (){
+    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
     Route::group(['prefix' => 'professors'], function (){
         Route::get('/', [ProfessorsController::class, 'index'])->name('admin.professors');
     });
