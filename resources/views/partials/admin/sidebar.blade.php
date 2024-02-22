@@ -83,7 +83,7 @@ $user = auth()->user();
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('admin.professors') }}" class="nav-link "> <span class="title">All
+                            <a href="{{ route('admin.advisees') }}" class="nav-link "> <span class="title">All
 												Advisees</span>
                             </a>
                         </li>
@@ -105,48 +105,21 @@ $user = auth()->user();
                     @endif
                 </li>
                 <li class="nav-item">
-                    @if($user->is_admin)
-                    <a href="#" class="nav-link nav-toggle"><i data-feather="users"></i>
-                        <span class="title">Students</span><span class="arrow"></span></a>
-                    <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a href="all_students.html" class="nav-link "> <span class="title">All
-												Students</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="add_student.html" class="nav-link "> <span class="title">Add
-												Student</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="add_student_bootstrap.html" class="nav-link "> <span class="title">Add
-												Student Bootstrap</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="edit_student.html" class="nav-link "> <span class="title">Edit
-												Student</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="student_profile.html" class="nav-link "> <span class="title">About
-												Student</span>
-                            </a>
-                        </li>
-                    </ul>
-                    @endif
-                </li>
-                <li class="nav-item">
                     <a href="#" class="nav-link nav-toggle"> <i data-feather="book"></i>
                         <span class="title">Courses</span> <span class="arrow"></span>
                         <span class="label label-rouded label-menu label-success">new</span>
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item">
-                            <a href="all_courses.html" class="nav-link "> <span class="title">All
+                            @if($user->is_advisor)
+                            <a href="{{ route('admin.courses')  }}" class="nav-link "> <span class="title">All
 												Courses</span>
                             </a>
+                            @else
+                                <a href="{{ route('student.courses')  }}" class="nav-link "> <span class="title">All
+												Courses</span>
+                                </a>
+                            @endif
                         </li>
                         <li class="nav-item">
                             <a href="add_course.html" class="nav-link "> <span class="title">Add

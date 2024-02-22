@@ -6,8 +6,8 @@
     <div class="page-header-inner ">
         <!-- logo start -->
         <div class="page-logo">
-            <a href="index.html">
-                <span class="logo-icon material-icons fa-rotate-45">school</span>
+            <a href="#">
+                <span class="logo-icon material-icons "></span>
                 <span class="logo-default">
                     @if($user->is_advisor)
                         Facualty

@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Models\Course;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use League\Csv\Reader;
@@ -41,5 +42,10 @@ class CourseService extends Seeder
         {
             Log::error($e->getMessage());
         }
+    }
+
+    public function allCourses()
+    {
+        return Course::all();
     }
 }

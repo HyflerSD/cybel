@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Models\Student;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -40,6 +41,11 @@ class StudentService extends Seeder
         {
             Log::error($e->getMessage());
         }
+    }
+
+    public function assignedStudents()
+    {
+        return Student::all();
     }
 
 }
