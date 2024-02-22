@@ -23,7 +23,7 @@ class Student extends Model
         'start_date',
         'expected_graduation_date',
         'total_credits_earned',
-        'advisor_email',
+        'advisor_id',
         'interests'
     ];
     public function advisor() : BelongsTo
