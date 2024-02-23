@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('courseCode');
-            $table->string('courseName', 100);
+            $table->string('course_code');
+            $table->string('course_name', 100);
             $table->integer('credits');
-            $table->text('courseDescription')->nullable();
+            $table->text('course_description')->nullable();
             $table->string('session', 50)->nullable();
-            $table->date('startEndDate')->nullable();
             $table->timestamps();
         });
     }
