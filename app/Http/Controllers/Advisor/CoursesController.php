@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Advisor;
+
+use App\Http\Controllers\Controller;
 use App\Service\CourseService;
 use Illuminate\Http\Request;
+
 class CoursesController extends Controller
 {
+
     public function __construct(protected CourseService $courseService)
     {}
 
@@ -12,8 +16,6 @@ class CoursesController extends Controller
     {
         $courses = $this->courseService->allCourses();
 
-        return view('student.courses', compact('courses'));
+        return view('admin.courses', compact('courses'));
     }
-
-
 }
