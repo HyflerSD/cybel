@@ -20,16 +20,20 @@ class CourseService extends Seeder
         $coursesToInsert = [];
         try
         {
+
             $courses = $csvReader->getRecords();
             foreach ($courses as $course)
             {
-                if($course['courseCode'] !== "SKIP" && $course['courseCode'] !== "")
+
+
+                if($course['course_code'] !== "SKIP" && $course['course_code'] !== "")
                 {
                     $coursesToInsert[] = [
-                        'courseCode' => $course['courseCode'],
-                        'courseName' => $course['courseName'],
+                        'course_code' => $course['course_code'],
+                        'course_name' => $course['course_name'],
                         'credits' =>  $course['credits']
                     ];
+
                 }
             }
 
