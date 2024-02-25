@@ -15,7 +15,6 @@ class CoursesController extends Controller
     public function index()
     {
         $courses = $this->courseService->allCourses();
-
         return view('admin.courses', compact('courses'));
     }
 }

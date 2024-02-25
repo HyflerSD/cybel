@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\StudentService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdvisorsController extends Controller
 {
@@ -11,7 +13,7 @@ class AdvisorsController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(protected  StudentService $studentService)
     {
         $this->middleware('auth');
     }
@@ -23,6 +25,8 @@ class AdvisorsController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $advisorId = Auth::user()->id;
+        $students = $this->studentService->assignedStudents($advisorId);
+        return view('admin.dashboard', compact('students'));
     }
 }
