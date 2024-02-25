@@ -24,16 +24,16 @@ class CourseService extends Seeder
             $courses = $csvReader->getRecords();
             foreach ($courses as $course)
             {
-
-
                 if($course['course_code'] !== "SKIP" && $course['course_code'] !== "")
                 {
                     $coursesToInsert[] = [
                         'course_code' => $course['course_code'],
                         'course_name' => $course['course_name'],
-                        'credits' =>  $course['credits']
+                        'credits' =>  $course['credits'],
+                        'gen_ed' =>  0,
+                        'core_ed' =>  0,
+                        'elective_ed' => 1
                     ];
-
                 }
             }
 
@@ -48,6 +48,10 @@ class CourseService extends Seeder
         }
     }
 
+    public function getCoursesByType(string $key)
+    {
+        return Course::all()->where($key,'=','1');
+    }
     public function allCourses()
     {
         return Course::all();

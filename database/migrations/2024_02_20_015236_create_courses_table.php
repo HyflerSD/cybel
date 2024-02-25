@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('course_name', 100);
             $table->integer('credits');
             $table->text('course_description')->nullable();
+            $table->boolean('gen_ed')->nullable();
+            $table->boolean('core_ed')->nullable();
+            $table->boolean('elective_ed')->nullable();
             $table->string('session', 50)->nullable();
             $table->timestamps();
         });
