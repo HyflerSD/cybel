@@ -80,16 +80,8 @@ class CourseService extends Seeder
                     }
 
                     if (!empty($dataToInsert)) {
-                        switch ($type) {
-                            case "core_ed":
-                            case "elective_ed":
-                            case "gen_ed":
-                                DB::table($type)->insert($dataToInsert);
-                                break;
-                            default:
-                                Log::channel('courses')->info("No Tables to hydrate");
-                                break;
-                        }
+                        DB::table($type)->insert($dataToInsert);
+                        Log::channel('courses')->info("No Tables to hydrate");
                     }
                 }
             }
