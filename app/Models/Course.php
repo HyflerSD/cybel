@@ -14,6 +14,9 @@ class Course extends Model
         'course_name',
         'credits',
         'course_description',
+        'gen_ed',
+        'core_ed',
+        'elective_ed',
         'session',
     ];
 }

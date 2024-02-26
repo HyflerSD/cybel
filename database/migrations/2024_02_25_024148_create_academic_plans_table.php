@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('course_substitutions_tables', function (Blueprint $table) {
+        Schema::create('academic_plans', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('plan_id')->unique();
+            $table->text('description')->nullable();
         });
     }
 
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('course_substitutions_tables');
+        Schema::dropIfExists('academic_plans');
     }
 };
