@@ -20,7 +20,7 @@
                             <span class="info-box-icon push-bottom"><i data-feather="users"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">Total Students</span>
-                                <span class="info-box-number">450</span>
+                                <span class="info-box-number">{{ $students->count() }}</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 45%"></div>
                                 </div>

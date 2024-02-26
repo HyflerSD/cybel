@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -43,9 +44,21 @@ class StudentService extends Seeder
         }
     }
 
-    public function assignedStudents()
+    public function assignedStudents(int $advisor_id)
     {
-        return Student::all();
+        return Student::with('user')->where('advisor_id', $advisor_id)->get();
+
+        /**
+         * @todo structure the return data for the student
+         */
+//        $studentUsers = $students->map(function ($student){
+//            return [
+//                'fname' => $student->user->fname,
+//                'lname' => $student->user->lname,
+//                'email' => $student->user->email,
+//            ];
+//        });
+
     }
 
 }

@@ -31,4 +31,8 @@ class Student extends Model
         return $this->belongsTo(User::class, 'advisor_id');
     }
 
+    public function user() : BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

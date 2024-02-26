@@ -58,13 +58,13 @@
                                                             <img src="../assets/img/user/user1.jpg" alt="">
                                                         </td>
                                                         <td class="left">18</td>
-                                                        <td>Rajesh Bhatt</td>
-                                                        <td class="left">Mechanical</td>
+                                                        <td>{{ $student->user->fname . ' ' .  $student->user->lname}}</td>
+                                                        <td class="left">Software Engineering</td>
                                                         <td><a href="tel:4444565756">
-                                                                4444565756 </a></td>
+                                                                {{ $student->phone }}</a></td>
                                                         <td><a href="mailto:shuxer@gmail.com">
-                                                                rajesh@gmail.com </a></td>
-                                                        <td class="left">22 Feb 2010</td>
+                                                                {{ $student->user->email }} </a></td>
+                                                        <td class="left">{{ $student->start_date }}</td>
                                                         <td>
                                                             <a href="edit_student.html" class="tblEditBtn">
                                                                 <i class="fa fa-pencil"></i>

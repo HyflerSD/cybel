@@ -48,6 +48,11 @@ $user = auth()->user();
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="google_maps.html" class="nav-link ">
+                                <span class="title">View Major Models</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="vector_maps.html" class="nav-link ">
                                 <span class="title">Edit Student Maps</span>
                             </a>
