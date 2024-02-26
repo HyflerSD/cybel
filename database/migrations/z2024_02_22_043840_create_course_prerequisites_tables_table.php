@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('electives_tables', function (Blueprint $table) {
+        Schema::create('course_prerequisites_tables', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('pre_req_course_id')->references('id')->on('courses')->cascadeOnDelete();
+            $table->foreignId('course_id')->references('id')->on('courses')->cascadeOnDelete();
         });
     }
 
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('electives_tables');
+        Schema::dropIfExists('course_prerequisites_tables');
     }
 };

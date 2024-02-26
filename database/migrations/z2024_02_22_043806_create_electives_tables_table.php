@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('plans_tables', function (Blueprint $table) {
+        Schema::create('electives_tables', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('course_id')->references('id')->on('courses')->cascadeOnDelete();
+            $table->foreignId('plan_id')->references('id')->on('academic_plans')->cascadeOnDelete();
         });
     }
 
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('plans_tables');
+        Schema::dropIfExists('electives_tables');
     }
 };

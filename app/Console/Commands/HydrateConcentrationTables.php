@@ -28,7 +28,7 @@ class HydrateConcentrationTables extends Command
     {
         try
         {
-            $hello =$courseService->getCoursesByType('gen_ed');
+            $courseService->hydrateConcentrationTables();
         }catch(\Exception $e)
         {
 

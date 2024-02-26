@@ -57,7 +57,31 @@ return [
             'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
-
+        'courses' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/courses.log'),
+            'level' => 'debug'
+        ],
+        'plans' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/plans.log'),
+            'level' => 'debug'
+        ],
+        'students' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/students.log'),
+            'level' => 'debug'
+        ],
+        'degree_models' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/degree_models.log'),
+            'level' => 'debug'
+        ],
+        'advisors' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/advisors.log'),
+            'level' => 'debug'
+        ],
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
