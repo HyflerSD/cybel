@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('course_substitutions', function (Blueprint $table) {
+        Schema::create('majors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_id')->references('id')->on('courses')->cascadeOnDelete();
-            $table->foreignId('substitution_course_id')->references('id')->on('courses')->cascadeOnDelete();
             $table->timestamps();
-
+            $table->boolean('is_active')->default(true);
+            $table->text('description')->nullable();
         });
     }
 
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('course_substitutions');
+        Schema::dropIfExists('majors');
     }
 };
