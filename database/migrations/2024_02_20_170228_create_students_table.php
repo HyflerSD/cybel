@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('student_id')->unique();
             $table->string('phone', 15)->nullable();
             $table->string('address', 200)->nullable();
-            $table->foreignId('major_id', 100)->references('id')->on('majors')->cascadeOnDelete();
+            $table->foreignId('major_id', 100)->nullable()->references('id')->on('majors')->cascadeOnDelete();
             $table->decimal('gpa', 3, 2)->nullable();
             $table->date('birthdate')->nullable();
             $table->string('enrollment_status', 50)->default('enrolled');
