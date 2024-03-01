@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('completed_courses_tables', function (Blueprint $table) {
+        Schema::create('completed_courses', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('substituting_course')->nullable();
+            $table->foreignId('course_id')->nullable()->constrained();
+            $table->string('grade')->nullable();
+            $table->foreignId('id')->nullable()->constrained();
         });
     }
 
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('completed_courses_tables');
+        Schema::dropIfExists('completed_courses');
     }
 };

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pre_registrations_tables', function (Blueprint $table) {
+        Schema::create('pre_registrations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pre_registrations_tables');
+        Schema::dropIfExists('pre_registrations');
     }
 };
