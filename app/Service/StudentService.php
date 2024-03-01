@@ -25,7 +25,7 @@ class StudentService extends Seeder
                     "advisor_id" => $student['advisor_id'],
                     "phone" => $student['phone'],
                     "address" => $student['address'],
-                    "major" => $student['major'],
+                    "major_id" => $student['major_id'],
                     "gpa" => $student['gpa'],
                     "birthdate" => $student['birthdate'],
                     "enrollment_status" => $student['enrollment_status'],
