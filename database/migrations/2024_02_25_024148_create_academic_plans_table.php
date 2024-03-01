@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('academic_plans', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('plan_id')->unique();
+            $table->string('plan_code')->unique();
             $table->text('description')->nullable();
         });
     }
