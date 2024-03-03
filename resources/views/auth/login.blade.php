@@ -1,57 +1,46 @@
 @extends('layouts.auth')
 
 @section('content')
-    <!-- Sing in  Form -->
-    <section class="sign-in">
-        <div class="container">
-            <div class="signin-content">
-                <div class="signin-image">
-                    <figure><img src="/admin/assets/img/pages/signin.jpg" alt="sing up image"></figure>
-                    <a href="{{ route('register') }}" class="signup-image-link">Create an account</a>
+    <!-- Sign in Form -->
+    <section class="sign-in" style="background-color: royalblue; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">
+        <div class="container" style="background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 10px;">
+            <div class="signin-content" style="display: flex; align-items: center;">
+                <div>
+                    <figure>
+                        <img src="/admin/assets/img/pages/CybellogoTransparent.png" alt="sing up image">
+                    </figure>
                 </div>
-                <div class="signin-form">
-                    <h2 class="form-title">Login</h2>
+                <div class="signin-form" style="margin-left: 20px;">
+                    <h2 class="form-title" style="text-align: center; margin-bottom: 20px;">Login</h2>
                     <form class="register-form" id="login-form" action="{{ route('login') }}" method="post">
                         @csrf
                         <div class="form-group has-error">
-                            <div class="has-error">
-                                <input name="email" type="email" placeholder="email"
-                                       class="form-control input-height" />
-                                @error('email')
-                                <span class="help-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            <input name="email" type="email" placeholder="Email" class="form-control input-height" />
+                            @error('email')
+                            <span class="help-block" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <div class="">
-                                <input name="password" type="password" placeholder="Password"
-                                       class="form-control input-height" />
-                                @error('password')
-                                <span class="help-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            <input name="password" type="password" placeholder="Password" class="form-control input-height" />
+                            @error('password')
+                            <span class="help-block" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group" style="text-align: center;">
+                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" style="vertical-align: middle;" />
+                            <label for="remember-me" class="label-agree-term" style="display: inline-block; vertical-align: middle;"><span><span></span></span>Remember me</label>
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                            <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember
-                                me</label>
+                            <a href="{{ route('register') }}" class="signup-image-link" style="display: block; text-align: center;">Create an account</a>
                         </div>
-                        <div class="form-group form-button">
-                            <button class="btn btn-round btn-primary" name="signin" id="signin">Login</button>
+                        <div class="form-group form-button" style="text-align: center;">
+                            <button class="btn btn-round" name="signin" id="signin" style="background-color: royalblue; color: white;" onmouseover="this.style.backgroundColor='navy'; this.style.color='white';" onmouseout="this.style.backgroundColor='royalblue'; this.style.color='white';">Login</button>
                         </div>
                     </form>
-                    <div class="social-login">
-                        <span class="social-label">Or login with</span>
-                        <ul class="socials">
-                            <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                            <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                            <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
