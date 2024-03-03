@@ -2,25 +2,26 @@
 
 namespace App\Console\Commands;
 
-use App\Service\CourseService;
 use Illuminate\Console\Command;
+use App\Service\CourseService;
 use Illuminate\Support\Facades\Log;
+use League\Csv\Reader;
 
-class HydrateConcentrationTables extends Command
+class HydratePreReqs extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'hydrate-con';
+    protected $signature = 'hydrate-preqs {file}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Hydrates gen_ed, core_ed, and elective_ed tables';
+    protected $description = 'Hydrates the pre requisites table';
 
     /**
      * Execute the console command.
@@ -29,11 +30,12 @@ class HydrateConcentrationTables extends Command
     {
         try
         {
-            $courseService->hydrateConcentrationTables();
-        }catch(\Exception $e)
+            $filePath = $this->argument('file');
+            $courses = Reader::createFromPath($filePath)->setHeaderOffset(0);
+            $courseService->hydratePreReqs($courses);
+        }catch (\Exception $e)
         {
             Log::error($e->getMessage());
-            Log::error($e);
         }
     }
 }

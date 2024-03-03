@@ -27,14 +27,22 @@ class CourseService extends Seeder
             {
                 if($course['course_code'] !== "SKIP" && $course['course_code'] !== "")
                 {
-                    $coursesToInsert[] = [
-                        'course_code' => $course['course_code'],
-                        'course_name' => $course['course_name'],
-                        'credits' =>  $course['credits'],
-                        'gen_ed' =>  $course['gen_ed'] ?? null,
-                        'core_ed' =>  $course['core_ed'] ?? null,
-                        'elective_ed' => $course['elective_ed'] ?? null,
-                    ];
+                    $exists = DB::table('courses')
+                        ->where('course_code',$course['course_code'])
+                        ->exists();
+
+                    if(!$exists)
+                    {
+                        $coursesToInsert[] = [
+                            'course_code' => $course['course_code'],
+                            'course_name' => $course['course_name'],
+                            'credits' =>  $course['credits'],
+                            'gen_ed' =>  $course['gen_ed'] ?? null,
+                            'course_description' => $course['course_description'] ?? null,
+                            'core_ed' =>  $course['core_ed'] ?? null,
+                            'elective_ed' => $course['elective_ed'] ?? null,
+                        ];
+                    }
                 }
             }
 
@@ -43,6 +51,56 @@ class CourseService extends Seeder
             {
                 DB::table('courses')->insert($coursesToInsert);
                 Log::channel('courses')->info('Successfully inserted ' . count($coursesToInsert) . ' courses');
+            }
+        }catch (\Exception $e)
+        {
+            Log::error($e->getMessage());
+            Log::error("Failed to import courses : " .  $e->getMessage());
+        }
+    }
+
+    /**
+     * @param Reader $csvReader
+     * @return void
+     * Hydrates the pre reqs table from given csv
+     */
+    public function hydratePreReqs(Reader $csvReader) : void
+    {
+        $coursesToInsert = [];
+        try
+        {
+
+            $courses = $csvReader->getRecords();
+            $missingCourses = [];
+            foreach ($courses as $course)
+            {
+                if($course['course_code'] !== "" && $course['pre_req_course_code'] !== "")
+                {
+                    $missingCourse = DB::table('courses')
+                        ->where('course_code', $course['pre_req_course_code'])
+                        ->doesntExist();
+                    if($missingCourse)
+                    {
+                        $missingCourses[] = $course['pre_req_course_code'];
+                    }
+                    $exists = DB::table('course_prerequisites')
+                        ->where('course_code',$course['course_code'])
+                        ->where('pre_req_course_code',$course['pre_req_course_code'])
+                        ->exists();
+                    if(!$exists)
+                    {
+                        $coursesToInsert[] = [
+                            'course_code' => $course['course_code'],
+                            'pre_req_course_code' => $course['pre_req_course_code'],
+                        ];
+                    }
+                }
+            }
+            //Insert Bulk data
+            if(!empty($coursesToInsert))
+            {
+                DB::table('course_prerequisites')->insert($coursesToInsert);
+                Log::channel('courses')->info('Successfully inserted ' . count($coursesToInsert) . ' pre reqs');
             }
         }catch (\Exception $e)
         {
@@ -62,25 +120,24 @@ class CourseService extends Seeder
         {
             foreach ($course_types as $type)
             {
-                $collection = Course::where($type,'1')->pluck('id');
+                $collection = Course::where($type,'1')->pluck('course_code');
                 if($collection->isNotEmpty())
                 {
-                    $courses_builder[$type]['course_id'] = $collection->toArray();
+                    $courses_builder[$type]['course_code'] = $collection->toArray();
                 }
             }
 
             foreach ($course_types as $type) {
-                if (isset($courses_builder[$type]['course_id'])) {
+                if (isset($courses_builder[$type]['course_code'])) {
                     $dataToInsert = [];
-                    foreach ($courses_builder[$type]['course_id'] as $courseId) {
+                    foreach ($courses_builder[$type]['course_code'] as $courseId) {
                         $dataToInsert[] = [
-                            'course_id' => $courseId,
-                            'plan_id' => 1,//fixed id for swe plan for now.
+                            'course_code' => $courseId,
+                            'plan_code' => 'S9501',//fixed id for swe plan for now.
                             ];
                     }
-
                     if (!empty($dataToInsert)) {
-                        DB::table($type)->insert($dataToInsert);
+                        DB::table('concentration_courses')->insert($dataToInsert);
                         Log::channel('courses')->info("No Tables to hydrate");
                     }
                 }

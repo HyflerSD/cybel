@@ -5,12 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Plan extends Model
+class Program extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'plan_id',
-        'description',
-    ];
+    protected $fillable = ['name', 'code', 'degree_id'];
 }

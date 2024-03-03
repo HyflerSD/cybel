@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('majors', function (Blueprint $table) {
+        Schema::create('programs', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->string('code')->unique();
+            $table->foreignId('degree_id')->constrained();
             $table->timestamps();
-            $table->boolean('is_active')->default(true);
-            $table->text('description')->nullable();
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('majors');
+        Schema::dropIfExists('programs');
     }
 };

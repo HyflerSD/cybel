@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('substituting_course')->nullable();
-            $table->foreignId('course_id')->nullable()->constrained();
+            $table->foreignId('course_code')->nullable()->constrained();
             $table->string('grade')->nullable();
             $table->foreignId('id')->nullable()->constrained();
         });

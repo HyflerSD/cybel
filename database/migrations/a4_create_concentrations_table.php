@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('core_ed', function (Blueprint $table) {
+        Schema::create('concentrations', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->foreignId('course_id')->references('id')->on('courses')->cascadeOnDelete();
-            $table->foreignId('plan_id')->references('id')->on('academic_plans')->cascadeOnDelete();
+            $table->string('name');
+            $table->string('program_code');
+            $table->string('plan_code')->unique();
+            $table->text('description');
+            $table->foreign('program_code')->references('code')->on('programs');
         });
     }
 
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('core_ed');
+        Schema::dropIfExists('concentrations');
     }
 };
