@@ -15,7 +15,7 @@ class Student extends Model
         'student_id',
         'phone',
         'address',
-        'plan_code',
+        'concentration_code',
         'gpa',
         'birthdate',
         'enrollment_status',

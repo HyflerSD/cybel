@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('campus_id')->constrained();
-            $table->foreignId('major_id')->constrained();
             $table->foreignId('student_id')->constrained();
             $table->foreignId('course_id')->constrained();
             $table->foreign('grade')->references('grade')->on('completed_courses');
             $table->string('term')->nullable();
+            $table->string('concentration_code')->nullable();
+            $table->foreign('concentration_code')->references('code')->on('concentrations');
         });
     }
 

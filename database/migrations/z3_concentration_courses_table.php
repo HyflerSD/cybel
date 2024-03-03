@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('concentration_courses', function (Blueprint $table) {
             $table->id();
             $table->string('course_code');
-            $table->string('plan_code');
+            $table->string('concentration_code');
 
             $table->foreign('course_code')->references('course_code')->on('courses')->cascadeOnDelete();
-            $table->foreign('plan_code')->references('plan_code')->on('concentrations')->cascadeOnDelete();
+            $table->foreign('concentration_code')->references('plan_code')->on('concentrations')->cascadeOnDelete();
         });
     }
 

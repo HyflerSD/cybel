@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('program_code');
-            $table->string('plan_code')->unique();
+            $table->string('concentration_code')->unique();
             $table->text('description');
             $table->foreign('program_code')->references('code')->on('programs');
         });

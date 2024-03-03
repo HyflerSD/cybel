@@ -10,7 +10,7 @@ class ConcentrationCourse extends Model
     use HasFactory;
 
     protected $fillable = [
-        'plan_code',
+        'concentration_code',
         'course_code'
     ];
 }

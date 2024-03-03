@@ -12,6 +12,6 @@ class Concentration extends Model
         'name',
         'program_code',
         'description',
-        'plan_code'
+        'concentration_code'
     ];
 }
