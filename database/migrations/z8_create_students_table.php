@@ -28,7 +28,7 @@ return new class extends Migration
             $table->json('interests')->nullable();
             $table->timestamps();
 
-            $table->foreign('concentration_code')->references('plan_code')->on('concentrations')->nullOnDelete();
+            $table->foreign('concentration_code')->references('concentration_code')->on('concentrations')->nullOnDelete();
             $table->foreignId('advisor_id')->nullable()->constrained('users')->onDelete('set null');
         });
     }

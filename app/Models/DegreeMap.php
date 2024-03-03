@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DegreePlan extends Model
+class DegreeMap extends Model
 {
     use HasFactory;
 }

@@ -133,7 +133,7 @@ class CourseService extends Seeder
                     foreach ($courses_builder[$type]['course_code'] as $courseId) {
                         $dataToInsert[] = [
                             'course_code' => $courseId,
-                            'plan_code' => 'S9501',//fixed id for swe plan for now.
+                            'concentration_code' => 'S9501',//fixed id for swe plan for now.
                             ];
                     }
                     if (!empty($dataToInsert)) {

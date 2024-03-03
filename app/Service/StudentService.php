@@ -25,7 +25,7 @@ class StudentService extends Seeder
                     "advisor_id" => $student['advisor_id'],
                     "phone" => $student['phone'],
                     "address" => $student['address'],
-                    "plan_code" => "S9501", //@todo may update this to be dynamic but not right now
+                    "concentration_code" => "S9501", //@todo may update this to be dynamic but not right now
                     "gpa" => $student['gpa'],
                     "birthdate" => $student['birthdate'],
                     "enrollment_status" => $student['enrollment_status'],

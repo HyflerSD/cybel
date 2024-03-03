@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('concentration_code');
 
             $table->foreign('course_code')->references('course_code')->on('courses')->cascadeOnDelete();
-            $table->foreign('concentration_code')->references('plan_code')->on('concentrations')->cascadeOnDelete();
+            $table->foreign('concentration_code')->references('concentration_code')->on('concentrations')->cascadeOnDelete();
         });
     }
 

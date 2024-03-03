@@ -17,18 +17,18 @@ class ConcentrationSeeder extends Seeder
             [
                 'name' => "Software Engineering",
                 'program_code' => "IST",
-                'plan_code' => "S9501",
+                'concentration_code' => "S9501",
                 'description' => "The Bachelor of Science in Information Systems Technology (IST) introduces concepts
                                   upon which information systems are founded and analyzes them as solutions to
                                   real-world problems. The curriculum provides students with the critical skills
-                                  and knowledge required to direct and control the design, planning and management of
+                                  and knowledge required to direct and control the design, concentrationning and management of
                                   information infrastructures in professional settings. This degree program addresses
                                   the workplace need for professionals with information systems management and development expertise."
             ],
             [
                 'name' => "Networking",
                 'program_code' => "IST",
-                'plan_code' => "S9500",
+                'concentration_code' => "S9500",
                 'description' => "The Bachelor of Science in Information Systems Technology (IST) introduces concepts
                                   upon which information systems are founded and analyzes them as solutions to
                                   real-world problems. The curriculum provides students with the critical skills

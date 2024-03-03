@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('degree_plans', function (Blueprint $table) {
+        Schema::create('degree_maps', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignId('campus_id')->constrained();
-            $table->foreignId('student_id')->constrained();
-            $table->foreignId('course_id')->constrained();
-            $table->foreign('grade')->references('grade')->on('completed_courses');
+//            $table->unsignedBigInteger('student_id');
+            $table->string('course_code');
+            $table->string('map_id');
             $table->string('term')->nullable();
             $table->string('concentration_code')->nullable();
-            $table->foreign('concentration_code')->references('code')->on('concentrations');
+            $table->foreign('concentration_code')->references('concentration_code')->on('concentrations');
+//            $table->foreign('student_id')->references('student_id')->on('students');
+            $table->foreign('course_code')->references('course_code')->on('courses');
         });
     }
 
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('degree_plans');
+        Schema::dropIfExists('degree_maps');
     }
 };
