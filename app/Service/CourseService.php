@@ -161,4 +161,49 @@ class CourseService extends Seeder
     {
         return Course::all();
     }
+
+    public function hydrateHistory(Reader $csvReader) : void
+    {
+        $coursesToInsert = [];
+        try
+        {
+            $courses = $csvReader->getRecords();
+            $missingCourses = [];
+            foreach ($courses as $course)
+            {
+//                $missingCourse = DB::table('courses')
+//                    ->where('course_code', $course['pre_req_course_code'])
+//                    ->doesntExist();
+//                if($missingCourse)
+//                {
+//                    Log::channel('courses')->info("Attempting to insert non existing course: " . $course['pre_req_course_code']);
+//                }
+//
+//                $exists = DB::table('course_prerequisites')
+//                    ->where('course_code',$course['course_code'])
+//                    ->where('pre_req_course_code',$course['pre_req_course_code'])
+//                    ->exists();
+
+                $coursesToInsert[] = [
+                    'student_id' => $course['student_id'],
+                    'term_code' => $course['term_code'],
+                    'concentration_code' => $course['concentration_code'],
+                    'course_code' => $course['course_code'],
+                    'grade' => $course['grade'],
+                    'credits_earned' => $course['credits_earned'],
+                    'credits_attempted' => $course['credits_attempted'],
+                ];
+            }
+            //Insert Bulk data
+            if(!empty($coursesToInsert))
+            {
+                DB::table('student_histories')->insert($coursesToInsert);
+                Log::channel('courses')->info('Successfully inserted ' . count($coursesToInsert) . ' pre reqs');
+            }
+        }catch (\Exception $e)
+        {
+            Log::error($e->getMessage());
+            Log::error("Failed to import course history : " .  $e->getMessage());
+        }
+    }
 }

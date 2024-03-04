@@ -36,7 +36,7 @@ class ProgramSeeder extends Seeder
             ],
             [
                 'name' => "Computer Information Systems",
-                'code' => "CIS",
+                'code' => "CIST",
                 'degree_id' => "4",
             ],
         ];

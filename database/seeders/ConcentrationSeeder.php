@@ -36,6 +36,17 @@ class ConcentrationSeeder extends Seeder
                                   information infrastructures in professional settings. This degree program addresses
                                   the workplace need for professionals with information systems management and development expertise."
             ],
+            [
+                'name' => "Computer Information Systems",
+                'program_code' => "CIST",
+                'concentration_code' => "10702",
+                'description' => "The Associates in  Computer Information Systems Technology (CIST) introduces concepts
+                                  upon which information systems are founded and analyzes them as solutions to
+                                  real-world problems. The curriculum provides students with the critical skills
+                                  and knowledge required to direct and control the design, planning and management of
+                                  information infrastructures in professional settings. This degree program addresses
+                                  the workplace need for professionals with information systems management and development expertise."
+            ],
         ];
         DB::table('concentrations')->insert($academicPlans);
 
