@@ -37,7 +37,7 @@ class ProgramSeeder extends Seeder
             [
                 'name' => "Computer Information Systems",
                 'code' => "CIS",
-                'degree_id' => "1",
+                'degree_id' => "4",
             ],
         ];
         DB::table('programs')->insert($programs);

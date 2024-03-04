@@ -14,7 +14,7 @@ class CreateUsers extends Command
      *
      * @var string
      */
-    protected $signature = 'app:create-users {file}';
+    protected $signature = 'create-users {file}';
 
     /**
      * The console command description.

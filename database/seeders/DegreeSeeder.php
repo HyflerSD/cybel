@@ -26,12 +26,12 @@ class DegreeSeeder extends Seeder
             ],
             [
                 'name' => "Associate",
-                'code' => "BD",
+                'code' => "AD",
                 'type' => "Science",
             ],
             [
                 'name' => "Associate",
-                'code' => "BD",
+                'code' => "AD",
                 'type' => "Arts",
             ],
         ];

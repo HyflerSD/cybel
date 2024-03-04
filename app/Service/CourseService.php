@@ -81,12 +81,14 @@ class CourseService extends Seeder
                         ->doesntExist();
                     if($missingCourse)
                     {
-                        $missingCourses[] = $course['pre_req_course_code'];
+                        Log::channel('courses')->info("Attempting to insert non existing course: " . $course['pre_req_course_code']);
                     }
+
                     $exists = DB::table('course_prerequisites')
                         ->where('course_code',$course['course_code'])
                         ->where('pre_req_course_code',$course['pre_req_course_code'])
                         ->exists();
+
                     if(!$exists)
                     {
                         $coursesToInsert[] = [
