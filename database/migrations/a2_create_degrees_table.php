@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('electives', function (Blueprint $table) {
+        Schema::create('degrees', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->foreignId('course_id')->references('id')->on('courses')->cascadeOnDelete();
-            $table->foreignId('plan_id')->references('id')->on('academic_plans')->cascadeOnDelete();
+            $table->string('name');
+            $table->string('type')->index();
+            $table->string('code');
+            $table->unique(['name', 'code', 'type']);
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('electives');
+        Schema::dropIfExists('degrees');
     }
 };

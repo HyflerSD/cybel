@@ -15,13 +15,14 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('level_combination');
-            $table->foreignId('course_id')->unique()->constrained('courses')->cascadeOnDelete();
+            $table->string('course_code');
 //          @todo don't think this belongs here
 //          $table->boolean('is_course_taken')->default(false);
             $table->bigInteger('priority_index');
             $table->text('student_interests')->nullable();
             $table->date('effective_date')->nullable();
             $table->string('institution')->default('Miami Dade College');
+            $table->foreign('course_code')->references('course_code')->on('courses');
         });
     }
 

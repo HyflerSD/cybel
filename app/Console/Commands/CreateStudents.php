@@ -13,7 +13,7 @@ class CreateStudents extends Command
      *
      * @var string
      */
-    protected $signature = 'app:create-students {file}';
+    protected $signature = 'create-students {file}';
 
     /**
      * The console command description.

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('student_id')->unique();
             $table->string('phone', 15)->nullable();
             $table->string('address', 200)->nullable();
-            $table->foreignId('major_id', 100)->nullable()->references('id')->on('majors')->cascadeOnDelete();
+            $table->string('email');
+            $table->string('concentration_code', 200)->nullable();
             $table->decimal('gpa', 3, 2)->nullable();
             $table->date('birthdate')->nullable();
             $table->string('enrollment_status', 50)->default('enrolled');
@@ -28,6 +29,8 @@ return new class extends Migration
             $table->json('interests')->nullable();
             $table->timestamps();
 
+            $table->foreign('concentration_code')->references('concentration_code')->on('concentrations')->nullOnDelete();
+            $table->foreign('email')->references('email')->on('users');
             $table->foreignId('advisor_id')->nullable()->constrained('users')->onDelete('set null');
         });
     }

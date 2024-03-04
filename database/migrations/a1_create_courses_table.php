@@ -20,7 +20,6 @@ return new class extends Migration
             $table->boolean('gen_ed')->nullable();
             $table->boolean('core_ed')->nullable();
             $table->boolean('elective_ed')->nullable();
-            $table->string('session', 50)->nullable();
             $table->timestamps();
         });
     }
