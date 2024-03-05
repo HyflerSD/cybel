@@ -1,5 +1,6 @@
 @extends('layouts.auth')
 
+@section('title') {{'Register'}} @endsection
 @section('content')
     <!-- Sign up form -->
     <section class="signup" style="background: radial-gradient(circle, rgba(42,133,154,1) 0%, rgba(73,19,166,1) 72%, rgba(50,0,176,1) 82%, rgba(53,0,176,1) 99%);position: fixed; top: 0; left: 0; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">

@@ -8,7 +8,10 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="description" content="Responsive Admin Template" />
     <meta name="author" content="SmartUniversity" />
-    <title>Smart University | Bootstrap Responsive Admin Template</title>
+
+{{--    The title below will display Cybel | {TITLE OF VIEW}--}}
+    <title>{{ config('app.name', 'Cybel')}} | @yield('title')</title>
+
     @include('partials.admin.css')
 </head>
 <!-- END HEAD -->
