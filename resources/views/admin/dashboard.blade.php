@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 
+@section('title') {{'Advisor Dashboard'}} @endsection
 @section('content')
     <!-- start page content -->
     <div class="page-content-wrapper">
