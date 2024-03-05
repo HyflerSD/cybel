@@ -37,7 +37,6 @@
                                         <div class="thumb-center"><img class="img-responsive" alt="user"
                                                                        src="/admin/assets/img/course/course_image.webp"></div>
                                         <div class="course-box">
-{{--                                            <h4>{{ $course->courseName }}</h4>--}}
                                             <div class="text-muted" style="padding-top: 20px;">
                                                 {{--m-r-10 = margin right 10--}}
                                                 <span class="m-r-10">{{$course->course_code}}</span>
