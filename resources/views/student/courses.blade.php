@@ -36,16 +36,15 @@
                                 <div class="col-lg-3 col-md-6 col-12 col-sm-6">
                                     <div class="blogThumb">
                                         <div class="thumb-center"><img class="img-responsive" alt="user"
-                                                                       src="/admin/assets/img/course/course4.jpg"></div>
+                                                                       src="/admin/assets/img/course/course_image.webp"></div>
                                         <div class="course-box">
-                                            <h4>{{ $course->courseName }}</h4>
-                                            <div class="text-muted"><span class="m-r-10">April 23</span>
-                                                <a class="course-likes m-l-10" href="#"><i
-                                                        class="fa fa-heart-o"></i> 654</a>
+                                            {{--<h4>{{ $course->courseName }}</h4>--}}
+                                            <div class="text-muted" style="padding-top: 20px;">
+                                                {{--m-r-10 = margin right 10--}}
+                                                <span class="m-r-10">{{$course->course_code}}</span>
                                             </div>
-                                            <p><span><i class="ti-alarm-clock"></i> Duration: 6 Months</span></p>
-                                            <p><span><i class="ti-user"></i> Professor: Jane Doe</span></p>
-                                            <p><span><i class="fa fa-graduation-cap"></i> Students: 200+</span></p>
+                                            <p>Name: {{$course->course_name}}</p>
+                                            <p>Credits: {{$course->credits}}</p>
                                             <button type="button"
                                                     class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-info">Read
                                                 More</button>
