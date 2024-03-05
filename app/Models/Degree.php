@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Elective extends Model
+class Degree extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'plan_id',
-        'description',
-    ];
+
+    protected $fillable = ['name', 'code', 'type'];
 }

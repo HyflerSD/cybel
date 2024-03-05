@@ -12,10 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('course_prerequisites', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->foreignId('pre_req_course_id')->references('id')->on('courses')->cascadeOnDelete();
-            $table->foreignId('course_id')->references('id')->on('courses')->cascadeOnDelete();
+            $table->string('course_code');
+            $table->string('pre_req_course_code');
+            $table->foreign('pre_req_course_code')->references('course_code')->on('courses')->cascadeOnDelete();
+            $table->foreign('course_code')->references('course_code')->on('courses')->cascadeOnDelete();
+
+            $table->unique(['course_code', 'pre_req_course_code']);
         });
     }
 

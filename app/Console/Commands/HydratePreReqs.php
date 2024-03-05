@@ -3,38 +3,37 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Service\UserService;
+use App\Service\CourseService;
 use Illuminate\Support\Facades\Log;
 use League\Csv\Reader;
 
-class CreateUsers extends Command
+class HydratePreReqs extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'create-users {file}';
+    protected $signature = 'hydrate-preqs {file}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Imports user list via formatted csv';
+    protected $description = 'Hydrates the pre requisites table';
 
     /**
-     * @param UserService $userService
-     * @return void
+     * Execute the console command.
      */
-    public function handle(UserService $userService)
+    public function handle(CourseService $courseService)
     {
         try
         {
             $filePath = $this->argument('file');
-            $csvReader = Reader::createFromPath($filePath)->setHeaderOffset(0);
-            $userService->createUsers($csvReader);
-        }catch(\Exception $e)
+            $courses = Reader::createFromPath($filePath)->setHeaderOffset(0);
+            $courseService->hydratePreReqs($courses);
+        }catch (\Exception $e)
         {
             Log::error($e->getMessage());
         }

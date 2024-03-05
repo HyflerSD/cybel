@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Service\CourseService;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class HydrateConcentrationTables extends Command
 {
@@ -12,7 +13,7 @@ class HydrateConcentrationTables extends Command
      *
      * @var string
      */
-    protected $signature = 'app:hydrate-concentration-tables';
+    protected $signature = 'hydrate-con';
 
     /**
      * The console command description.
@@ -31,7 +32,8 @@ class HydrateConcentrationTables extends Command
             $courseService->hydrateConcentrationTables();
         }catch(\Exception $e)
         {
-
+            Log::error($e->getMessage());
+            Log::error($e);
         }
     }
 }

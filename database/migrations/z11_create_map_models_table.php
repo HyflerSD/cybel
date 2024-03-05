@@ -14,14 +14,17 @@ return new class extends Migration
         Schema::create('map_models', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('level_combination');
-            $table->foreignId('course_id')->unique()->constrained('courses')->cascadeOnDelete();
-//          @todo don't think this belongs here
-//          $table->boolean('is_course_taken')->default(false);
-            $table->bigInteger('priority_index');
-            $table->text('student_interests')->nullable();
+            $table->json('level_combination');
+            $table->string('course_code')->unique();
+            $table->string('concentration_code');
+            $table->integer('priority_index');
+            $table->json('student_interests')->nullable();
             $table->date('effective_date')->nullable();
             $table->string('institution')->default('Miami Dade College');
+
+            $table->foreign('course_code')->references('course_code')->on('courses');
+            $table->foreign('concentration_code')->references('concentration_code')
+                  ->on('concentrations_table');
         });
     }
 
