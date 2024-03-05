@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+
+@section('title') {{'Student Courses'}} @endsection
+
 @section('content')
     @php
     $user = auth()->user();

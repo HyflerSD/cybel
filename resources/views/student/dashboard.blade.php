@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title') {{'Student Dashboard'}} @endsection
+
 @section('content')
     <!-- start page content -->
     <div class="page-content-wrapper">
