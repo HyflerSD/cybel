@@ -27,10 +27,12 @@ return new class extends Migration
             $table->date('expected_graduation_date')->nullable();
             $table->integer('total_credits_earned')->default(0);
             $table->json('interests')->nullable();
+            $table->foreignId('campus_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('concentration_code')->references('concentration_code')->on('concentrations')->nullOnDelete();
             $table->foreign('email')->references('email')->on('users');
+            $table->foreign('campus_id')->references('campus_id')->on('campuses')->nullOnDelete();
+            $table->foreign('concentration_code')->references('concentration_code')->on('concentrations')->nullOnDelete();
             $table->foreignId('advisor_id')->nullable()->constrained('users')->onDelete('set null');
         });
     }
