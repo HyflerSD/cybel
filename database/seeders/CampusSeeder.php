@@ -13,7 +13,20 @@ class CampusSeeder extends Seeder
      */
     public function run(): void
     {
-        $campuses = ['description' => 'North Campus'];
-        DB::table('campuses')->insert([$campuses]);
+        $campuses = [
+            [
+                'description' => 'North Campus'
+            ],
+            [
+                'description' => 'Wolfson Campus'
+            ],
+            [
+                'description' => 'Kendall Campus'
+            ],
+            [
+                'description' => 'Doral Campus'
+            ],
+        ];
+        DB::table('campuses')->insert($campuses);
     }
 }

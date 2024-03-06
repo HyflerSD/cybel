@@ -115,37 +115,30 @@ $user = auth()->user();
                         <span class="label label-rouded label-menu label-success">new</span>
                     </a>
                     <ul class="sub-menu">
-                        <li class="nav-item">
-                            @if($user->is_advisor)
-                            <a href="{{ route('admin.courses')  }}" class="nav-link "> <span class="title">All
+                      @if($user->is_advisor)
+                            <li class="nav-item">
+                                    <a href="{{ route('admin.courses')  }}" class="nav-link "> <span class="title">All
 												Courses</span>
-                            </a>
-                            @else
-                                <a href="{{ route('student.courses')  }}" class="nav-link "> <span class="title">All
-												Courses</span>
-                                </a>
-                            @endif
-                        </li>
+                                    </a>
+                            </li>
                         <li class="nav-item">
                             <a href="add_course.html" class="nav-link "> <span class="title">Add
 												Course</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="add_course_bootstrap.html" class="nav-link "> <span class="title">Add
-												Course Bootstrap</span>
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a href="edit_course.html" class="nav-link "> <span class="title">Edit
 												Course</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="course_details.html" class="nav-link "> <span class="title">About
-												Course</span>
-                            </a>
-                        </li>
+                        @else
+                            <li class="nav-item">
+                                <a href="{{ route('student.courses')  }}" class="nav-link "> <span class="title">All
+												Courses</span>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </li>
                 <li class="nav-item">

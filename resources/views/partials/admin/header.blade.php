@@ -6,15 +6,15 @@
     <div class="page-header-inner ">
         <!-- logo start -->
         <div class="page-logo">
-            <a href="#">
-                <span class="logo-icon material-icons "></span>
-                <span class="logo-default">
-                    @if($user->is_advisor)
-                        Facualty
-                    @else
-                        Student
-                    @endif
-                </span> </a>
+            @if($user->is_advisor)
+                <a href="{{ route('admin.dashboard') }}">
+                    <span class="logo-icon material-icons "></span>
+                    <span class="logo-default">Faculty</span></a>
+            @else
+                <a href="{{ route('student.dashboard') }}">
+                    <span class="logo-icon material-icons "></span>
+                    <span class="logo-default">Student</span></a>
+            @endif
         </div>
         <!-- logo end -->
         <ul class="nav navbar-nav navbar-left in">
