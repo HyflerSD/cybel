@@ -31,7 +31,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('email')->references('email')->on('users');
-            $table->foreign('campus_id')->references('campus_id')->on('campuses')->nullOnDelete();
             $table->foreign('concentration_code')->references('concentration_code')->on('concentrations')->nullOnDelete();
             $table->foreignId('advisor_id')->nullable()->constrained('users')->onDelete('set null');
         });

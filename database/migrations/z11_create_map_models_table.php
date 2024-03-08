@@ -24,7 +24,7 @@ return new class extends Migration
 
             $table->foreign('course_code')->references('course_code')->on('courses');
             $table->foreign('concentration_code')->references('concentration_code')
-                  ->on('concentrations_table');
+                  ->on('concentrations');
         });
     }
 
