@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -50,11 +53,16 @@ class LoginController extends Controller
         //check if admin and redirect to correct page
         if($user->is_advisor)
         {
+            $advisor = Auth::user();
+            Session::put('advisor', $advisor);
             return redirect()->route('admin.dashboard');
         }
         else
         {
-            return redirect()->route('home');
+            $studentEmail = $user->email;
+            $student = get
+            Session::put('student', $student);
+            return redirect()->route('student.dashboard');
         }
     }
 }

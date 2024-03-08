@@ -16,7 +16,7 @@ class StudentService extends Seeder
         $studentsToInsert = [];
         try
         {
-            $students = $csvReader->getRecords();
+            $students = iterator_to_array($csvReader->getRecords());
 
             foreach ($students as $student) {
                 $studentsToInsert[] = [
@@ -37,8 +37,12 @@ class StudentService extends Seeder
                     "interests" => json_encode($student['interests'], true),
 //                    "advisor_email" => $student['advisor_email'],
                 ];
+
+
             }
             DB::table('students')->insert($studentsToInsert);
+            return $studentsToInsert;
+
         }catch (\Exception $e)
         {
             Log::error($e->getMessage());
@@ -61,5 +65,18 @@ class StudentService extends Seeder
 //        });
 
     }
+    public function getStudentByEmail($studentEmail)
+    {
+        try
+        {
+            return Student::where('email', '=', $studentEmail)->first();
+
+        } catch(\Exception $e)
+        {
+            Log::channel('student')->error(' error get student ' . $e->getMessage());
+            Log::error($e->getMessage());
+        }
+    }
+
 
 }
