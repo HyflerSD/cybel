@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ProfessorsController;
+use App\Http\Controllers\Advisor\AdviseesController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Middleware\IsStudentUser;
 use Illuminate\Support\Facades\Auth;
@@ -32,16 +33,15 @@ Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function
     });
 
     Route::group(['prefix' => 'advisees'], function () {
-        Route::get('/', [\App\Http\Controllers\Advisor\AdviseesController::class, 'index'])->name('admin.advisees');
+        Route::get('/', [AdviseesController::class, 'index'])->name('admin.advisees');
     });
 });
 
 Route::group(['prefix' => 'student', 'middleware' => IsStudentUser::class], function (){
-    Route::get('/student-dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('student.dashboard');
+    Route::get('/student-dashboard', [App\Http\Controllers\StudentController::class, 'index'])->name('student.dashboard');
     Route::group(['prefix' => 'courses'], function (){
         Route::get('/', [CoursesController::class, 'index'])->name('student.courses');
     });
 });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
