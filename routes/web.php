@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ProfessorsController;
 use App\Http\Controllers\Advisor\AdviseesController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\StudentController;
 use App\Http\Middleware\IsStudentUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,9 @@ Route::group(['prefix' => 'student', 'middleware' => IsStudentUser::class], func
     Route::get('/student-dashboard', [App\Http\Controllers\StudentController::class, 'index'])->name('student.dashboard');
     Route::group(['prefix' => 'courses'], function (){
         Route::get('/', [CoursesController::class, 'index'])->name('student.courses');
+    });
+    Route::group(['prefix' => 'profile'], function (){
+        Route::get('/', [StudentController::class, 'profile'])->name('student.profile');
     });
 });
 Auth::routes();

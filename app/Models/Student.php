@@ -36,4 +36,8 @@ class Student extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function concentration() : BelongsTo
+    {
+        return $this->belongsTo(Concentration::class, 'concentration_code','concentration_code');
+    }
 }

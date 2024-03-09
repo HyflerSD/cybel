@@ -69,7 +69,8 @@ class StudentService extends Seeder
     {
         try
         {
-            $student = Student::where('email', '=', $studentEmail)->first();
+            $student = Student::where('email', '=', $studentEmail)
+                                ->with('concentration')->first();
 
         } catch(\Exception $e)
         {
