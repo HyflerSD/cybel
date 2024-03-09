@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function
 
     Route::group(['prefix' => 'models'], function () {
         Route::get('/', [MapModelController::class, 'index'])->name('admin.models');
+        Route::post('create-model', [MapModelController::class, 'print'])->name('admin.create-model');
     });
 });
 

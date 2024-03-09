@@ -6,43 +6,36 @@
 
     <script>
         $(document).ready(function() {
-
-            //Get Local Storage Data
-            loadModelTableData();
+            let index = 0; // for array keys to add courses
 
             $('#add-button').click(function() {
                 $(".table-checkable input[type='checkbox']:checked").each(function() {
-                    var row = $(this).closest("tr"); // Find the row
+                    var row = $(this).closest("tr");
                     var courseCode = row.find("td:nth-child(3)").text();
-
-                    // Check for duplicates
+                    var type = row.find("td:nth-child(5)").text();
+                    var level = row.find("td:nth-child(4)").text();
                     var exists = false;
+
                     $("#models-table tbody tr").each(function() {
-                        var existingCode = $(this).find("td:nth-child(2)").text();
-                        if (existingCode === courseCode) {
+                        if ($(this).find("input[name='courses[" + index + "][course_code]']").val() === courseCode) {
                             exists = true;
                             return false;
                         }
                     });
 
                     if (!exists) {
-                        var type = row.find("td:nth-child(5)").text();
-                        var level = row.find("td:nth-child(4)").text();
-
-                        //Build data to send to template
                         var newRow = `<tr class="odd gradeX">
-                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                    <td>${courseCode}</td>
-                    <td><input type="text"/></td>
-                    <td>${type}</td>
-                    <td>${level}</td>
-                    <td><input type="text"/></td>
-                </tr>`;
+                                  <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                  <td><input type="hidden" name="courses[${index}][course_code]" value="${courseCode}"/>${courseCode}</td>
+                                  <td><input type="text" name="courses[${index}][priority_index]"/></td>
+                                  <td><input type="hidden" name="courses[${index}][course_type]" value="${type}"/>${type}</td>
+                                  <td><input type="hidden" name="courses[${index}][course_level]" value="${level}"/>${level}</td>
+                                  <td><input type="text" name="courses[${index}][level_combination]"/></td>
+                              </tr>`;
                         $("#models-table tbody").append(newRow);
+                        index++;
                     }
-
-                    //CLear talbe
-                    $(this).prop('checked', false);
+                    $(this).prop('checked', false); //clear checkboxes
                 });
                 saveModelTableData();
             });
@@ -63,34 +56,7 @@
                 $(this).closest('table').find('tbody input[type="checkbox"]').prop('checked', isChecked);
             });
         });
-        function saveModelTableData() {
-            var tableData = [];
-            $("#models-table tbody tr").each(function() {
-                var row = $(this).find('td').map(function() {
-                    return $(this).text();
-                }).get();
-                tableData.push(row);
-            });
-            localStorage.setItem('modelTableData', JSON.stringify(tableData));
-        }
 
-        function loadModelTableData() {
-            var tableData = JSON.parse(localStorage.getItem('modelTableData'));
-            if (tableData) {
-                $("#models-table tbody").empty();
-                tableData.forEach(function (rowData) {
-                    var row = `<tr class="odd gradeX">
-                <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                <td>${rowData[1]}</td> <!-- Course Code -->
-                <td><input type="text"/></td>
-                <td>${rowData[3]}</td> <!-- COurse type -->
-                <td>${rowData[4]}</td> <!-- Course level-->
-                <td><input type="text"/></td>
-            </tr>`;
-                    $("#models-table tbody").append(row);
-                });
-            }
-        }
 
     </script>
     <!-- start page content -->
@@ -185,34 +151,42 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-6">
                                 <div class="btn-group">
-                                    <button id="remove-course" class="btn btn-info">
-                                        Remove <i class="fa fa-plus"></i>
+                                    <button id="remove-course" class="btn btn-danger">
+                                        Remove Course <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <table id="models-table"
-                            class="table table-striped table-bordered table-hover table-checkable order-column"
-                            style="width: 100%">
-                            <thead>
-                            <tr>
-                                <th >
-                                    <label class="rt-chkbox rt-chkbox-single rt-chkbox-outline">
-                                        <input id="select-all-courses" type="checkbox" class="group-checkable"
-                                               data-set="#sample_1 .checkboxes" />
-                                        <span></span>
-                                    </label>
-                                </th>
-                                <th> Course Code </th>
-                                <th> Priority Index </th>
-                                <th> Type </th>
-                                <th>Level</th>
-                                <th>Level Combination</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                        <form method="POST" action="{{ route('admin.create-model') }}" >
+                            @csrf <!-- Can't hack me son -->
+                            <table id="models-table"
+                                   class="table table-striped table-bordered table-hover table-checkable order-column"
+                                   style="width: 100%">
+                                <thead>
+                                <tr>
+                                    <th >
+                                        <label class="rt-chkbox rt-chkbox-single rt-chkbox-outline">
+                                            <input id="select-all-courses" type="checkbox" class="group-checkable"
+                                                   data-set="#sample_1 .checkboxes" />
+                                            <span></span>
+                                        </label>
+                                    </th>
+                                    <th> Course Code </th>
+                                    <th> Priority Index </th>
+                                    <th> Type </th>
+                                    <th> Level </th>
+                                    <th> Level Combination </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div class="btn-group pull-right">
+                                <button id="add-button" class="btn btn-round btn-default">
+                                    Save Model <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
