@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use App\Models\Student;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -62,4 +61,21 @@ class StudentService extends Seeder
 
     }
 
+    /**
+     * @param string $studentEmail
+     * Returns student collection with given email
+     */
+    public function getStudentByEmail(string $studentEmail) : mixed
+    {
+        try
+        {
+            $student = Student::where('email', '=', $studentEmail)->first();
+
+        } catch(\Exception $e)
+        {
+            Log::channel('student')->error(' error get student ' . $e->getMessage());
+            Log::error($e->getMessage());
+        }
+        return $student;
+    }
 }
