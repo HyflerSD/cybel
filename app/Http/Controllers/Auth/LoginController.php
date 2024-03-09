@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Service\StudentService;
 use App\Http\Controllers\Controller;
-use App\Models\Student;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,7 +59,8 @@ class LoginController extends Controller
         else
         {
             $studentEmail = $user->email;
-            $student = get
+            $studentService = new StudentService;
+            $student = $studentService->getStudentByEmail($studentEmail);
             Session::put('student', $student);
             return redirect()->route('student.dashboard');
         }

@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use App\Models\Student;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -16,7 +15,7 @@ class StudentService extends Seeder
         $studentsToInsert = [];
         try
         {
-            $students = iterator_to_array($csvReader->getRecords());
+            $students = $csvReader->getRecords();
 
             foreach ($students as $student) {
                 $studentsToInsert[] = [
@@ -37,12 +36,8 @@ class StudentService extends Seeder
                     "interests" => json_encode($student['interests'], true),
 //                    "advisor_email" => $student['advisor_email'],
                 ];
-
-
             }
             DB::table('students')->insert($studentsToInsert);
-            return $studentsToInsert;
-
         }catch (\Exception $e)
         {
             Log::error($e->getMessage());
@@ -65,18 +60,22 @@ class StudentService extends Seeder
 //        });
 
     }
-    public function getStudentByEmail($studentEmail)
+
+    /**
+     * @param string $studentEmail
+     * Returns student collection with given email
+     */
+    public function getStudentByEmail(string $studentEmail) : mixed
     {
         try
         {
-            return Student::where('email', '=', $studentEmail)->first();
+            $student = Student::where('email', '=', $studentEmail)->first();
 
         } catch(\Exception $e)
         {
             Log::channel('student')->error(' error get student ' . $e->getMessage());
             Log::error($e->getMessage());
         }
+        return $student;
     }
-
-
 }
