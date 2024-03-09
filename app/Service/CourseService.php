@@ -33,6 +33,9 @@ class CourseService extends Seeder
 
                     if(!$exists)
                     {
+                        $courseCode = $course['course_code'];
+                        $courseLevel = (int) substr($courseCode, strpos($courseCode, '-') + 1 );
+                        $courseLevel = (($courseLevel / 1000) % 10) * 1000;
                         $coursesToInsert[] = [
                             'course_code' => $course['course_code'],
                             'course_name' => $course['course_name'],
@@ -41,6 +44,7 @@ class CourseService extends Seeder
                             'course_description' => $course['course_description'] ?? null,
                             'core_ed' =>  $course['core_ed'] ?? null,
                             'elective_ed' => $course['elective_ed'] ?? null,
+                            'course_level' => $courseLevel,
                         ];
                     }
                 }
