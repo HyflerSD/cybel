@@ -28,6 +28,11 @@ class StudentController extends Controller
         return view('student.dashboard');
 
     }
+    public function profile()
+    {
+        return view('student.profile');
+
+    }
 
 
 }
