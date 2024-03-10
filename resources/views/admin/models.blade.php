@@ -16,9 +16,11 @@
                     var level = row.find("td:nth-child(4)").text();
                     var exists = false;
 
-                    $("#models-table tbody tr").each(function() {
-                        if ($(this).find("input[name='courses[" + index + "][course_code]']").val() === courseCode) {
+                    $(".models-table tbody tr").each(function() {
+                        var existingCode = $(this).find("td:nth-child(2)").text();
+                        if (existingCode === courseCode) {
                             exists = true;
+                            alert('Duplicate data found for course code: ' + courseCode);
                             return false;
                         }
                     });
@@ -27,19 +29,53 @@
                         var newRow = `<tr class="odd gradeX">
                                   <td><input type="checkbox" class="checkboxes" value="1" /></td>
                                   <td><input type="hidden" name="courses[${index}][course_code]" value="${courseCode}"/>${courseCode}</td>
-                                  <td><input type="text" name="courses[${index}][priority_index]"/></td>
+                                  <td><input required max="45" type="number" name="courses[${index}][priority_index]"/></td>
+                                  <td>
+                                    <select style="display:none;" name="courses[${index}][level_combination][]" multiple="multiple" class="form-control">
+                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="1000"> 1000</label>
+                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="2000"> 2000</label>
+                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="3000"> 3000</label>
+                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="4000"> 4000</label>                                     </select>
+                                 </td>
                                   <td><input type="hidden" name="courses[${index}][course_type]" value="${type}"/>${type}</td>
                                   <td><input type="hidden" name="courses[${index}][course_level]" value="${level}"/>${level}</td>
-                                  <td><input type="text" name="courses[${index}][level_combination]"/></td>
                               </tr>`;
-                        $("#models-table tbody").append(newRow);
+                        $(".models-table tbody").append(newRow);
                         index++;
                     }
-                    $(this).prop('checked', false); //clear checkboxes
+                    $(this).prop('checked', false);
                 });
                 saveModelTableData();
             });
 
+            $("#create-model").submit(function(e) {
+                //Make sure at least one level combination is selected
+                var isChecked = $('input[name^="courses["][name$="][level_combination][]"]:checked').length > 0;
+                if (!isChecked) {
+                    e.preventDefault();
+                    alert('Please check at least one level combination.');
+                }
+
+                let priorityIndices = [];
+                let isDuplicate = false;
+
+                // get all priotity values
+                $('input[name^="courses["][name$="][priority_index]"]').each(function() {
+                    const priorityIndex = $(this).val();
+                    if (priorityIndices.includes(priorityIndex)) {
+                        isDuplicate = true;
+                        return false;
+                    }
+                    priorityIndices.push(priorityIndex);
+                });
+
+                // Check for duplicates
+                if (isDuplicate) {
+                    e.preventDefault();
+                    alert('Duplicate priority index found. Please ensure all priority indices are unique.');
+                }
+
+            });
 
             //Remove COurses
             $('#remove-course').click(function() {
@@ -53,7 +89,7 @@
 
             $('#select-all-courses').change(function() {
                 var isChecked = $(this).prop('checked');
-                $(this).closest('table').find('tbody input[type="checkbox"]').prop('checked', isChecked);
+                $(this).closest('table').find('tbody  input[type="checkbox"]').prop('checked', isChecked);
             });
         });
 
@@ -157,15 +193,15 @@
                                 </div>
                             </div>
                         </div>
-                        <form method="POST" action="{{ route('admin.create-model') }}" >
+                        <form method="POST" id="create-model" action="{{ route('admin.create-model') }}" >
                             @csrf <!-- Can't hack me son -->
-                            <table id="models-table"
-                                   class="table table-striped table-bordered table-hover table-checkable order-column"
+                            <table id="example4"
+                                   class="table models-table table-striped table-bordered table-hover table-checkable order-column"
                                    style="width: 100%">
                                 <thead>
                                 <tr>
                                     <th >
-                                        <label class="rt-chkbox rt-chkbox-single rt-chkbox-outline">
+                                        <label class="col-select rt-chkbox rt-chkbox-single rt-chkbox-outline">
                                             <input id="select-all-courses" type="checkbox" class="group-checkable"
                                                    data-set="#sample_1 .checkboxes" />
                                             <span></span>
@@ -173,9 +209,9 @@
                                     </th>
                                     <th> Course Code </th>
                                     <th> Priority Index </th>
+                                    <th> Level Combination </th>
                                     <th> Type </th>
                                     <th> Level </th>
-                                    <th> Level Combination </th>
                                 </tr>
                                 </thead>
                                 <tbody>
