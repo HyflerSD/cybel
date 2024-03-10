@@ -51,8 +51,8 @@ $user = auth()->user();
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="google_maps.html" class="nav-link ">
-                                <span class="title">View Major Models</span>
+                            <a href="{{ route('admin.models') }}" class="nav-link ">
+                                <span class="title">Create Major Models</span>
                             </a>
                         </li>
                         <li class="nav-item">

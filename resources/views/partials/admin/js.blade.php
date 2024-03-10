@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- start js include path -->
 <script src="/admin/assets/plugins/jquery/jquery.min.js"></script>
 <script src="/admin/assets/plugins/popper/popper.js"></script>
@@ -9,6 +10,7 @@
 <script src="/admin/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <script src="/admin/assets/plugins/sparkline/jquery.sparkline.js"></script>
 <script src="/admin/assets/js/pages/sparkline/sparkline-data.js"></script>
+@yield('scripts')
 <!-- Common js-->
 <script src="/admin/assets/js/app.js"></script>
 <script src="/admin/assets/js/layout.js"></script>

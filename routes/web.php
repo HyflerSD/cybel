@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\Admin\ProfessorsController;
 use App\Http\Controllers\Advisor\AdviseesController;
+use App\Http\Controllers\Advisor\MapModelController;
+use App\Http\Controllers\Advisor\ProfessorsController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Middleware\IsAdminUser;
 use App\Http\Middleware\IsStudentUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\IsAdminUser;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,11 +31,16 @@ Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function
     });
 
     Route::group(['prefix' => 'courses'], function () {
-        Route::get('/', [\App\Http\Controllers\Advisor\CoursesController::class, 'index'])->name('admin.courses');
+        Route::get('/', [CoursesController::class, 'index'])->name('admin.courses');
     });
 
     Route::group(['prefix' => 'advisees'], function () {
         Route::get('/', [AdviseesController::class, 'index'])->name('admin.advisees');
+    });
+
+    Route::group(['prefix' => 'models'], function () {
+        Route::get('/', [MapModelController::class, 'index'])->name('admin.models');
+        Route::post('create-model', [MapModelController::class, 'print'])->name('admin.create-model');
     });
 });
 
