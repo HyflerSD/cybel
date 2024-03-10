@@ -42,6 +42,9 @@ Route::group(['prefix' => 'student', 'middleware' => IsStudentUser::class], func
     Route::group(['prefix' => 'courses'], function (){
         Route::get('/', [CoursesController::class, 'index'])->name('student.courses');
     });
+    Route::group(['prefix' => 'profile'], function (){
+        Route::get('/', [CoursesController::class, 'profile'])->name('student.profile');
+    });
 });
 Auth::routes();
 
