@@ -8,12 +8,14 @@ use League\Csv\Reader;
 
 class MapModelService
 {
+    /** @todo Add all functions pertainig to map data in this service, may create a Cybel app service to handle the
+    http interactions with the api */
     public function existingMapModels()
     {
         $usersToInsert = [];
         try
         {
-            echo 'heelo';
+            //@todo add logic to get existing maps
         }catch(\Exception $e)
         {
             Log::error($e->getMessage());
