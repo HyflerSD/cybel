@@ -45,11 +45,10 @@ Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function
 });
 
 Route::group(['prefix' => 'student', 'middleware' => IsStudentUser::class], function (){
-    Route::get('/student-dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('student.dashboard');
+    Route::get('/student-dashboard', [App\Http\Controllers\StudentController::class, 'index'])->name('student.dashboard');
     Route::group(['prefix' => 'courses'], function (){
         Route::get('/', [CoursesController::class, 'index'])->name('student.courses');
     });
 });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
