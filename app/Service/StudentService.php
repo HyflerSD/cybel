@@ -78,7 +78,11 @@ class StudentService extends Seeder
         return $student;
     }
 
-  public function getAdvisorbyId(string $advisorId): mixed
+    /**
+     * returns advisor information from the users table
+     * @param string $advisorId
+     */
+  public function getAdvisorbyId(string $advisorId) : mixed
   {
         try
         {
