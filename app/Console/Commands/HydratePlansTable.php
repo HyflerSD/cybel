@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Plan;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use League\Csv\Reader;

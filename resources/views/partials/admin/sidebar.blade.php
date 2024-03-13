@@ -52,8 +52,8 @@ $user = auth()->user();
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="google_maps.html" class="nav-link ">
-                                <span class="title">View Major Models</span>
+                            <a href="{{ route('admin.models') }}" class="nav-link ">
+                                <span class="title">Create Major Models</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -85,6 +85,19 @@ $user = auth()->user();
 
                     @endif
                 </li>
+                @if(!$user->is_advisor)
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-toggle"><i data-feather="users"></i>
+                            <span class="title">Profile</span><span class="arrow"></span></a>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a href="{{ route('student.profile')  }}" class="nav-link "> <span class="title">View Profile</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                @endif
                 <li class="nav-item">
                     @if($user->is_advisor)
                     <a href="" class="nav-link nav-toggle"> <i data-feather="user"></i>
@@ -98,6 +111,7 @@ $user = auth()->user();
                         </li>
                     </ul>
                     @else
+
 
                         <a href="" class="nav-link nav-toggle"> <i data-feather="user"></i>
                             <span class="title">Advisor</span> <span class="arrow"></span>
