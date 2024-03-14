@@ -1,6 +1,7 @@
 @php
 $user = auth()->user();
 @endphp
+
 <!-- start sidebar menu -->
 <div class="sidebar-container">
     <div class="sidemenu-container navbar-collapse collapse fixed-menu">
@@ -84,6 +85,19 @@ $user = auth()->user();
 
                     @endif
                 </li>
+                @if(!$user->is_advisor)
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-toggle"><i data-feather="users"></i>
+                            <span class="title">Profile</span><span class="arrow"></span></a>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a href="{{ route('student.profile')  }}" class="nav-link "> <span class="title">View Profile</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                @endif
                 <li class="nav-item">
                     @if($user->is_advisor)
                     <a href="" class="nav-link nav-toggle"> <i data-feather="user"></i>
@@ -98,16 +112,19 @@ $user = auth()->user();
                     </ul>
                     @else
 
+
                         <a href="" class="nav-link nav-toggle"> <i data-feather="user"></i>
                             <span class="title">Advisor</span> <span class="arrow"></span>
                         </a>
                         <ul class="sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link "> <span class="title">
-                                        {{ 'Name: ' .  $user->lname . ' ' . $user->fname }}</span><br>
-                                    <span class="title">
-                                        {{ 'Email: ' .  $user->email }}</span>
-                                </a>
+                                <span class="title">
+                                      @if($advisor = session('advisor'))
+                                            <p>Name: {{ $advisor->fname . ' ' . $advisor->lname}}</p>
+                                            <p>Email: {{ $advisor->email }}</p>
+                                        @else
+                                            <p>No Advisor Assigned</p>
+                                    @endif
                             </li>
                         </ul>
                     @endif

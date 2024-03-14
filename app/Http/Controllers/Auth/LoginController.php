@@ -61,7 +61,9 @@ class LoginController extends Controller
             $studentEmail = $user->email;
             $studentService = new StudentService;
             $student = $studentService->getStudentByEmail($studentEmail);
-            Session::put('student', $student);
+            $advisor = $studentService->getAdvisorbyId($student->advisor_id);
+
+            Session::put(['student' => $student, 'advisor' => $advisor]);
             return redirect()->route('student.dashboard');
         }
     }
