@@ -1,6 +1,7 @@
 @php
 $user = auth()->user();
 @endphp
+
 <!-- start sidebar menu -->
 <div class="sidebar-container">
     <div class="sidemenu-container navbar-collapse collapse fixed-menu">
@@ -117,11 +118,13 @@ $user = auth()->user();
                         </a>
                         <ul class="sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link "> <span class="title">
-                                        {{ 'Name: ' .  $user->lname . ' ' . $user->fname }}</span><br>
-                                    <span class="title">
-                                        {{ 'Email: ' .  $user->email }}</span>
-                                </a>
+                                <span class="title">
+                                      @if($advisor = session('advisor'))
+                                            <p>Name: {{ $advisor->fname . ' ' . $advisor->lname}}</p>
+                                            <p>Email: {{ $advisor->email }}</p>
+                                        @else
+                                            <p>No Advisor Assigned</p>
+                                    @endif
                             </li>
                         </ul>
                     @endif

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Service;
-
+use App\Models\User;
 use App\Models\Student;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -13,8 +13,7 @@ class StudentService extends Seeder
     public function createStudents(Reader $csvReader)
     {
         $studentsToInsert = [];
-        try
-        {
+        try {
             $students = $csvReader->getRecords();
 
             foreach ($students as $student) {
@@ -38,8 +37,7 @@ class StudentService extends Seeder
                 ];
             }
             DB::table('students')->insert($studentsToInsert);
-        }catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             Log::error($e->getMessage());
         }
     }
@@ -78,5 +76,22 @@ class StudentService extends Seeder
             Log::error($e->getMessage());
         }
         return $student;
+    }
+
+    /**
+     * returns advisor information from the users table
+     * @param string $advisorId
+     */
+  public function getAdvisorbyId(string $advisorId) : mixed
+  {
+        try
+        {
+            $advisor = User::where('id', '=', $advisorId)->first();
+        } catch (\Exception $e)
+        {
+            Log::channel('advisor')->error(' error get advisor ' . $e->getMessage());
+            Log::error($e->getMessage());
+        }
+        return $advisor;
     }
 }
