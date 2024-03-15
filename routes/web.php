@@ -4,6 +4,7 @@ use App\Http\Controllers\Advisor\AdviseesController;
 use App\Http\Controllers\Advisor\MapModelController;
 use App\Http\Controllers\Advisor\ProfessorsController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\StudentController;
 use App\Http\Middleware\IsAdminUser;
 use App\Http\Middleware\IsStudentUser;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function
 
     Route::group(['prefix' => 'models'], function () {
         Route::get('/', [MapModelController::class, 'index'])->name('admin.models');
-        Route::post('create-model', [MapModelController::class, 'print'])->name('admin.create-model');
+        Route::post('create-model', [MapModelController::class, 'storeMapModel'])->name('admin.create-model');
     });
 });
 
@@ -50,7 +51,7 @@ Route::group(['prefix' => 'student', 'middleware' => IsStudentUser::class], func
         Route::get('/', [CoursesController::class, 'index'])->name('student.courses');
     });
     Route::group(['prefix' => 'profile'], function (){
-        Route::get('/', [CoursesController::class, 'profile'])->name('student.profile');
+        Route::get('/', [StudentController::class, 'profile'])->name('student.profile');
     });
 });
 Auth::routes();
