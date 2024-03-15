@@ -18,9 +18,10 @@
 <!-- material -->
 <script src="/admin/assets/plugins/material/material.min.js"></script>
 <!--apex chart-->
-<script src="/admin/assets/plugins/apexcharts/apexcharts.min.js"></script>
-<script src="/admin/assets/js/pages/chart/apex/home-data.js"></script>
+{{--<script src="/admin/assets/plugins/apexcharts/apexcharts.min.js"></script>--}}
+{{--<script src="/admin/assets/js/pages/chart/apex/home-data.js"></script>--}}
 <!-- summernote -->
 <script src="/admin/assets/plugins/summernote/summernote.js"></script>
 <script src="/admin/assets/js/pages/summernote/summernote-data.js"></script>
 <!-- end js include path -->
+

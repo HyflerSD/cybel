@@ -1,10 +1,10 @@
 <!-- google font -->
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
 <!-- icons -->
-<link href="fonts/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-<link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<link href="fonts/font-awesome/v6/css/all.css" rel="stylesheet" type="text/css" />
-<link href="fonts/material-design-icons/material-icon.css" rel="stylesheet" type="text/css" />
+<link href="/admin/assets/fonts/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="/admin/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="/admin/assets/fonts/font-awesome/v6/css/all.css" rel="stylesheet" type="text/css" />
+<link href="/admin/assets/fonts/material-design-icons/material-icon.css" rel="stylesheet" type="text/css" />
 <!--bootstrap -->
 <link href="/admin/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="/admin/assets/plugins/summernote/summernote.css" rel="stylesheet">
