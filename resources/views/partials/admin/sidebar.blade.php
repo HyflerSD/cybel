@@ -2,6 +2,30 @@
 $user = auth()->user();
 @endphp
 
+<style>
+    .nav-link {
+        display: inline-block;
+        text-decoration: none;
+        color: rgba(173, 216, 230, 0.8); /* Default text color */
+        padding: 10px 20px; /* Adjust padding as needed */
+        border: 2px solid transparent; /* Add a transparent border */
+        transition: border-color 0.3s ease, background-color 0.3s ease; /* Transition for hover effect */
+    }
+
+    .nav-link:hover {
+        border-color: rgba(173, 216, 230, 0.8); /* Blueish border color on hover */
+        background-color: rgba(173, 216, 230, 0.8); /* Blueish background color on hover */
+    }
+
+    .nav-link .title + .arrow:before {
+        color: #000; /* Default arrow color */
+    }
+
+    .nav-link:hover .title + .arrow:before {
+        color: #007bff; /* Blueish color for the arrow on hover */
+    }
+</style>
+
 <!-- start sidebar menu -->
 <div class="sidebar-container">
     <div class="sidemenu-container navbar-collapse collapse fixed-menu">
@@ -16,14 +40,15 @@ $user = auth()->user();
                 <li class="sidebar-user-panel">
                     <div class="sidebar-user">
                         <div class="sidebar-user-picture">
-                            <img alt="image" src="/admin/assets/img/dp.jpg">
+                            <img alt="image" src="/admin/assets/img/pages/Cybel logo.png">
                         </div>
                         <div class="sidebar-user-details">
                             <div class="user-name">{{ $user->fname  . ' ' . $user->lname }}</div>
                             <div class="user-role">
-                                @if($user->is_advisor) Advisor @else
-                                    Student ID: {{ session('student')->student_id }}
-                                    @endif
+                                @if($user->is_advisor) <strong>Campus: </strong>{{$campus}} <br> Advisor
+                                @else
+                                    <strong>Student ID:</strong> {{ session('student')->student_id }}
+                                @endif
 
                             </div>
                         </div>
@@ -65,11 +90,11 @@ $user = auth()->user();
                     @else
                         <a href="javascript:;" class="nav-link nav-toggle">
                             <i data-feather="map-pin"></i>
-                            <span class="title">
-                               My Map
-                        </span>
+                            <span class="title">My Map</span>
                             <span class="arrow"></span>
                         </a>
+
+
                         <ul class="sub-menu">
                             <li class="nav-item">
                                 <a href="google_maps.html" class="nav-link ">
@@ -132,7 +157,7 @@ $user = auth()->user();
                 <li class="nav-item">
                     <a href="#" class="nav-link nav-toggle"> <i data-feather="book"></i>
                         <span class="title">Courses</span> <span class="arrow"></span>
-                        <span class="label label-rouded label-menu label-success">new</span>
+{{--                        <span class="label label-rouded label-menu label-success">new</span>--}}
                     </a>
                     <ul class="sub-menu">
                       @if($user->is_advisor)
