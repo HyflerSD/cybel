@@ -126,7 +126,6 @@
                             <div class="tools">
                                 <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                                 <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
-                                <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
                             </div>
                         </div>
                         <div class="card-body no-padding height-9">
@@ -896,20 +895,4 @@
 @section('styles')
 @endsection
 @section('scripts')
-    <script src="/admin/assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-    <script src="/admin/assets/plugins/feather/feather.min.js"></script>
-    <!-- bootstrap -->
-    <script src="/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/admin/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
-    <!-- counterup -->
-    <script src="/admin/assets/plugins/counterup/jquery.waypoints.min.js"></script>
-    <script src="/admin/assets/plugins/counterup/jquery.counterup.min.js"></script>
-    <!-- material -->
-    <script src="/admin/assets/plugins/material/material.min.js"></script>
-    <!-- chart js -->
-    <script src="/admin/assets/plugins/chart-js/Chart.min.js"></script>
-    <script src="/admin/assets/plugins/chart-js/utils.js"></script>
-    <script src="/admin/assets/js/pages/chart/chartjs/home-data2.js"></script>
-    <script src="/admin/assets/plugins/sparkline/jquery.sparkline.js"></script>
-    <script src="/admin/assets/js/pages/sparkline/sparkline-data.js"></script>
 @endsection

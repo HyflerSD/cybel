@@ -7,6 +7,7 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\StudentController;
 use App\Http\Middleware\IsAdminUser;
 use App\Http\Middleware\IsStudentUser;
+use App\Http\Middleware\UserRedirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
+Route::get('/', function (){})->middleware('user.type');
 
 Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function (){
     Route::get('/dashboard', [App\Http\Controllers\AdvisorsController::class, 'index'])->name('admin.dashboard');
@@ -41,12 +40,16 @@ Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function
 
     Route::group(['prefix' => 'models'], function () {
         Route::get('/', [MapModelController::class, 'index'])->name('admin.models');
-        Route::post('create-model', [MapModelController::class, 'print'])->name('admin.create-model');
+        Route::get('/advisee-maps', [MapModelController::class, 'adviseeMaps'])->name('admin.advisee-maps');
+        Route::get('/create-student-map', [MapModelController::class, 'createStudentMap'])->name('admin.create-student-map');
+        Route::get('/create-model', [MapModelController::class, 'createModel'])->name('admin.create-model');
+//        Route::post('post-model', [MapModelController::class, 'print'])->name('admin.create-model');
+//        Route::post('', [MapModelController::class, 'print'])->name('admin.create-model');
     });
 });
 
 Route::group(['prefix' => 'student', 'middleware' => IsStudentUser::class], function (){
-    Route::get('/student-dashboard', [App\Http\Controllers\StudentController::class, 'index'])->name('student.dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\StudentController::class, 'index'])->name('student.dashboard');
     Route::group(['prefix' => 'courses'], function (){
         Route::get('/', [CoursesController::class, 'index'])->name('student.courses');
     });

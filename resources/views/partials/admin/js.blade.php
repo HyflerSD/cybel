@@ -17,11 +17,23 @@
 <script src="/admin/assets/js/theme-color.js"></script>
 <!-- material -->
 <script src="/admin/assets/plugins/material/material.min.js"></script>
-<!--apex chart-->
-{{--<script src="/admin/assets/plugins/apexcharts/apexcharts.min.js"></script>--}}
-{{--<script src="/admin/assets/js/pages/chart/apex/home-data.js"></script>--}}
 <!-- summernote -->
 <script src="/admin/assets/plugins/summernote/summernote.js"></script>
 <script src="/admin/assets/js/pages/summernote/summernote-data.js"></script>
 <!-- end js include path -->
 
+<!-- counterup -->
+<script src="/admin/assets/plugins/counterup/jquery.waypoints.min.js"></script>
+<script src="/admin/assets/plugins/counterup/jquery.counterup.min.js"></script>
+<!-- material -->
+<!-- chart js -->
+<script src="/admin/assets/plugins/chart-js/Chart.min.js"></script>
+<script src="/admin/assets/plugins/chart-js/utils.js"></script>
+<script src="/admin/assets/js/pages/chart/chartjs/home-data2.js"></script>
+<script src="../assets/plugins/select2/js/select2.js"></script>
+<script src="../assets/js/pages/select2/select2-init.js"></script>
+
+{{-- Data tables --}}
+<script src="/admin/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/admin/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.js"></script>
+<script src="/admin/assets/js/pages/table/table_data.js"></script>
