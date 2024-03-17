@@ -72,18 +72,23 @@ $user = auth()->user();
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item">
-                            <a href="google_maps.html" class="nav-link ">
-                                <span class="title">View Student Maps</span>
+                            <a href="{{ route('admin.create-model') }}" class="nav-link ">
+                                <span class="title">Create Degree Model</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.models') }}" class="nav-link ">
-                                <span class="title">Create Major Models</span>
+                                <span class="title">View Degree Models</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="vector_maps.html" class="nav-link ">
-                                <span class="title">Edit Student Maps</span>
+                            <a href="{{ route('admin.create-student-map-form') }}" class="nav-link ">
+                                <span class="title">Create Student Map</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.advisee-maps') }}" class="nav-link ">
+                                <span class="title">View Student Maps</span>
                             </a>
                         </li>
                     </ul>
@@ -221,40 +226,6 @@ $user = auth()->user();
                         <li class="nav-item">
                             <a href="email_compose.html" class="nav-link ">
                                 <span class="title">Compose Mail</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i data-feather="server"></i>
-                        <span class="title">Forms </span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a href="layouts_form.html" class="nav-link ">
-                                <span class="title">Form Layout</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="advance_form.html" class="nav-link ">
-                                <span class="title">Advance Component</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="wizard.html" class="nav-link ">
-                                <span class="title">Form Wizard</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="validation_form.html" class="nav-link ">
-                                <span class="title">Form Validation</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="editable_form.html" class="nav-link ">
-                                <span class="title">Editor</span>
                             </a>
                         </li>
                     </ul>

@@ -20,7 +20,7 @@
     class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white white-sidebar-color logo-indigo">
 <div class="page-wrapper">
     @include('partials.admin.header')
-    @include('partials.admin.settingpanel')
+{{--    @include('partials.admin.settingpanel')--}}
     <!-- start page container -->
     <div class="page-container">
         @include('partials.admin.sidebar')
