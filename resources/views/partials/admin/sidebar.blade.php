@@ -1,31 +1,6 @@
 @php
 $user = auth()->user();
 @endphp
-
-<style>
-    .nav-link {
-        display: inline-block;
-        text-decoration: none;
-        color: rgba(173, 216, 230, 0.8); /* Default text color */
-        padding: 10px 20px; /* Adjust padding as needed */
-        border: 2px solid transparent; /* Add a transparent border */
-        transition: border-color 0.3s ease, background-color 0.3s ease; /* Transition for hover effect */
-    }
-
-    .nav-link:hover {
-        border-color: rgba(173, 216, 230, 0.8); /* Blueish border color on hover */
-        background-color: rgba(173, 216, 230, 0.8); /* Blueish background color on hover */
-    }
-
-    .nav-link .title + .arrow:before {
-        color: #000; /* Default arrow color */
-    }
-
-    .nav-link:hover .title + .arrow:before {
-        color: #007bff; /* Blueish color for the arrow on hover */
-    }
-</style>
-
 <!-- start sidebar menu -->
 <div class="sidebar-container">
     <div class="sidemenu-container navbar-collapse collapse fixed-menu">
