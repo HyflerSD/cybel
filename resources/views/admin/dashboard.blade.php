@@ -4,7 +4,6 @@
 @section('content')
     <!-- start page content -->
     <div class="page-content-wrapper">
-
         <div class="page-content">
             <div class="page-bar">
                 <div class="page-title-breadcrumb">
@@ -25,9 +24,6 @@
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 45%"></div>
                                 </div>
-                                <span class="progress-description">
-											45% Increase in 28 Days
-										</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -43,9 +39,6 @@
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 40%"></div>
                                 </div>
-                                <span class="progress-description">
-											40% Increase in 28 Days
-										</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -61,9 +54,6 @@
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 85%"></div>
                                 </div>
-                                <span class="progress-description">
-											85% Increase in 28 Days
-										</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -72,17 +62,12 @@
                     <!-- /.col -->
                     <div class="col-xl-3 col-md-6 col-12">
                         <div class="info-box bg-b-pink">
-									<span class="info-box-icon push-bottom"><i
-                                            class="material-icons">monetization_on</i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">Potential Maps</span>
                                 <span class="info-box-number">8</span></span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 50%"></div>
                                 </div>
-                                <span class="progress-description">
-											50% Increase in 28 Days
-										</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
