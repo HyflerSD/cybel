@@ -6,18 +6,18 @@
     <style>
         .card {
             position: relative;
-            margin: 10px; /* Adjust this value as needed */
+            margin: 10px;
             width: 100%;
             height: 100%;
             transform-style: preserve-3d;
             transition: transform 0.8s;
-            cursor: pointer; /* Add this line to change cursor on hover */
+            cursor: pointer;
         }
 
         /* Add hover effect */
         .card:hover {
-            outline: 2px solid rgba(173, 216, 230, 0.8); /* Bold outline with light blue color */
-            box-shadow: 0 0 20px rgba(128, 128, 128, 0.8); /* Grey shadow with increased blur radius and opacity */
+            outline: 2px solid rgba(173, 216, 230, 0.8);
+            box-shadow: 0 0 20px rgba(128, 128, 128, 0.8);
         }
 
         .card.flipped {
@@ -29,6 +29,8 @@
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
+            background-color: #6673fc;
+            border-radius: 10px;
         }
 
         .card-front {
@@ -38,12 +40,21 @@
         .card-back {
             transform: rotateY(180deg);
         }
+
+        .gpa-card {
+            background-color: #6673fc;
+        }
     </style>
 
     <!-- start page content -->
     <div class="page-content-wrapper">
         <div class="page-content">
             <div class="page-bar">
+                <div class="page-title-breadcrumb">
+                    <div class=" pull-left">
+                        <div class="page-title">Student Dashboard</div>
+                    </div>
+                </div>
             </div>
             <!-- start widget -->
             <div class="row ">
@@ -56,7 +67,7 @@
                                         <div class="col mt-0">
                                             <h4 class="info-box-title">Courses This Semester</h4>
                                         </div>
-                                        <h3 class="mt-1 mb-3 info-box-title col-green">4</h3>
+                                        <h3 class="mt-1 mb-3 info-box-title col-black">4</h3>
                                     </div>
                                     <div class="col-auto">
                                     </div>
@@ -73,22 +84,22 @@
                         </div>
                     </div>
                 </div>
-                    <div class="col-xl-3 col-lg-6">
-                        <div class="card comp-card">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <div class="col mt-0">
-                                            <h4 class="info-box-title">GPA</h4>
-                                        </div>
-                                        <h3 class="mt-1 mb-3 info-box-title col-green">
-                                             {{ session('student')->gpa }}
-                                        </h3>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card comp-card gpa-card"> <!-- Add the 'gpa-card' class here -->
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <div class="col mt-0">
+                                        <h4 class="info-box-title">GPA</h4>
                                     </div>
+                                    <h3 class="mt-1 mb-3 info-box-title col-black">
+                                        {{ session('student')->gpa }}
+                                    </h3>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
                 <div class="col-xl-3 col-lg-6">
                     <div class="card comp-card" onclick="flipCard(this)">
                         <div class="card-face card-front">
@@ -98,7 +109,7 @@
                                         <div class="col mt-0">
                                             <h4 class="info-box-title">Major</h4>
                                         </div>
-                                        <h3 class="mt-1 mb-3 info-box-title col-green">{{ session('student')->concentration->name }}</h3>
+                                        <h3 class="mt-1 mb-3 info-box-title col-black">{{ session('student')->concentration->name }}</h3>
                                     </div>
                                     <div class="col-auto">
                                     </div>
@@ -107,8 +118,9 @@
                         </div>
                         <div class="card-face card-back">
                             <div class="card-body" style="text-align: center; display: flex; justify-content: center; align-items: center; height: 100%;">
-                                <p>Click here for more information on the <a href="https://mdc.edu/softwareengineering/">Software Engineering</a> major</p>
+                                <p>Click here for more information on the <a href="https://mdc.edu/softwareengineering/" style="color: greenyellow;">Software Engineering</a> major</p>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -128,7 +140,7 @@
                                         <div class="col mt-0">
                                         <h4 class="info-box-title">Total credits</h4>
                                     </div>
-                                    <h3 class="mt-1 mb-3 info-box-title col-green">{{ session('student')->total_credits_earned }} </h3>
+                                    <h3 class="mt-1 mb-3 info-box-title col-black">{{ session('student')->total_credits_earned }} </h3>
                                 </div>
                                 <div class="col-auto">
                                 </div>
@@ -228,7 +240,7 @@
                                             <td>COP-2800</td>
                                             <td>Java</td>
                                             <td>4</td>
-                                            <td>core class</td>
+                                            <td>core</td>
                                         </tr>
                                         <tr>
                                             <td>CTS-1145</td>

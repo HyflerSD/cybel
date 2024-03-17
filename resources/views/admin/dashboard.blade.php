@@ -4,7 +4,6 @@
 @section('content')
     <!-- start page content -->
     <div class="page-content-wrapper">
-
         <div class="page-content">
             <div class="page-bar">
                 <div class="page-title-breadcrumb">

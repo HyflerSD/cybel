@@ -27,7 +27,6 @@ class AdvisorsController extends Controller
     {
         $advisorId = Auth::user()->id;
         $students = $this->studentService->assignedStudents($advisorId);
-        $campus = 'North Campus';
-        return view('admin.dashboard', compact('students', 'campus'));
+        return view('admin.dashboard', compact('students'));
     }
 }
