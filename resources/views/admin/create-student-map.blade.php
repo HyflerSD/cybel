@@ -43,7 +43,8 @@
 {{--                            </ul>--}}
                         </div>
                         <div class="card-body" id="bar-parent">
-                            <form action="#" id="form_sample_1" class="form-horizontal">
+                            <form method="POST" action="{{ route('admin.handle-create-student-map') }}" id="form_sample_1" class="form-horizontal">
+                                @csrf
                                 <div class="form-body">
                                     <div class="form-group row">
                                         <label class="control-label col-md-3">Concentration
@@ -99,7 +100,7 @@
                                     <div class="form-actions">
                                         <div class="row">
                                             <div class="offset-md-3 col-md-9">
-                                                <button type="button"
+                                                <button type="submit"
                                                         class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-circle btn-primary">Submit</button>
                                                 <button type="button"
                                                         class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-circle btn-danger">Cancel</button>

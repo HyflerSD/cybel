@@ -20,6 +20,11 @@ class MapModelController extends Controller
     }
 
 
+
+    public function generateMap()
+    {
+        dd('hello world');
+    }
     public function createModel()
     {
         $courses = Course::all();

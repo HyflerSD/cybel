@@ -57,7 +57,7 @@ $user = auth()->user();
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.create-student-map') }}" class="nav-link ">
+                            <a href="{{ route('admin.create-student-map-form') }}" class="nav-link ">
                                 <span class="title">Create Student Map</span>
                             </a>
                         </li>
