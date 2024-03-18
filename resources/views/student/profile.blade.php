@@ -182,191 +182,126 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-head">
-                                        <header>User Activity</header>
+                                        <header>Student Interests</header>
                                     </div>
-                                    <div class="card-body no-padding height-9">
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="panel">
-                                                        <form>
-																	<textarea class="form-control p-text-area" rows="4"
-                                                                              placeholder="Whats in your mind today?"></textarea>
-                                                        </form>
-                                                        <footer class="panel-footer">
-                                                            <button
-                                                                class="btn btn-post pull-right">Post</button>
-                                                            <ul class="nav nav-pills p-option">
-                                                                <li>
-                                                                    <a href="#"><i class="fa fa-user"></i></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#"><i class="fa fa-camera"></i></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#"><i
-                                                                            class="fa  fa-location-arrow"></i></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#"><i class="fa fa-meh-o"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </footer>
+                                    <div class="card-body" id="bar-parent">
+                                        <form action="#" id="form_sample_1" class="form-horizontal">
+                                            <div class="form-body">
+                                                <div class="form-group row">
+                                                    <label class="control-label col-md-3">Course Name
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-5">
+                                                        <input type="text" name="coursename" placeholder="enter course name"
+                                                               class="form-control input-height" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-md-3">Course Code
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-5">
+                                                        <input type="text" name="ccode" placeholder="enter course code"
+                                                               class="form-control input-height" /> </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-md-3">Course Details
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-5">
+													<textarea name="address" placeholder="course details"
+                                                              class="form-control-textarea" rows="5"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-md-3">Starting Date
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-5">
+                                                        <div class="input-append date">
+                                                            <div id="dateIcon" class="input-group datePicker">
+                                                                <input class="formDatePicker form-control" type="text"
+                                                                       placeholder="Select Date.." data-input>
+                                                                <span class="dateBtn">
+																<a class="input-button" title="toggle" data-toggle>
+																	<i class="icon-calendar"></i>
+																</a>
+																<a class="input-button" title="clear" data-clear>
+																	<i class="icon-close"></i>
+																</a>
+															</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-md-3">Course Duration
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-5">
+                                                        <input type="text" name="csuration" placeholder="Course Duration"
+                                                               class="form-control input-height" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-md-3">Course Price
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-5">
+                                                        <input type="text" name="cprice" placeholder="Course Price"
+                                                               class="form-control input-height" /> </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-md-3">Professor Name
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-5">
+                                                        <select class="form-select input-height" name="proff">
+                                                            <option value="">Select...</option>
+                                                            <option value="Category 1">Pr. Jayesh Patel</option>
+                                                            <option value="Category 2">Pr. Salini Parmar</option>
+                                                            <option value="Category 3">Pr. Mayank Trivedi</option>
+                                                            <option value="Category 3">Pr. Parit Varma</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-md-3">Maximum Students
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-5">
+                                                        <input type="text" name="maxstud" placeholder="Maximum Students"
+                                                               class="form-control input-height" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-md-3">Contact No.
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-5">
+                                                        <input name="number" type="text" placeholder="Contact Number"
+                                                               class="form-control input-height" /> </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-md-3">Profile Picture
+                                                    </label>
+                                                    <div class="col-md-5">
+                                                        <input type="file" class="default" multiple>
+                                                    </div>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <div class="row">
+                                                        <div class="offset-md-3 col-md-9">
+                                                            <button type="button"
+                                                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-circle btn-primary">Submit</button>
+                                                            <button type="button"
+                                                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-circle btn-danger">Cancel</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <ul class="activity-list">
-                                                        <li>
-                                                            <div class="avatar">
-                                                                <img src="../assets/img/user/user1.jpg"
-                                                                     alt="" />
-                                                            </div>
-                                                            <div class="activity-desk">
-                                                                <h5><a href="#">Rajesh</a> <span>Uploaded 5 new
-																				photos</span></h5>
-                                                                <p class="text-muted">7 minutes ago near Alaska,
-                                                                    USA</p>
-                                                                <div class="album">
-                                                                    <a href="#">
-                                                                        <img alt=""
-                                                                             src="../assets/img/mega-img1.jpg">
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <img alt=""
-                                                                             src="../assets/img/mega-img2.jpg">
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <img alt=""
-                                                                             src="../assets/img/mega-img3.jpg">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="post-box"> <span
-                                                                    class="text-muted text-small"><i
-                                                                        class="fa fa-clock-o"
-                                                                        aria-hidden="true"></i>
-																			13 minutes ago</span>
-                                                                <div class="post-img"><img
-                                                                        src="../assets/img/slider/fullimage1.jpg"
-                                                                        class="img-responsive" alt=""></div>
-                                                                <div>
-                                                                    <h4 class="">Lorem Ipsum is simply dummy
-                                                                        text of the printing</h4>
-                                                                    <p>Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been
-                                                                        the industry's standard dummy text ever
-                                                                        since the 1500s, </p>
-                                                                    <p> <a href=""
-                                                                           class="btn btn-raised btn-info btn-sm"><i
-                                                                                class="fa fa-heart-o"
-                                                                                aria-hidden="true"></i>
-                                                                            Like (5) </a> <a href=""
-                                                                                             class="btn btn-raised bg-soundcloud btn-sm"><i
-                                                                                class="zmdi zmdi-long-arrow-return"></i>
-                                                                            Reply</a> </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="post-box"> <span
-                                                                    class="text-muted text-small"><i
-                                                                        class="fa fa-clock-o"
-                                                                        aria-hidden="true"></i>
-																			37 minutes ago</span>
-                                                                <div class="post-img"><img
-                                                                        src="../assets/img/slider/fullimage2.jpg"
-                                                                        class="img-responsive" alt=""></div>
-                                                                <div>
-                                                                    <h4 class="">Lorem Ipsum is simply dummy
-                                                                        text of the printing</h4>
-                                                                    <p>Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been
-                                                                        the industry's standard dummy text ever
-                                                                        since the 1500s, </p>
-                                                                    <p> <a href=""
-                                                                           class="btn btn-raised btn-info btn-sm"><i
-                                                                                class="fa fa-heart-o"
-                                                                                aria-hidden="true"></i>
-                                                                            Like (5) </a> <a href=""
-                                                                                             class="btn btn-raised bg-soundcloud btn-sm"><i
-                                                                                class="zmdi zmdi-long-arrow-return"></i>
-                                                                            Reply</a> </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="post-box"> <span
-                                                                    class="text-muted text-small"><i
-                                                                        class="fa fa-clock-o"
-                                                                        aria-hidden="true"></i>
-																			53 minutes ago</span>
-                                                                <div class="post-img"><img
-                                                                        src="../assets/img/slider/fullimage3.jpg"
-                                                                        class="img-responsive" alt=""></div>
-                                                                <div>
-                                                                    <h4 class="">Lorem Ipsum is simply dummy
-                                                                        text of the printing</h4>
-                                                                    <p>Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been
-                                                                        the industry's standard dummy text ever
-                                                                        since the 1500s, </p>
-                                                                    <p> <a href=""
-                                                                           class="btn btn-raised btn-info btn-sm"><i
-                                                                                class="fa fa-heart-o"
-                                                                                aria-hidden="true"></i>
-                                                                            Like (5) </a> <a href=""
-                                                                                             class="btn btn-raised bg-soundcloud btn-sm"><i
-                                                                                class="zmdi zmdi-long-arrow-return"></i>
-                                                                            Reply</a> </p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="avatar">
-                                                                <img src="../assets/img/user/user3.jpg"
-                                                                     alt="" />
-                                                            </div>
-                                                            <div class="activity-desk">
-                                                                <h5><a href="#">John Doe</a> <span>attended a
-																				meeting with</span>
-                                                                    <a href="#">Lina Smith.</a></h5>
-                                                                <p class="text-muted">2 days ago near Alaska,
-                                                                    USA</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="avatar">
-                                                                <img src="../assets/img/user/user4.jpg"
-                                                                     alt="" />
-                                                            </div>
-                                                            <div class="activity-desk">
-                                                                <h5><a href="#">Kehn Anderson</a>
-                                                                    <span>completed the task “wireframe design”
-																				within the dead line</span></h5>
-                                                                <p class="text-muted">4 days ago near Alaska,
-                                                                    USA</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="avatar">
-                                                                <img src="../assets/img/user/user5.jpg"
-                                                                     alt="" />
-                                                            </div>
-                                                            <div class="activity-desk">
-                                                                <h5><a href="#">Jacob Ryan</a> <span>was absent
-																				office due to sickness</span></h5>
-                                                                <p class="text-muted">4 days ago near Alaska,
-                                                                    USA</p>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        </form>
+                                    </div>                                    </div>
                                 </div>
                             </div>
                         </div>

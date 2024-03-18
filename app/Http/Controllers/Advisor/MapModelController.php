@@ -4,23 +4,51 @@ namespace App\Http\Controllers\Advisor;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Service\MapModelService;
+use App\Service\StudentService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class MapModelController extends Controller
 {
-//    public function __construct(protected StudentService $studentService)
-//    {
-//    }
-
-    public function index(MapModelService $mapModelService)
+    public function __construct(
+        protected MapModelService $mapModelService,
+        protected StudentService $studentService
+    )
     {
-        $mapModels = $mapModelService->existingMapModels();
-        $courses = Course::all();
-        return view('admin.models', compact('courses'));
     }
 
+
+
+    public function generateMap()
+    {
+        dd('hello world');
+    }
+    public function createModel()
+    {
+        $courses = Course::all();
+        return view('admin.create-model', compact('courses'));
+    }
+
+    public function createStudentMap()
+    {
+        $advisorId = Auth::user()->id;
+        $students = $this->studentService->assignedStudents($advisorId);
+        return view('admin.create-student-map', compact('students'));
+    }
+    public function adviseeMaps()
+    {
+        $studentMaps = [];
+        return view('admin.advisee-maps', compact('studentMaps'));
+    }
+
+    public function index()
+    {
+        $courses = Course::all();
+        $mapModels = $this->mapModelService->existingMapModels();
+        return view('admin.models', compact('mapModels', 'courses'));
+    }
     public function print(Request $request)
     {
         try
