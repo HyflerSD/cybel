@@ -38,5 +38,9 @@ class StudentController extends Controller
     {
         return view('student.create-map');
     }
+    public function show()
+    {
+        return view('student.completed-courses');
+    }
 
 }
