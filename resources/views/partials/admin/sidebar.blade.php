@@ -168,6 +168,10 @@ $user = auth()->user();
 												Courses</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('student.completed-courses')  }}" class="nav-link "> <span class="title"> Courses History</span>
+                                </a>
+                            </li>
                         @endif
                     </ul>
                 </li>
