@@ -130,8 +130,8 @@ $user = auth()->user();
                             <li class="nav-item">
                                 <span class="title">
                                       @if($advisor = session('advisor'))
-                                            <p>Name: {{ $advisor->fname . ' ' . $advisor->lname}}</p>
-                                            <p>Email: {{ $advisor->email }}</p>
+                                            <p style="margin-left: 10px">Name: {{ $advisor->fname . ' ' . $advisor->lname}}</p>
+                                            <p style="margin-left: 10px">Email: {{ $advisor->email }}</p>
                                         @else
                                             <p>No Advisor Assigned</p>
                                     @endif
