@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Service;
+use App\Models\DegreeMap;
 use App\Models\User;
 use App\Models\Student;
 use Illuminate\Database\Seeder;
@@ -42,23 +43,19 @@ class StudentService extends Seeder
         }
     }
 
+    /**
+     * @param int $advisor_id
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
     public function assignedStudents(int $advisor_id)
     {
         return Student::with('user')->where('advisor_id', $advisor_id)->get();
-
-        /**
-         * @todo structure the return data for the student
-         */
-//        $studentUsers = $students->map(function ($student){
-//            return [
-//                'fname' => $student->user->fname,
-//                'lname' => $student->user->lname,
-//                'email' => $student->user->email,
-//            ];
-//        });
-
     }
 
+    public function getStudentMaps(int $studentUserID)
+    {
+        return DegreeMap::with('roadMap')->where('user_id', $studentUserID)->get();
+    }
     /**
      * @param string $studentEmail
      * Returns student collection with given email

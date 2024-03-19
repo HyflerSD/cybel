@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('campus_id')->constrained();
-            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('course_code');
             $table->boolean('is_internal');
             /*Students may have multiple maps (up to 3 maybe) main map is priority 0. 1 and 2 are draft maps*/
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('concentration_code')->nullable();
 
             $table->foreign('concentration_code')->references('concentration_code')->on('concentrations');
-            $table->foreign('student_id')->references('student_id')->on('students');
+            $table->foreign('user_id')->references('user_id')->on('students');
             $table->foreign('course_code')->references('course_code')->on('courses');
         });
     }

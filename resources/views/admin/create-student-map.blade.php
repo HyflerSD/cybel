@@ -59,7 +59,7 @@
 													</span>
                                         </label>
                                         <div class="col-md-5">
-                                            <select class="form-select input-height" id="student_select" name="student">
+                                            <select required class="form-select input-height" id="student_select" name="student">
                                                 <option value="">Select...</option>
                                                 @foreach($students as $student)
                                                     <option value="{{ $student->student_id }}" data-concentration="{{ $student->concentration_code }}">{{ $student->email }}</option>
@@ -72,7 +72,7 @@
 													</span>
                                         </label>
                                         <div class="col-md-5">
-                                            <select class="form-select input-height" name="courses_per_semester">
+                                            <select required class="form-select input-height" name="courses_per_semester">
                                                 <option value="">Select...</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -88,7 +88,7 @@
 														* </span>
                                         </label>
                                         <div class="col-md-5">
-                                            <select class="form-select input-height" name="elective_interests">
+                                            <select class="form-select input-height"  name="elective_interests">
                                                 <option value="">Select...</option>
                                                 <option value="game_development">Game Development</option>
                                                 <option value="artificial_intelligence">Artificial Intelligence</option>
