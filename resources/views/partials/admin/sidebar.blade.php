@@ -86,6 +86,11 @@ $user = auth()->user();
                                     <span class="title">Edit Map</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('student.create-map')  }}" class="nav-link ">
+                                    <span class="title">Create Map</span>
+                                </a>
+                            </li>
                         </ul>
 
                     @endif
@@ -125,11 +130,10 @@ $user = auth()->user();
                             <li class="nav-item">
                                 <span class="title">
                                       @if($advisor = session('advisor'))
-                                            <p style="margin-left: 10px"> Name: {{ $advisor->fname . ' ' . $advisor->lname}}</p>
-                                        <p style="margin-left: 10px">Email: {{ $advisor->email }}</p
+                                            <p>Name: {{ $advisor->fname . ' ' . $advisor->lname}}</p>
+                                            <p>Email: {{ $advisor->email }}</p>
                                         @else
                                             <p>No Advisor Assigned</p>
-
                                     @endif
                             </li>
                         </ul>
