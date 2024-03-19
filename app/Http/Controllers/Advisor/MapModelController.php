@@ -20,6 +20,10 @@ class MapModelController extends Controller
     }
 
 
+    public function approveStudentMap()
+    {
+        dd('approved');
+    }
 
     public function generateMap()
     {
@@ -39,8 +43,10 @@ class MapModelController extends Controller
     }
     public function adviseeMaps()
     {
+        $advisorId = Auth::user()->id;
+        $students = $this->studentService->assignedStudents($advisorId);
         $studentMaps = [];
-        return view('admin.advisee-maps', compact('studentMaps'));
+        return view('admin.advisee-maps', compact('studentMaps', 'students'));
     }
 
     public function index()

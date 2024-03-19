@@ -11,11 +11,12 @@
                             </div>
                         </div>
                     </div>
+                    @foreach($students as $student)
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-head">
-                                    <header>{{ 'Student Name' }}</header>
+                                    <header>{{ $student->email }}</header>
                                     <div class="tools">
                                         <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                                         <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
@@ -35,14 +36,13 @@
                                                     </label>
                                                 </th>
                                                 <th> Course Code</th>
-                                                <th> Priority Index </th>
-                                                <th> Level Combination </th>
+                                                <th> Credits</th>
+                                                <th>Semester</th>
                                                 <th> Type </th>
                                                 <th> Level </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-{{--                                        @foreach($advisees as $advisee)--}}
                                         <tr class="odd gradeX">
                                             <td>
                                                 <label class="rt-chkbox rt-chkbox-single rt-chkbox-outline">
@@ -91,13 +91,22 @@
                                                 </div>
                                             </td>
                                         </tr>
-{{--                                        @endforeach--}}
                                         </tbody>
                                     </table>
+                                    <form method="POST" action="{{ route('admin.approve-student-map') }}" >
+                                        @csrf
+                                        <input type="hidden" name="student_email" value="{{ $student->email }}"/>
+                                        <div class="btn-group pull-left">
+                                            <button type="submit" id="add-button" class="btn btn-circle btn-success">
+                                                Approve <i class="fa"></i>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
             <!-- end page content -->

@@ -161,7 +161,7 @@ class CourseService extends Seeder
     /**
      * @return Collection
      */
-    public function allCourses()
+    public function allCourses() : Collection
     {
         return Course::all();
     }

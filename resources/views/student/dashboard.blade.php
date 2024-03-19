@@ -29,7 +29,6 @@
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
-            background-color: #6673fc;
             border-radius: 10px;
         }
 
@@ -41,9 +40,6 @@
             transform: rotateY(180deg);
         }
 
-        .gpa-card {
-            background-color: #6673fc;
-        }
     </style>
 
     <!-- start page content -->
@@ -67,7 +63,7 @@
                                         <div class="col mt-0">
                                             <h4 class="info-box-title">Courses This Semester</h4>
                                         </div>
-                                        <h3 class="mt-1 mb-3 info-box-title col-black">4</h3>
+                                        <h3 class="mt-1 mb-3 info-box-title col-green">4</h3>
                                     </div>
                                     <div class="col-auto">
                                     </div>
@@ -92,7 +88,7 @@
                                     <div class="col mt-0">
                                         <h4 class="info-box-title">GPA</h4>
                                     </div>
-                                    <h3 class="mt-1 mb-3 info-box-title col-black">
+                                    <h3 class="mt-1 mb-3 info-box-title col-green">
                                         {{ session('student')->gpa }}
                                     </h3>
                                 </div>
@@ -109,7 +105,7 @@
                                         <div class="col mt-0">
                                             <h4 class="info-box-title">Major</h4>
                                         </div>
-                                        <h3 class="mt-1 mb-3 info-box-title col-black">{{ session('student')->concentration->name }}</h3>
+                                        <h3 class="mt-1 mb-3 info-box-title col-green">{{ session('student')->concentration->name }}</h3>
                                     </div>
                                     <div class="col-auto">
                                     </div>
@@ -140,7 +136,7 @@
                                         <div class="col mt-0">
                                         <h4 class="info-box-title">Total credits</h4>
                                     </div>
-                                    <h3 class="mt-1 mb-3 info-box-title col-black">{{ session('student')->total_credits_earned }} </h3>
+                                    <h3 class="mt-1 mb-3 info-box-title col-green">{{ session('student')->total_credits_earned }} </h3>
                                 </div>
                                 <div class="col-auto">
                                 </div>
@@ -274,9 +270,4 @@
 @section('styles')
     <link href="/admin/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.css" rel="stylesheet"
           type="text/css" />
-@endsection
-@section('scripts')
-{{--    <script src="/admin/assets/plugins/datatables/jquery.dataTables.min.js"></script>--}}
-    <script src="/admin/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.js"></script>
-    <script src="/admin/assets/js/pages/table/table_data.js"></script>
 @endsection
