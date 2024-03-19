@@ -51,6 +51,8 @@ Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function
 
 Route::group(['prefix' => 'student', 'middleware' => IsStudentUser::class], function (){
     Route::get('/dashboard', [App\Http\Controllers\StudentController::class, 'index'])->name('student.dashboard');
+    Route::get('/create-map', [StudentController::class, 'showCreateMap'])->name('student.create-map');
+    Route::post('/create-map', [MapModelController::class, 'generateMap'])->name('student.handle-create-map');
     Route::group(['prefix' => 'courses'], function (){
         Route::get('/', [CoursesController::class, 'index'])->name('student.courses');
     });

@@ -86,6 +86,11 @@ $user = auth()->user();
                                     <span class="title">Edit Map</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('student.create-map')  }}" class="nav-link ">
+                                    <span class="title">Create Map</span>
+                                </a>
+                            </li>
                         </ul>
 
                     @endif
