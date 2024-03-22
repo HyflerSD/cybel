@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Service\StudentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use MongoDB\Driver\Session;
 
 class StudentController extends Controller
 {
@@ -13,7 +15,7 @@ class StudentController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(protected StudentService $studentService)
     {
         $this->middleware('auth');
     }
@@ -38,9 +40,13 @@ class StudentController extends Controller
     {
         return view('student.create-map');
     }
-    public function show()
+    public function show(Request $request)
     {
-        return view('student.completed-courses');
+        $studentId = $request->session()->get('student')->student_id;
+        $coursesHistory = $this->studentService->getStudentHistory($studentId);
+
+        return view('student.completed-courses', compact('coursesHistory'));
     }
+
 
 }
