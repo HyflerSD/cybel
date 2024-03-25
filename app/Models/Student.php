@@ -5,28 +5,35 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Student extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'student_id',
-        'phone',
-        'address',
-        'concentration_code',
-        'email',
         'gpa',
+        'email',
+        'phone',
+        'user_id',
+        'address',
+        'interests',
         'birthdate',
-        'enrollment_status',
-        'academic_standing',
         'start_date',
-        'expected_graduation_date',
-        'total_credits_earned',
+        'student_id',
         'advisor_id',
-        'interests'
+        'academic_standing',
+        'enrollment_status',
+        'concentration_code',
+        'total_credits_earned',
+        'expected_graduation_date',
     ];
+
+
+    public function studentProfile() : HasMany
+    {
+        return $this->hasMany(StudentProfile::class);
+    }
     public function advisor() : BelongsTo
     {
         return $this->belongsTo(User::class, 'advisor_id');

@@ -6,21 +6,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class StudentHistory extends Model
+class StudentProfile extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'grade',
+        'session',
         'user_id',
-        'term_code',
-        'course_code',
-        'credits_earned',
-        'credits_attempted',
+        'priority',
+        'campus_id',
+        'time_of_day',
+        'days_of_week',
+        'interest_area',
+        'concentration_code',
+        'mode_of_instruction',
+        'expected_graduation_date',
     ];
+    use HasFactory;
 
     public function student() : BelongsTo
     {
         return $this->belongsTo(Student::class);
     }
 }
+
