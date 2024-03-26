@@ -5,9 +5,7 @@ use App\Http\Controllers\Advisor\MapModelController;
 use App\Http\Controllers\Advisor\ProfessorsController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\StudentController;
-use App\Http\Middleware\IsAdminUser;
-use App\Http\Middleware\IsStudentUser;
-use App\Http\Middleware\UserRedirect;
+use App\Http\Middleware\IsValidUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (){})->middleware('user.type');
 
-Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function (){
+Route::group(['prefix' => 'admin', 'middleware' => IsValidUser::class], function (){
     Route::get('/dashboard', [App\Http\Controllers\AdvisorsController::class, 'index'])->name('admin.dashboard');
     Route::group(['prefix' => 'professors'], function (){
         Route::get('/', [ProfessorsController::class, 'index'])->name('admin.professors');
@@ -50,7 +48,7 @@ Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function
     });
 });
 
-Route::group(['prefix' => 'student', 'middleware' => IsStudentUser::class], function (){
+Route::group(['prefix' => 'student', 'middleware' => IsValidUser::class], function (){
     Route::get('/dashboard', [App\Http\Controllers\StudentController::class, 'index'])->name('student.dashboard');
     Route::get('/create-map', [StudentController::class, 'showCreateMap'])->name('student.create-map');
     Route::get('/completed-courses', [StudentController::class,'show'])->name('student.completed-courses');
