@@ -6,23 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class DegreeMap extends Model
+class EnrollmentPreference extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'map_id',
-        'user_id',
-        'term_code',
-        'is_internal',
+        'session',
         'time_of_day',
-        'course_code',
         'days_of_week',
-        'concentration_code',
+        'mode_of_instruction',
     ];
-
-    public function student() : BelongsTo
-    {
-        return $this->belongsTo(Student::class, 'user_id');
-    }
 }

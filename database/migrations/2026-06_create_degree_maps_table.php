@@ -14,19 +14,21 @@ return new class extends Migration
         Schema::create('degree_maps', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('campus_id')->constrained();
-            $table->unsignedBigInteger('user_id');
+            $table->string('term_code');
+            $table->json('days_of_week');
+            $table->string('time_of_day');
             $table->string('course_code');
-            $table->boolean('is_internal');
-            /*Students may have multiple maps (up to 3 maybe) main map is priority 0. 1 and 2 are draft maps*/
-            $table->integer('map_priority');
-            $table->string('map_id')->unique();
-            $table->string('term')->nullable();
+            $table->unsignedBigInteger('map_id');
+            $table->string('mode_of_instruction');
             $table->string('concentration_code')->nullable();
+            $table->boolean('is_internal')->default(true);
+            $table->boolean('generated_by_advisor')->default(false);
 
-            $table->foreign('concentration_code')->references('concentration_code')->on('concentrations');
-            $table->foreign('user_id')->references('user_id')->on('students');
+            $table->foreignId('user_id');
+            $table->foreignId('campus_id')->constrained();
+            $table->foreign('term_code')->references('term_code')->on('terms');
             $table->foreign('course_code')->references('course_code')->on('courses');
+            $table->foreign('concentration_code')->references('concentration_code')->on('concentrations');
         });
     }
 

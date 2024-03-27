@@ -34,6 +34,11 @@ class DegreeSeeder extends Seeder
                 'code' => "AD",
                 'type' => "Arts",
             ],
+            [
+                'name' => "College Credit Certificate",
+                'code' => "CCC",
+                'type' => "College Credit",
+            ],
         ];
 
         DB::table('degrees')->insert($degrees);

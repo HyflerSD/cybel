@@ -13,18 +13,13 @@ return new class extends Migration
     {
         Schema::create('student_histories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
             $table->string('term_code');
-            $table->string('concentration_code');
             $table->string('course_code');
             $table->string('grade')->nullable();
             $table->decimal('credits_earned', 3)->nullable();
             $table->decimal('credits_attempted', 3)->nullable();
 
-            $table->foreign('concentration_code')->references('concentration_code')->on('concentrations');
-//            $table->foreign('course_code')->references('course_code')->on('courses');
-            $table->foreign('term_code')->references('term_code')->on('terms');
-            $table->foreign('student_id')->references('student_id')->on('students');
+            $table->foreignId('user_id')->constrained();
 
         });
     }

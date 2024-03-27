@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pre_registrations', function (Blueprint $table) {
+        Schema::create('enrollment_preferences', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('session');
+            $table->json('days_of_week');
+            $table->json('time_of_day');
+            $table->json('mode_of_instruction');
         });
     }
 
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pre_registrations');
+        Schema::dropIfExists('enrollment_preferences');
     }
 };
