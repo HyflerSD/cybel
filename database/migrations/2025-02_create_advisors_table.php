@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pre_registrations', function (Blueprint $table) {
+        Schema::create('advisors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('campus_id')->constrained();
+            $table->foreignId('department_id')->constrained();
         });
     }
 
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pre_registrations');
+        Schema::dropIfExists('advisors');
     }
 };

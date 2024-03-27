@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('advisors', function (Blueprint $table) {
+        Schema::create('pre_registrations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('campus_id')->constrained();
-            $table->foreignId('department_id')->constrained();
+            $table->foreignId('degree_map_id')->constrained();
+            $table->boolean('is_approved')->default(false);
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('advisors');
+        Schema::dropIfExists('pre_registrations');
     }
 };

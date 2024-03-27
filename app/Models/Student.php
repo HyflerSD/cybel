@@ -17,20 +17,16 @@ class Student extends Model
         'phone',
         'user_id',
         'address',
-        'interests',
         'birthdate',
         'start_date',
         'student_id',
         'advisor_id',
         'academic_standing',
         'enrollment_status',
-        'concentration_code',
-        'total_credits_earned',
-        'expected_graduation_date',
     ];
 
 
-    public function studentProfile() : HasMany
+    public function studentProfiles() : HasMany
     {
         return $this->hasMany(StudentProfile::class);
     }

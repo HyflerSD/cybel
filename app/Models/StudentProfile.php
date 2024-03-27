@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class StudentProfile extends Model
 {
     protected $fillable = [
-        'session',
         'user_id',
         'priority',
         'campus_id',
@@ -18,6 +17,7 @@ class StudentProfile extends Model
         'interest_area',
         'concentration_code',
         'mode_of_instruction',
+        'total_credits_earned',
         'expected_graduation_date',
     ];
     use HasFactory;

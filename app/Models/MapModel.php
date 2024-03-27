@@ -9,11 +9,11 @@ class MapModel extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'combination',
-        'course_id',
-        'is_course_taken',
-        'priority_index',
-        'student_interests',
+        'course_code',
+        'level_combination',
+        'institution',
         'effective_date',
+        'priority_index',
+        'concentration_code',
     ];
 }

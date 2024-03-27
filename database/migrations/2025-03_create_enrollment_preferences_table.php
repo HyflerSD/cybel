@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('session');
-            $table->string('days_of_week');
+            $table->json('days_of_week');
             $table->json('time_of_day');
-            $table->string('mode_of_instruction');
+            $table->json('mode_of_instruction');
         });
     }
 

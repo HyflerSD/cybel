@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('map_models', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->json('level_combination');
-            $table->string('course_code')->unique();
-            $table->string('concentration_code');
+            $table->string('course_code');
             $table->integer('priority_index');
-            $table->json('student_interests')->nullable();
+            $table->json('level_combination');
+            $table->string('concentration_code');
             $table->date('effective_date')->nullable();
             $table->string('institution')->default('Miami Dade College');
 

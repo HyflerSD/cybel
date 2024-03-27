@@ -21,11 +21,12 @@ return new class extends Migration
             $table->string('address', 200)->nullable();
             $table->unsignedBigInteger('student_id')->unique();
             $table->decimal('gpa', 3, 2)->nullable();
-            $table->integer('total_credits_earned')->default(0);
             $table->string('academic_standing', 50)->nullable();
+            $table->string('enrollment_status', 50)->default('enrolled');
+
+
             $table->foreignId('user_id')->unique()->constrained('users');
             $table->foreign('email')->references('email')->on('users');
-            $table->string('enrollment_status', 50)->default('enrolled');
             $table->foreignId('advisor_id')->nullable()->constrained('users')->onDelete('set null');
         });
     }

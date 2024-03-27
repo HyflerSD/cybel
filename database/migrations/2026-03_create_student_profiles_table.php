@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('student_profiles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('session');
             $table->string('priority');
-            $table->json('days_of_week');
+            $table->string('days_of_week');
             $table->string('time_of_day');
             $table->string('interest_area')->nullable();
             $table->string('mode_of_instruction');
             $table->date('expected_graduation_date')->nullable();
+            $table->unsignedBigInteger('total_credits_earned')->default(0);
             $table->string('concentration_code', 200)->nullable();
 
-            $table->foreignId('campus_id')->nullable();
+            $table->foreignId('campuses_id')->nullable();
             $table->foreignId('user_id')->unique()->constrained('users');
             $table->foreign('concentration_code')->references('concentration_code')->on('concentrations')->nullOnDelete();
 
