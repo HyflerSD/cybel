@@ -25,16 +25,11 @@ class StudentService extends Seeder
                     "phone" => $student['phone'],
                     "address" => $student['address'],
                     "email" => $student['student_email'],
-                    "concentration_code" => $student['concentration_code'], //@todo may update this to be dynamic but not right now
                     "gpa" => $student['gpa'],
                     "birthdate" => $student['birthdate'],
                     "enrollment_status" => $student['enrollment_status'],
                     "academic_standing" => $student['academic_standing'],
                     "start_date" => $student['start_date'],
-                    "expected_graduation_date" => $student['expected_graduation_date'],
-                    "total_credits_earned" => $student['total_credits_earned'],
-                    "interests" => json_encode($student['interests'], true),
-//                    "advisor_email" => $student['advisor_email'],
                 ];
             }
             DB::table('students')->insert($studentsToInsert);
