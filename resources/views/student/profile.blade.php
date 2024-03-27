@@ -186,109 +186,120 @@
                                     </div>
                                     <div class="card-body" id="bar-parent">
                                         <form action="#" id="form_sample_1" class="form-horizontal">
+                                            @csrf
                                             <div class="form-body">
                                                 <div class="form-group row">
-                                                    <label class="control-label col-md-3">Course Name
-                                                        <span class="required"> * </span>
+                                                    <label class="col-lg-3 col-md-4 control-label">Degree Path
                                                     </label>
-                                                    <div class="col-md-5">
-                                                        <input type="text" name="coursename" placeholder="enter course name"
-                                                               class="form-control input-height" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="control-label col-md-3">Course Code
-                                                        <span class="required"> * </span>
-                                                    </label>
-                                                    <div class="col-md-5">
-                                                        <input type="text" name="ccode" placeholder="enter course code"
-                                                               class="form-control input-height" /> </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="control-label col-md-3">Course Details
-                                                        <span class="required"> * </span>
-                                                    </label>
-                                                    <div class="col-md-5">
-													<textarea name="address" placeholder="course details"
-                                                              class="form-control-textarea" rows="5"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="control-label col-md-3">Starting Date
-                                                        <span class="required"> * </span>
-                                                    </label>
-                                                    <div class="col-md-5">
-                                                        <div class="input-append date">
-                                                            <div id="dateIcon" class="input-group datePicker">
-                                                                <input class="formDatePicker form-control" type="text"
-                                                                       placeholder="Select Date.." data-input>
-                                                                <span class="dateBtn">
-																<a class="input-button" title="toggle" data-toggle>
-																	<i class="icon-calendar"></i>
-																</a>
-																<a class="input-button" title="clear" data-clear>
-																	<i class="icon-close"></i>
-																</a>
-															</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="control-label col-md-3">Course Duration
-                                                        <span class="required"> * </span>
-                                                    </label>
-                                                    <div class="col-md-5">
-                                                        <input type="text" name="csuration" placeholder="Course Duration"
-                                                               class="form-control input-height" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="control-label col-md-3">Course Price
-                                                        <span class="required"> * </span>
-                                                    </label>
-                                                    <div class="col-md-5">
-                                                        <input type="text" name="cprice" placeholder="Course Price"
-                                                               class="form-control input-height" /> </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="control-label col-md-3">Professor Name
-                                                        <span class="required"> * </span>
-                                                    </label>
-                                                    <div class="col-md-5">
-                                                        <select class="form-select input-height" name="proff">
-                                                            <option value="">Select...</option>
-                                                            <option value="Category 1">Pr. Jayesh Patel</option>
-                                                            <option value="Category 2">Pr. Salini Parmar</option>
-                                                            <option value="Category 3">Pr. Mayank Trivedi</option>
-                                                            <option value="Category 3">Pr. Parit Varma</option>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select class="form-select" id="profile_preference">
+                                                            <option value="1">Software Engineering</option>
+                                                            <option disabled value="2"> Networking | future feature</option>
+                                                            <option disabled value="3">Business Administration | future feature</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="control-label col-md-3">Maximum Students
-                                                        <span class="required"> * </span>
+                                                    <label class="col-lg-3 col-md-4 control-label">Campus
                                                     </label>
-                                                    <div class="col-md-5">
-                                                        <input type="text" name="maxstud" placeholder="Maximum Students"
-                                                               class="form-control input-height" />
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select class="form-select" id="profile_preference">
+                                                            <option value="1">North</option>
+                                                            <option value="1">Wolfson</option>
+                                                            <option value="1">North</option>
+                                                            <option value="1">North</option>
+                                                            <option value="1">North</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="control-label col-md-3">Contact No.
-                                                        <span class="required"> * </span>
+                                                    <label class="col-lg-3 col-md-4 control-label">Profile Preference
+                                                    </label>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select class="form-select" id="profile_preference">
+                                                            <option value="1">1</option>
+                                                            <option disabled value="2">2 | future feature</option>
+                                                            <option disabled value="3">3 | future feature</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-md-4 control-label">Course Per Semester
+                                                    </label>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select class="form-select" id="profile_preference">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="3">3</option>
+                                                            <option value="3">3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-md-3">Expected Graduation
                                                     </label>
                                                     <div class="col-md-5">
-                                                        <input name="number" type="text" placeholder="Contact Number"
+                                                        <input disabled type="text" name="ccode" placeholder="pending"
                                                                class="form-control input-height" /> </div>
                                                 </div>
+                                                </div>
                                                 <div class="form-group row">
-                                                    <label class="control-label col-md-3">Profile Picture
+                                                    <label class="col-lg-3 col-md-4 control-label">Time Of Day
                                                     </label>
-                                                    <div class="col-md-5">
-                                                        <input type="file" class="default" multiple>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select id="multiple" class="form-control select2-multiple" multiple>
+                                                                <option value="Morning">Morning</option>
+                                                        </select>
                                                     </div>
                                                 </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-md-4 control-label">Days Of Week
+                                                    </label>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select id="multiple" class="form-control select2-multiple" multiple>
+                                                            <optgroup label="WeekDays">
+                                                                <option value="Monday">Monday</option>
+                                                            </optgroup>
+                                                            <optgroup label="Weekends">
+                                                                <option value="CA">California</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-md-4 control-label"> Mode of Instruction
+                                                    </label>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select class="form-select" id="profile_preference">
+                                                            <option value="Blended">Blended</option>
+                                                            <option value="Live">Live</option>
+{{--                                                            <option value="Blended">1</option>--}}
+{{--                                                            <option value="Blended">1</option>--}}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-md-4 control-label"> Area of Interest
+                                                    </label>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select class="form-select" id="profile_preference">
+                                                            <option value="frontend_developer">Front-end Development</option>
+                                                            <option value="embedded_systems">Embedded Systems</option>
+                                                            <option value="artificial_intelligence">Artificial Intelligence</option>
+                                                            <option value="robotics">Robotics</option>
+                                                            <option value="Live">Robotics</option>
+                                                            <option value="Live">Robotics</option>
+                                                            <option value="Live">Robotics</option>
+                                                            <option value="Live">Robotics</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+
+
                                                 <div class="form-actions">
                                                     <div class="row">
                                                         <div class="offset-md-3 col-md-9">
@@ -299,9 +310,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </form>
-                                    </div>                                    </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

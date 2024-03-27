@@ -15,4 +15,10 @@ class EnrollmentPreference extends Model
         'days_of_week',
         'mode_of_instruction',
     ];
+
+    protected $casts = [
+        'days_of_week' => 'array',
+        'time_of_day' => 'array',
+        'mode_of_instruction' => 'array',
+    ];
 }

@@ -17,6 +17,7 @@ class StudentProfile extends Model
         'interest_area',
         'concentration_code',
         'mode_of_instruction',
+        'courses_per_semester',
         'total_credits_earned',
         'expected_graduation_date',
     ];

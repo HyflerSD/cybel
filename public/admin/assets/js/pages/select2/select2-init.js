@@ -1,9 +1,9 @@
 function format(state) {
-    if (!state.id) return state.text; 
+    if (!state.id) return state.text;
     return "<img class='flag' src='../assets/img/flags/" + state.id.toLowerCase() + ".png'/> &nbsp;" + state.text;
 }
 
-var placeholder = "Select a State";
+var placeholder = "select";
 $('.select2, .select2-multiple').select2({
 	theme: "bootstrap",
     placeholder: placeholder,

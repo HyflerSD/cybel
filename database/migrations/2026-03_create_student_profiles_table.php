@@ -15,13 +15,14 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('priority');
-            $table->string('days_of_week');
             $table->string('time_of_day');
-            $table->string('interest_area')->nullable();
+            $table->string('days_of_week');
             $table->string('mode_of_instruction');
+            $table->string('interest_area')->nullable();
             $table->date('expected_graduation_date')->nullable();
-            $table->unsignedBigInteger('total_credits_earned')->default(0);
+            $table->integer('courses_per_semester')->default(1);
             $table->string('concentration_code', 200)->nullable();
+            $table->unsignedBigInteger('total_credits_earned')->default(0);
 
             $table->foreignId('campuses_id')->nullable();
             $table->foreignId('user_id')->unique()->constrained('users');
