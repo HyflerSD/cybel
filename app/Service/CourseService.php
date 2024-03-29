@@ -73,21 +73,16 @@ class CourseService extends Seeder
         $coursesToInsert = [];
         try
         {
-
             $courses = $csvReader->getRecords();
-            $missingCourses = [];
             foreach ($courses as $course)
             {
                 if($course['course_code'] !== "" && $course['pre_req_course_code'] !== "")
                 {
-                    $missingCourse = DB::table('courses')
-                        ->where('course_code', $course['pre_req_course_code'])
-                        ->doesntExist();
+                    $missingCourse = $this->isMissingCourse($course['pre_req_course_code']);
                     if($missingCourse)
                     {
-                        Log::channel('courses')->info("Attempting to insert non existing course: " . $course['pre_req_course_code']);
+                        $this->insertMissingCourse($course['pre_req_course_code']);
                     }
-
                     $exists = DB::table('course_prerequisites')
                         ->where('course_code',$course['course_code'])
                         ->where('pre_req_course_code',$course['pre_req_course_code'])
@@ -100,6 +95,7 @@ class CourseService extends Seeder
                             'pre_req_course_code' => $course['pre_req_course_code'],
                         ];
                     }
+
                 }
             }
             //Insert Bulk data
@@ -113,6 +109,26 @@ class CourseService extends Seeder
             Log::error($e->getMessage());
             Log::error("Failed to import courses : " .  $e->getMessage());
         }
+    }
+
+    public function isMissingCourse(string $courseCode) : bool
+    {
+
+        return DB::table('courses')
+            ->where('course_code', $courseCode)
+            ->doesntExist();
+    }
+    public function insertMissingCourse(string$courseCode) : void
+    {
+        $courseLevel = (int) substr($courseCode, strpos($courseCode, '-') + 1 );
+        $courseLevel = (($courseLevel / 1000) % 10) * 1000;
+        DB::table('courses')->insert([
+            'course_code' => $courseCode,
+            'course_name' => "Some Name",
+            'credits' =>  "4",
+            'course_level' => $courseLevel,
+        ]);
+        Log::channel('courses')->info("Attempting to insert non existing course: " . $courseCode);
     }
 
     /**

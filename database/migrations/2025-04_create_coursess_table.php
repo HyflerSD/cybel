@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('course_code')->unique();
             $table->string('course_name', 100);
-            $table->integer('credits');
-            $table->integer('course_level');
+            $table->integer('credits')->default(4);
+            $table->integer('course_level')->nullable(); //TODO: Don't need this anymore, only for degree model
             $table->text('course_description')->nullable();
             $table->boolean('gen_ed')->nullable();
             $table->boolean('core_ed')->nullable();

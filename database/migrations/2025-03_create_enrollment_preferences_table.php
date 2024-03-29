@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('programs', function (Blueprint $table) {
+        Schema::create('enrollment_preferences', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('code')->unique();
-            $table->foreignId('degree_id')->constrained();
             $table->timestamps();
+            $table->string('session');
+            $table->json('days_of_week');
+            $table->json('time_of_day');
+            $table->json('mode_of_instruction');
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('programs');
+        Schema::dropIfExists('enrollment_preferences');
     }
 };

@@ -15,29 +15,34 @@ class ProgramSeeder extends Seeder
     {
         $programs = [
             [
-                'name' => "Cyber Security",
                 'code' => "CBS",
                 'degree_id' => "1",
+                "department_id" => "2",
+                'name' => "Cyber Security",
             ],
             [
-                'name' => "Data Analytics",
                 'code' => "DANA",
                 'degree_id' => "1",
+                'department_id' => "2",
+                'name' => "Data Analytics",
             ],
             [
-                'name' => "Electrical and Computer Engineering Technology",
                 'code' => "ECET",
                 'degree_id' => "1",
+                'department_id' => "2",
+                'name' => "Electrical and Computer Engineering Technology",
             ],
             [
-                'name' => "Information Systems Technology",
                 'code' => "IST",
                 'degree_id' => "1",
+                'department_id' => "2",
+                'name' => "Information Systems Technology",
             ],
             [
-                'name' => "Computer Information Systems",
                 'code' => "CIST",
                 'degree_id' => "4",
+                'department_id' => "2",
+                'name' => "Computer Information Systems",
             ],
         ];
         DB::table('programs')->insert($programs);

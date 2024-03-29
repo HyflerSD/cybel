@@ -106,7 +106,8 @@
                                         <div class="col mt-0">
                                             <h4 class="info-box-title">Major</h4>
                                         </div>
-                                        <h3 class="mt-1 mb-3 info-box-title col-green">{{ session('student')->concentration->name }}</h3>
+{{--                                        Todo: Once we have the student profile data this filed will be populated--}}
+{{--                                        <h3 class="mt-1 mb-3 info-box-title col-green">{{ session('student')->concentration->name }}</h3>--}}
                                     </div>
                                     <div class="col-auto">
                                     </div>
@@ -137,7 +138,8 @@
                                         <div class="col mt-0">
                                         <h4 class="info-box-title">Total credits</h4>
                                     </div>
-                                    <h3 class="mt-1 mb-3 info-box-title col-green">{{ session('student')->total_credits_earned }} </h3>
+                                        {{--                                        Todo: Once we have the student profile data this filed will be populated--}}
+{{--                                    <h3 class="mt-1 mb-3 info-box-title col-green">{{ session('student')->total_credits_earned }} </h3>--}}
                                 </div>
                                 <div class="col-auto">
                                 </div>

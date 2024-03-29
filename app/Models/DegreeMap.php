@@ -11,16 +11,18 @@ class DegreeMap extends Model
     use HasFactory;
 
     protected $fillable = [
-        'term',
         'map_id',
-        'student_id',
-        'course_code',
+        'user_id',
+        'term_code',
+        'updated_by',
         'is_internal',
-        'map_priority',
+        'time_of_day',
+        'course_code',
+        'days_of_week',
         'concentration_code',
     ];
 
-    public function roadMap() : BelongsTo
+    public function student() : BelongsTo
     {
         return $this->belongsTo(Student::class, 'user_id');
     }
