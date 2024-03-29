@@ -17,14 +17,16 @@ return new class extends Migration
             $table->string('term_code');
             $table->json('days_of_week');
             $table->string('time_of_day');
+            $table->string('updated_by');
             $table->string('course_code');
-            $table->unsignedBigInteger('map_id');
+            $table->string('substitution_course_code')->nullable();
+            $table->unsignedBigInteger('map_id')->unique();
             $table->string('mode_of_instruction');
             $table->string('concentration_code')->nullable();
             $table->boolean('is_internal')->default(true);
             $table->boolean('generated_by_advisor')->default(false);
-
-            $table->foreignId('user_id');
+// System generated map vs advisor generated map TODO: add updated by when recordds are updated (system, student, advisor)
+            $table->foreignId('user_id')->constrained();
             $table->foreignId('campus_id')->constrained();
             $table->foreign('term_code')->references('term_code')->on('terms');
             $table->foreign('course_code')->references('course_code')->on('courses');

@@ -21,7 +21,9 @@
 <link href="/admin/assets/css/theme/light/theme-color.css" rel="stylesheet" type="text/css" />
 <!-- favicon -->
 <link rel="shortcut icon" href="/admin/assets/img/favicon.ico" />
-
+<!--select2-->
+<link href="/admin/assets/plugins/select2/css/select2.css" rel="stylesheet" type="text/css" />
+<link href="/admin/assets/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="/admin/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.css" rel="stylesheet"
       type="text/css" />
 @yield('styles')

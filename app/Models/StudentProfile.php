@@ -17,6 +17,7 @@ class StudentProfile extends Model
         'interest_area',
         'concentration_code',
         'mode_of_instruction',
+        'courses_per_semester', //TODO at most 18 credits per semester, notify of large number of credits
         'total_credits_earned',
         'expected_graduation_date',
     ];

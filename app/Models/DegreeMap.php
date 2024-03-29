@@ -14,6 +14,7 @@ class DegreeMap extends Model
         'map_id',
         'user_id',
         'term_code',
+        'updated_by',
         'is_internal',
         'time_of_day',
         'course_code',

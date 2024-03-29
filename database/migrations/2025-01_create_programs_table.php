@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('code')->unique();
             $table->foreignId('degree_id')->constrained();
+            $table->foreignId('department_id')->constrained();
             $table->timestamps();
         });
     }
