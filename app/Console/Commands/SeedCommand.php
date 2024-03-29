@@ -21,6 +21,7 @@ class SeedCommand extends Command
             'ConcentrationSeeder',
             'TermSeeder',
             'CampusSeeder',
+            'AdvisorSeeder',
         ];
 
         foreach ($seeders as $seeder) {
