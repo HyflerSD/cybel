@@ -240,7 +240,7 @@
                                                     <label class="control-label col-md-3">Expected Graduation
                                                     </label>
                                                     <div class="col-md-5">
-                                                        <input disabled type="text" name="ccode" placeholder="pending"
+                                                        <input disabled type="text" name="ccode" placeholder="pending map generation"
                                                                class="form-control input-height" /> </div>
                                                 </div>
                                                 </div>

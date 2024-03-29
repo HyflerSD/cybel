@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('priority');
-            $table->string('time_of_day');
-            $table->string('days_of_week');
-            $table->string('mode_of_instruction');
+            $table->json('time_of_day');
+            $table->json('days_of_week');
+            $table->json('mode_of_instruction');
             $table->string('interest_area')->nullable();
             $table->date('expected_graduation_date')->nullable();
             $table->integer('courses_per_semester')->default(1);

@@ -9,5 +9,10 @@ class Degree extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'code', 'type'];
+    protected $fillable = [
+        'name',
+        'code',
+        'type',
+        'department_id'
+    ];
 }

@@ -15,6 +15,7 @@ class SeedCommand extends Command
     {
         $seeders = [
             'DegreeSeeder',
+            'DepartmentSeeder',
             'ProgramSeeder',
             'MajorSeeder',
             'ConcentrationSeeder',
