@@ -20,7 +20,8 @@ $user = auth()->user();
                         <div class="sidebar-user-details">
                             <div class="user-name">{{ $user->fname  . ' ' . $user->lname }}</div>
                             <div class="user-role">
-                                @if($user->is_advisor) Advisor
+                                @if($user->is_advisor)
+                                    <strong>Campus: </strong>{{session('advisor')[1]}}
                                 @else
                                     <strong>Student ID:</strong> {{ session('student')->student_id }}
                                 @endif
