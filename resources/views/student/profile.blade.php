@@ -25,6 +25,470 @@
                     </ol>
                 </div>
             </div>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Tab Example</title>
+                <!-- Link to Material Design Lite CSS -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.indigo-pink.min.css">
+            </head>
+            <body>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                        <div class="card-body ">
+                            <div class="mdl-tabs mdl-js-tabs is-upgraded" data-upgraded=",MaterialTabs">
+                                <div class="mdl-tabs__tab-bar">
+                                    <a href="#tab1-panel" class="mdl-tabs__tab is-active">Profile 1</a>
+                                    <a href="#tab2-panel" class="mdl-tabs__tab">Profile 2</a>
+                                    <a href="#tab3-panel" class="mdl-tabs__tab">Profile 3</a>
+                                </div>
+                                <div class="mdl-tabs__panel p-t-20 is-active" id="tab1-panel">
+                                    <div class="profile-content">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card">
+                                                    <div class="card-head">
+                                                        <header>Student Interests</header>
+                                                    </div>
+                                                    <div class="card-body" id="bar-parent">
+                                                        <form action="#" id="form_sample_1" class="form-horizontal">
+                                                            @csrf
+                                                            <div class="form-body">
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-3 col-md-4 control-label">Degree Path
+                                                                    </label>
+                                                                    <div class="col-lg-9 col-md-8">
+                                                                        <select class="form-select" id="profile_preference">
+                                                                            <option value="1">Software Engineering</option>
+                                                                            <option disabled value="2"> Networking | future feature</option>
+                                                                            <option disabled value="3">Business Administration | future feature</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-3 col-md-4 control-label">Campus
+                                                                    </label>
+                                                                    <div class="col-lg-9 col-md-8">
+                                                                        <select class="form-select" id="profile_preference">
+                                                                            <option value="1">North</option>
+                                                                            <option value="1">Wolfson</option>
+                                                                            <option value="1">North</option>
+                                                                            <option value="1">North</option>
+                                                                            <option value="1">North</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-3 col-md-4 control-label">Profile Preference
+                                                                    </label>
+                                                                    <div class="col-lg-9 col-md-8">
+                                                                        <select class="form-select" id="profile_preference">
+                                                                            <option value="1">1</option>
+                                                                            <option disabled value="2">2 | future feature</option>
+                                                                            <option disabled value="3">3 | future feature</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-3 col-md-4 control-label">Course Per Semester
+                                                                    </label>
+                                                                    <div class="col-lg-9 col-md-8">
+                                                                        <select class="form-select" id="profile_preference">
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="3">3</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="control-label col-md-3">Expected Graduation
+                                                                    </label>
+                                                                    <div class="col-md-5">
+                                                                        <input disabled type="text" name="ccode" placeholder="pending map generation"
+                                                                               class="form-control input-height" /> </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-md-4 control-label">Time Of Day
+                                                                </label>
+                                                                <div class="col-lg-9 col-md-8">
+                                                                    <select id="multiple" class="form-control select2-multiple" multiple>
+                                                                        <option value="Morning">Morning</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-md-4 control-label">Days Of Week
+                                                                </label>
+                                                                <div class="col-lg-9 col-md-8">
+                                                                    <select id="multiple" class="form-control select2-multiple" multiple>
+                                                                        <optgroup label="WeekDays">
+                                                                            <option value="Monday">Monday</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Weekends">
+                                                                            <option value="CA">California</option>
+                                                                        </optgroup>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-md-4 control-label"> Mode of Instruction
+                                                                </label>
+                                                                <div class="col-lg-9 col-md-8">
+                                                                    <select class="form-select" id="profile_preference">
+                                                                        <option value="Blended">Blended</option>
+                                                                        <option value="Live">Live</option>
+                                                                        {{--                                                            <option value="Blended">1</option>--}}
+                                                                        {{--                                                            <option value="Blended">1</option>--}}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-md-4 control-label"> Area of Interest
+                                                                </label>
+                                                                <div class="col-lg-9 col-md-8">
+                                                                    <select class="form-select" id="profile_preference">
+                                                                        <option value="frontend_developer">Front-end Development</option>
+                                                                        <option value="embedded_systems">Embedded Systems</option>
+                                                                        <option value="artificial_intelligence">Artificial Intelligence</option>
+                                                                        <option value="robotics">Robotics</option>
+                                                                        <option value="Live">Robotics</option>
+                                                                        <option value="Live">Robotics</option>
+                                                                        <option value="Live">Robotics</option>
+                                                                        <option value="Live">Robotics</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-actions">
+                                                                <div class="row">
+                                                                    <div class="offset-md-3 col-md-9">
+                                                                        <button type="button"
+                                                                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-circle btn-primary">Submit</button>
+                                                                        <button type="button"
+                                                                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-circle btn-danger">Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END PROFILE CONTENT -->
+                                    </div>
+                                </div>
+                                <div class="mdl-tabs__panel p-t-20" id="tab2-panel">
+                                    <div class="profile-content">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card">
+                                                    <div class="card-head">
+                                                        <header>Student Interests</header>
+                                                    </div>
+                                                    <div class="card-body" id="bar-parent">
+                                                        <form action="#" id="form_sample_1" class="form-horizontal">
+                                                            @csrf
+                                                            <div class="form-body">
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-3 col-md-4 control-label">Degree Path
+                                                                    </label>
+                                                                    <div class="col-lg-9 col-md-8">
+                                                                        <select class="form-select" id="profile_preference">
+                                                                            <option value="1">Software Engineering</option>
+                                                                            <option disabled value="2"> Networking | future feature</option>
+                                                                            <option disabled value="3">Business Administration | future feature</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-3 col-md-4 control-label">Campus
+                                                                    </label>
+                                                                    <div class="col-lg-9 col-md-8">
+                                                                        <select class="form-select" id="profile_preference">
+                                                                            <option value="1">North</option>
+                                                                            <option value="1">Wolfson</option>
+                                                                            <option value="1">North</option>
+                                                                            <option value="1">North</option>
+                                                                            <option value="1">North</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-3 col-md-4 control-label">Profile Preference
+                                                                    </label>
+                                                                    <div class="col-lg-9 col-md-8">
+                                                                        <select class="form-select" id="profile_preference">
+                                                                            <option value="1">1</option>
+                                                                            <option disabled value="2">2 | future feature</option>
+                                                                            <option disabled value="3">3 | future feature</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-3 col-md-4 control-label">Course Per Semester
+                                                                    </label>
+                                                                    <div class="col-lg-9 col-md-8">
+                                                                        <select class="form-select" id="profile_preference">
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="3">3</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="control-label col-md-3">Expected Graduation
+                                                                    </label>
+                                                                    <div class="col-md-5">
+                                                                        <input disabled type="text" name="ccode" placeholder="pending map generation"
+                                                                               class="form-control input-height" /> </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-md-4 control-label">Time Of Day
+                                                                </label>
+                                                                <div class="col-lg-9 col-md-8">
+                                                                    <select id="multiple" class="form-control select2-multiple" multiple>
+                                                                        <option value="Morning">Morning</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-md-4 control-label">Days Of Week
+                                                                </label>
+                                                                <div class="col-lg-9 col-md-8">
+                                                                    <select id="multiple" class="form-control select2-multiple" multiple>
+                                                                        <optgroup label="WeekDays">
+                                                                            <option value="Monday">Monday</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Weekends">
+                                                                            <option value="CA">California</option>
+                                                                        </optgroup>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-md-4 control-label"> Mode of Instruction
+                                                                </label>
+                                                                <div class="col-lg-9 col-md-8">
+                                                                    <select class="form-select" id="profile_preference">
+                                                                        <option value="Blended">Blended</option>
+                                                                        <option value="Live">Live</option>
+                                                                        {{--                                                            <option value="Blended">1</option>--}}
+                                                                        {{--                                                            <option value="Blended">1</option>--}}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-md-4 control-label"> Area of Interest
+                                                                </label>
+                                                                <div class="col-lg-9 col-md-8">
+                                                                    <select class="form-select" id="profile_preference">
+                                                                        <option value="frontend_developer">Front-end Development</option>
+                                                                        <option value="embedded_systems">Embedded Systems</option>
+                                                                        <option value="artificial_intelligence">Artificial Intelligence</option>
+                                                                        <option value="robotics">Robotics</option>
+                                                                        <option value="Live">Robotics</option>
+                                                                        <option value="Live">Robotics</option>
+                                                                        <option value="Live">Robotics</option>
+                                                                        <option value="Live">Robotics</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-actions">
+                                                                <div class="row">
+                                                                    <div class="offset-md-3 col-md-9">
+                                                                        <button type="button"
+                                                                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-circle btn-primary">Submit</button>
+                                                                        <button type="button"
+                                                                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-circle btn-danger">Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END PROFILE CONTENT -->
+                                    </div>
+                                </div>
+                                <div class="mdl-tabs__panel p-t-20" id="tab3-panel">
+                                    <div class="profile-content">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card">
+                                                    <div class="card-head">
+                                                        <header>Student Interests</header>
+                                                    </div>
+                                                    <div class="card-body" id="bar-parent">
+                                                        <form action="#" id="form_sample_1" class="form-horizontal">
+                                                            @csrf
+                                                            <div class="form-body">
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-3 col-md-4 control-label">Degree Path
+                                                                    </label>
+                                                                    <div class="col-lg-9 col-md-8">
+                                                                        <select class="form-select" id="profile_preference">
+                                                                            <option value="1">Software Engineering</option>
+                                                                            <option disabled value="2"> Networking | future feature</option>
+                                                                            <option disabled value="3">Business Administration | future feature</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-3 col-md-4 control-label">Campus
+                                                                    </label>
+                                                                    <div class="col-lg-9 col-md-8">
+                                                                        <select class="form-select" id="profile_preference">
+                                                                            <option value="1">North</option>
+                                                                            <option value="1">Wolfson</option>
+                                                                            <option value="1">North</option>
+                                                                            <option value="1">North</option>
+                                                                            <option value="1">North</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-3 col-md-4 control-label">Profile Preference
+                                                                    </label>
+                                                                    <div class="col-lg-9 col-md-8">
+                                                                        <select class="form-select" id="profile_preference">
+                                                                            <option value="1">1</option>
+                                                                            <option disabled value="2">2 | future feature</option>
+                                                                            <option disabled value="3">3 | future feature</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-3 col-md-4 control-label">Course Per Semester
+                                                                    </label>
+                                                                    <div class="col-lg-9 col-md-8">
+                                                                        <select class="form-select" id="profile_preference">
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="3">3</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="control-label col-md-3">Expected Graduation
+                                                                    </label>
+                                                                    <div class="col-md-5">
+                                                                        <input disabled type="text" name="ccode" placeholder="pending map generation"
+                                                                               class="form-control input-height" /> </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-md-4 control-label">Time Of Day
+                                                                </label>
+                                                                <div class="col-lg-9 col-md-8">
+                                                                    <select id="multiple" class="form-control select2-multiple" multiple>
+                                                                        <option value="Morning">Morning</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-md-4 control-label">Days Of Week
+                                                                </label>
+                                                                <div class="col-lg-9 col-md-8">
+                                                                    <select id="multiple" class="form-control select2-multiple" multiple>
+                                                                        <optgroup label="WeekDays">
+                                                                            <option value="Monday">Monday</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Weekends">
+                                                                            <option value="CA">California</option>
+                                                                        </optgroup>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-md-4 control-label"> Mode of Instruction
+                                                                </label>
+                                                                <div class="col-lg-9 col-md-8">
+                                                                    <select class="form-select" id="profile_preference">
+                                                                        <option value="Blended">Blended</option>
+                                                                        <option value="Live">Live</option>
+                                                                        {{--                                                            <option value="Blended">1</option>--}}
+                                                                        {{--                                                            <option value="Blended">1</option>--}}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-md-4 control-label"> Area of Interest
+                                                                </label>
+                                                                <div class="col-lg-9 col-md-8">
+                                                                    <select class="form-select" id="profile_preference">
+                                                                        <option value="frontend_developer">Front-end Development</option>
+                                                                        <option value="embedded_systems">Embedded Systems</option>
+                                                                        <option value="artificial_intelligence">Artificial Intelligence</option>
+                                                                        <option value="robotics">Robotics</option>
+                                                                        <option value="Live">Robotics</option>
+                                                                        <option value="Live">Robotics</option>
+                                                                        <option value="Live">Robotics</option>
+                                                                        <option value="Live">Robotics</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-actions">
+                                                                <div class="row">
+                                                                    <div class="offset-md-3 col-md-9">
+                                                                        <button type="button"
+                                                                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-circle btn-primary">Submit</button>
+                                                                        <button type="button"
+                                                                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-circle btn-danger">Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END PROFILE CONTENT -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    // Event handler for clicking on tab links
+                    $('.mdl-tabs__tab').on('click', function(e){
+                        e.preventDefault(); // Prevent default anchor behavior
+                        var $this = $(this); // The tab clicked
+
+                        // Remove 'is-active' class from all tabs and panels
+                        $('.mdl-tabs__tab').removeClass('is-active');
+                        $('.mdl-tabs__panel').removeClass('is-active');
+
+                        // Add 'is-active' class to the clicked tab
+                        $this.addClass('is-active');
+
+                        // Get the target panel ID from the href attribute
+                        var targetPanelId = $this.attr('href');
+
+                        // Add 'is-active' class to the target panel
+                        $(targetPanelId).addClass('is-active');
+                    });
+                });
+            </script>
+            </body>
+            </html>
             <div class="row">
                 <div class="col-md-12">
                     <!-- BEGIN PROFILE SIDEBAR -->
@@ -177,146 +641,6 @@
                     </div>
                     <!-- END BEGIN PROFILE SIDEBAR -->
                     <!-- BEGIN PROFILE CONTENT -->
-                    <div class="profile-content">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-head">
-                                        <header>Student Interests</header>
-                                    </div>
-                                    <div class="card-body" id="bar-parent">
-                                        <form action="#" id="form_sample_1" class="form-horizontal">
-                                            @csrf
-                                            <div class="form-body">
-                                                <div class="form-group row">
-                                                    <label class="col-lg-3 col-md-4 control-label">Degree Path
-                                                    </label>
-                                                    <div class="col-lg-9 col-md-8">
-                                                        <select class="form-select" id="profile_preference">
-                                                            <option value="1">Software Engineering</option>
-                                                            <option disabled value="2"> Networking | future feature</option>
-                                                            <option disabled value="3">Business Administration | future feature</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-3 col-md-4 control-label">Campus
-                                                    </label>
-                                                    <div class="col-lg-9 col-md-8">
-                                                        <select class="form-select" id="profile_preference">
-                                                            <option value="1">North</option>
-                                                            <option value="1">Wolfson</option>
-                                                            <option value="1">North</option>
-                                                            <option value="1">North</option>
-                                                            <option value="1">North</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-3 col-md-4 control-label">Profile Preference
-                                                    </label>
-                                                    <div class="col-lg-9 col-md-8">
-                                                        <select class="form-select" id="profile_preference">
-                                                            <option value="1">1</option>
-                                                            <option disabled value="2">2 | future feature</option>
-                                                            <option disabled value="3">3 | future feature</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-3 col-md-4 control-label">Course Per Semester
-                                                    </label>
-                                                    <div class="col-lg-9 col-md-8">
-                                                        <select class="form-select" id="profile_preference">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="3">3</option>
-                                                            <option value="3">3</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="control-label col-md-3">Expected Graduation
-                                                    </label>
-                                                    <div class="col-md-5">
-                                                        <input disabled type="text" name="ccode" placeholder="pending map generation"
-                                                               class="form-control input-height" /> </div>
-                                                </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-3 col-md-4 control-label">Time Of Day
-                                                    </label>
-                                                    <div class="col-lg-9 col-md-8">
-                                                        <select id="multiple" class="form-control select2-multiple" multiple>
-                                                                <option value="Morning">Morning</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-3 col-md-4 control-label">Days Of Week
-                                                    </label>
-                                                    <div class="col-lg-9 col-md-8">
-                                                        <select id="multiple" class="form-control select2-multiple" multiple>
-                                                            <optgroup label="WeekDays">
-                                                                <option value="Monday">Monday</option>
-                                                            </optgroup>
-                                                            <optgroup label="Weekends">
-                                                                <option value="CA">California</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label class="col-lg-3 col-md-4 control-label"> Mode of Instruction
-                                                    </label>
-                                                    <div class="col-lg-9 col-md-8">
-                                                        <select class="form-select" id="profile_preference">
-                                                            <option value="Blended">Blended</option>
-                                                            <option value="Live">Live</option>
-{{--                                                            <option value="Blended">1</option>--}}
-{{--                                                            <option value="Blended">1</option>--}}
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-3 col-md-4 control-label"> Area of Interest
-                                                    </label>
-                                                    <div class="col-lg-9 col-md-8">
-                                                        <select class="form-select" id="profile_preference">
-                                                            <option value="frontend_developer">Front-end Development</option>
-                                                            <option value="embedded_systems">Embedded Systems</option>
-                                                            <option value="artificial_intelligence">Artificial Intelligence</option>
-                                                            <option value="robotics">Robotics</option>
-                                                            <option value="Live">Robotics</option>
-                                                            <option value="Live">Robotics</option>
-                                                            <option value="Live">Robotics</option>
-                                                            <option value="Live">Robotics</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-
-
-
-                                                <div class="form-actions">
-                                                    <div class="row">
-                                                        <div class="offset-md-3 col-md-9">
-                                                            <button type="button"
-                                                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-circle btn-primary">Submit</button>
-                                                            <button type="button"
-                                                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-circle btn-danger">Cancel</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END PROFILE CONTENT -->
-                    </div>
                 </div>
             </div>
         </div>

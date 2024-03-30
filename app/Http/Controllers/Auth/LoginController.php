@@ -56,7 +56,13 @@ class LoginController extends Controller
             $advisorUser = Auth::user();
             $advisor = DB::table('advisors')->where('user_id', $advisorUser->id)->first();
             $advisorCampus = DB::table('campuses')->where('id', $advisor->campus_id)->first();
-            Session::put('advisor', [$advisorUser,$advisorCampus->description]);
+            $advisorDepartment = DB::table('departments')->where('id', $advisor->department_id)->first();
+//            dd($advisorDepartment);
+            Session::put([
+                'advisor' => $advisorUser,
+                'advisorCampus' => $advisorCampus,
+                'advisorDepartment' => $advisorDepartment,
+            ]);
             return redirect()->route('admin.dashboard');
         }
         else
@@ -66,7 +72,10 @@ class LoginController extends Controller
             $student = $studentService->getStudentByEmail($studentEmail);
             $advisor = $studentService->getAdvisorbyId($student->advisor_id);
 
-            Session::put(['student' => $student, 'advisor' => $advisor]);
+            Session::put([
+                'student' => $student,
+                'advisor' => $advisor,
+            ]);
             return redirect()->route('student.dashboard');
         }
     }
