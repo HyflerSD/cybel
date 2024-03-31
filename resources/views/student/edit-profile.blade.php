@@ -26,8 +26,19 @@
                                     <div class="card-head">
                                         <header>Enter Your Preferences</header>
                                     </div>
+                                    @if(session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
+
+                                    @if(session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
                                     <div class="card-body" id="bar-parent">
-                                        <form method="POST" action="{{ route('student.save-profile') }}" id="form_sample_1" class="form-horizontal">
+                                        <form method="POST" action="{{ route('student.update-profile') }}" id="form_sample_1" class="form-horizontal">
                                             <div class="form-group row">
                                                 <label class="col-lg-3 col-md-4 control-label">Select Profile
                                                 </label>
@@ -46,6 +57,9 @@
                                                     </label>
                                                     <div class="col-lg-9 col-md-8">
                                                         <select required name="concentration_code" class="form-select" id="profile_preference">
+{{--                                                            @foreach ($profiles as $profile)--}}
+{{--                                                                <option value="{{ $profile->id }}" data-profile='@json($profile)'>{{ $profile->priority }}</option>--}}
+{{--                                                            @endforeach--}}
                                                             <option value="S9501">Software Engineering</option>
                                                             <option disabled value="IST"> Networking | future feature</option>
                                                             <option disabled value="CIST">Computer Information Systems | future feature</option>

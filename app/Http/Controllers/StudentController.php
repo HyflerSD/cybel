@@ -58,7 +58,9 @@ class StudentController extends Controller
     }
     public function showCreateMap()
     {
-        return view('student.create-map');
+        $student = (session()->get('student'));
+        $studentProfiles = $this->studentService->getProfiles($student->user_id);
+        return view('student.create-map', compact('studentProfiles'));
     }
     public function show()
     {
@@ -85,15 +87,32 @@ class StudentController extends Controller
             $result = $this->studentService->saveProfileModel($mergedProfile);
             if($result)
             {
-                return redirect()->route('student.profile');
+                return redirect()
+                    ->route('student.profile')
+                    ->with(
+                        'success',
+                        'Successfully Added Profile!'
+                    );
             }
         } catch (\Exception $e)
         {
             Log::error($e->getMessage());
             Log::error($e);
         }
-        return redirect()->route('student.profile');
-//        return redirect()->withErrors('Unable to save profile.')->withInput(); TODO: fix redirect
+        return redirect()->back()
+            ->with(
+                'error',
+                'Locked until version 2.0!'
+            );
+    }
+    public function updateProfile(Request $request) : RedirectResponse
+    {
+        return redirect()
+            ->route('student.edit-profile')
+            ->with(
+                'error',
+                'Locked until version 2.0!'
+            );
     }
 
 

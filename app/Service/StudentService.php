@@ -94,8 +94,11 @@ class StudentService extends Seeder
     {
         try
         {
-            StudentProfile::create($profileData->toArray());
-            return true;
+            if (!$this->maxProfileCount($profileData['user_id']))
+            {
+                StudentProfile::create($profileData->toArray());
+                return true;
+            }
         } catch (\Exception $e)
         {
             Log::error($e->getMessage());
@@ -119,5 +122,12 @@ class StudentService extends Seeder
             Log::error($e);
         }
         return [];
+    }
+    public function maxProfileCount(int $userId) : bool
+    {
+        //TODO: Limiting users to 1 profile for now.
+            return StudentProfile::with(['concentrations', 'campus'])
+                ->where('user_id', $userId)
+                ->count() >= 1;
     }
 }

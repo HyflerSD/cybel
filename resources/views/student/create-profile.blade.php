@@ -6,6 +6,7 @@
     @php
     $user = auth()->user();
     @endphp
+
         <!-- start page content -->
     <div class="page-content-wrapper">
         <div class="page-content">
@@ -26,6 +27,17 @@
                                     <div class="card-head">
                                         <header>Enter Your Preferences</header>
                                     </div>
+                                    @if(session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
+
+                                    @if(session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
                                     <div class="card-body" id="bar-parent">
                                         <form method="POST" action="{{ route('student.save-profile') }}" id="form_sample_1" class="form-horizontal">
                                             @csrf
@@ -65,7 +77,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-lg-3 col-md-4 control-label">Course Per Semester
+                                                    <label class="col-lg-3 col-md-4 control-label">Courses Per Semester
                                                     </label>
                                                     <div class="col-lg-9 col-md-8">
                                                         <select required name="courses_per_semester" class="form-select" id="courses_per_semester">
