@@ -51,7 +51,7 @@ class StudentController extends Controller
     }
     public function editProfile(Request $request)
     {
-        $student = (session()->get('student'));
+        $student = session()->get('student');
         $studentProfiles = $this->studentService->getProfiles($student->user_id);
         return view('student.edit-profile', compact('studentProfiles'));
 

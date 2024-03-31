@@ -22,4 +22,14 @@ class MapModelService
         }
         return '';
     }
+
+    public function prepareMapData(mixed $profile, bool $advisorGenerated, bool $genericMap = false) : array
+    {
+        $cybelData['data'] = [
+           'student_profile' => $profile,
+           'generic' => $genericMap
+        ];
+        dd($cybelData);
+        return [];
+    }
 }

@@ -1,18 +1,17 @@
 @extends('layouts.admin')
 @section('title') {{'Degree Models'}} @endsection
 @section('content')
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const studentSelect = document.getElementById('student_select');
-                const concentrationCodeInput = document.getElementById('concentration_code');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const studentSelect = document.getElementById('student_select');
+            const studentIdInput = document.getElementById('student_id');
 
-                studentSelect.addEventListener('change', function() {
-                    const selectedOption = studentSelect.options[studentSelect.selectedIndex];
-                    const concentrationCode = selectedOption.getAttribute('data-concentration');
-                    concentrationCodeInput.value = concentrationCode; // Update the input field value
-                });
+            studentSelect.addEventListener('change', function() {
+                const selectedOption = studentSelect.options[studentSelect.selectedIndex];
+                studentIdInput.value = selectedOption.getAttribute('data-studentid'); // Update the hidden input field value
             });
-        </script>
+        });
+    </script>
 
     <!-- start page content -->
     <div class="page-content-wrapper">
@@ -60,9 +59,15 @@
                                             <select required class="form-select input-height" id="student_select" name="student">
                                                 <option value="">Select...</option>
                                                 @foreach($students as $student)
-                                                    <option value="{{ $student->student_id }}" data-concentration="{{ $student->concentration_code }}">{{ $student->email }}</option>
+                                                    <option
+                                                        value="{{ $student->student_id }}"
+                                                        data-studentid="{{ $student->user_id }}"
+                                                        data-concentration="{{ $student->concentration_code }}">
+                                                        {{ $student->email }}
+                                                    </option>
                                                 @endforeach
                                             </select>
+                                            <input readonly hidden type="text" id="student_id" name="student_id" class="form-control input-height" />
                                         </div>
                                     </div>
                                     <div class="form-group row">

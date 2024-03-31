@@ -38,7 +38,17 @@
                                         <label><input type="checkbox" name="courses[${index}][level_combination][]" value="4000"> 4000</label>                                     </select>
                                  </td>
                                   <td><input type="hidden" name="courses[${index}][course_type]" value="${type}"/>${type}</td>
-                                  <td><input type="hidden" name="courses[${index}][course_level]" value="${level}"/>${level}</td>
+                                <td>
+                                    <select required name="courses[${index}][course_level]" class="form-control">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
+                                </td>
+<!--                                  <td><input type="hidden" name="courses[${index}][course_level]" value="${level}"/>${level}</td>-->
                               </tr>`;
                         $(".models-table tbody").append(newRow);
                         index++;
