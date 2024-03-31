@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title') {{'Degree Models'}} @endsection
 @section('content')
-    @section('scripts')
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const studentSelect = document.getElementById('student_select');
@@ -15,7 +14,6 @@
             });
         </script>
 
-    @endsection
     <!-- start page content -->
     <div class="page-content-wrapper">
         <div class="page-content">

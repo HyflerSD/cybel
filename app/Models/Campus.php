@@ -9,5 +9,8 @@ class Campus extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['description'];
+    protected $fillable = [
+        'code',
+        'description'
+    ];
 }
