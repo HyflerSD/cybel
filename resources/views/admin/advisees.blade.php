@@ -46,8 +46,6 @@
                                                         <th> Mobile </th>
                                                         <th> Email </th>
                                                         <th>Admission Date</th>
-                                                        <th> GPA </th>
-                                                        <th> Action </th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -64,15 +62,6 @@
                                                         <td><a href="mailto:shuxer@gmail.com">
                                                                 {{ $student->user->email }} </a></td>
                                                         <td class="left">{{ $student->start_date }}</td>
-                                                        <td class="left">{{ $student->gpa }}</td>
-                                                        <td>
-                                                            <a href="edit_student.html" class="tblEditBtn">
-                                                                <i class="fa fa-pencil"></i>
-                                                            </a>
-                                                            <a class="tblDelBtn">
-                                                                <i class="fa fa-trash-o"></i>
-                                                            </a>
-                                                        </td>
                                                     </tr>
                                                     @endforeach
                                                     </tbody>
