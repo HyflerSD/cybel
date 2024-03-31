@@ -116,7 +116,7 @@
                         </div>
                         <div class="card-face card-back">
                             <div class="card-body" style="text-align: center; display: flex; justify-content: center; align-items: center; height: 100%;">
-                                <p>Click here for more information on the <a href="https://mdc.edu/softwareengineering/" target="_blank" style="color: greenyellow;">Software Engineering</a> major</p>
+                                <p>Click here for more information on the <a href="https://mdc.edu/softwareengineering/" target="_blank" style="color: blue;">Software Engineering</a> major</p>
                             </div>
 
                         </div>
