@@ -59,7 +59,9 @@ Route::group(['prefix' => 'student', 'middleware' => IsStudentUser::class], func
         Route::get('/', [CoursesController::class, 'index'])->name('student.courses');
     });
     Route::group(['prefix' => 'profile'], function (){
-        Route::get('/', [StudentController::class, 'profile'])->name('student.profile');
+        Route::get('/', [StudentController::class, 'showProfiles'])->name('student.profile');
+        Route::get('/create', [StudentController::class, 'createProfile'])->name('student.create-profile');
+        Route::get('/edit', [StudentController::class, 'editProfile'])->name('student.edit-profile');
         Route::post('/save-profile', [StudentController::class, 'saveProfile'])->name('student.save-profile');
     });
 });

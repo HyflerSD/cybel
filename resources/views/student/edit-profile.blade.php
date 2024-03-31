@@ -12,77 +12,187 @@
             <div class="page-bar">
                 <div class="page-title-breadcrumb">
                     <div class=" pull-left">
-                        <div class="page-title">Student Profile</div>
+                        <div class="page-title">Add Profile</div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <!-- BEGIN PROFILE SIDEBAR -->
-                    @foreach($studentProfiles as $profile)
-                        <div class="profile-sidebar">
-                            <div class="card">
-                                <div class="card-head">
-                                    <header>
-                                        @switch ($profile->priority)
-                                        @case('1')
-                                            {{'First Preference'}}
-                                            @break
-                                        @case('2')
-                                            {{'Second Preference'}}
-                                            @break
-                                        @case('3')
-                                            {{'Third Preference'}}
-                                            @break
-                                        @default
-                                            {{ '' }}
-                                        @endswitch
-                                    </header>
-                            </div>
-                            <div class="card-body no-padding height-9">
-                                <ul class="list-group list-group-unbordered">
-                                    <li class="list-group-item">
-                                        <b>{{ 'Degree Path' }}</b>
-                                        <div class="profile-desc-item pull-right">{{ $profile->concentrations->name}}</div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>{{ 'Campus' }}</b>
-                                        <div class="profile-desc-item pull-right">{{ $profile->campus->description}}</div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>{{ 'Courses Per Semester' }}</b>
-                                        <div class="profile-desc-item pull-right">{{ $profile->courses_per_semester}}</div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>{{ 'Expected Graduation' }}</b>
-                                        <div class="profile-desc-item pull-right">{{ $profile->expected_graduation_date}}</div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>{{ 'Preferred Time' }}</b>
-                                        <div class="profile-desc-item pull-right">{{ implode(',', json_decode($profile->time_of_day))}}</div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>{{ 'Preferred Days' }}</b>
-                                        <div class="profile-desc-item pull-right">{{ implode(',', json_decode($profile->days_of_week))}}</div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>{{ 'Mode Of Instruction' }}</b>
-                                        <div class="profile-desc-item pull-right">{{ ucfirst($profile->mode_of_instruction)}}</div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>{{ 'Career Preference' }}</b>
-                                        <div class="profile-desc-item pull-right">{{ $profile->interest_area}}</div>
-                                    </li>
-                                </ul>
-                                <div class="profile-desc">
-                                    <b>{{ 'Degree Description' }}</b>
-                                    {{ $profile->concentrations->description }}
+                    <!-- BEGIN PROFILE CONTENT -->
+                    <div class="profile-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-head">
+                                        <header>Enter Your Preferences</header>
+                                    </div>
+                                    <div class="card-body" id="bar-parent">
+                                        <form method="POST" action="{{ route('student.save-profile') }}" id="form_sample_1" class="form-horizontal">
+                                            <div class="form-group row">
+                                                <label class="col-lg-3 col-md-4 control-label">Select Profile
+                                                </label>
+                                                <div class="col-lg-9 col-md-8">
+                                                    <select id="profileSelector" class="form-select">
+                                                        @foreach ($studentProfiles as $profile)
+                                                            <option value="{{ $profile->id }}">{{ $profile->priority }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            @csrf
+                                            <div class="form-body">
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-md-4 control-label">Degree Path
+                                                    </label>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select required name="concentration_code" class="form-select" id="profile_preference">
+                                                            <option value="S9501">Software Engineering</option>
+                                                            <option disabled value="IST"> Networking | future feature</option>
+                                                            <option disabled value="CIST">Computer Information Systems | future feature</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-md-4 control-label">Campus
+                                                    </label>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select required name="campus_code" class="form-select" id="campus-select">
+                                                            <option value="nc">North</option>
+                                                            <option value="wc">Wolfson</option>
+                                                            <option value="kc">Kendall</option>
+                                                            <option value="dc">Doral</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-md-4 control-label">Profile Preference
+                                                    </label>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select required name="priority" class="form-select" id="profile_priority">
+                                                            <option value="1">First Preference</option>
+                                                            <option disabled value="2">Second Preference| future feature</option>
+                                                            <option disabled value="3">Third Preference| future feature</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-md-4 control-label">Course Per Semester
+                                                    </label>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select required name="courses_per_semester" class="form-select" id="courses_per_semester">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-md-3">Expected Graduation
+                                                    </label>
+                                                    <div class="col-md-5">
+                                                        <input readonly disabled type="text" value="" name="expected_graduation_date" placeholder="pending map generation"
+                                                               class="form-control input-height" /> </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-md-4 control-label">Time Of Day
+                                                    </label>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select required name="time_of_day[]" id="time_of_day" class="form-control select2-multiple" multiple>
+                                                            <option value="Morning">Morning</option>
+                                                            <option value="Afternoon">Afternoon</option>
+                                                            <option value="Night">Night</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-md-4 control-label">Days Of Week
+                                                    </label>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select required name="days_of_week[]" id="days_of_week" class="form-control select2-multiple" multiple>
+                                                            <optgroup label="WeekDays">
+                                                                <option value="MWF">Monday, Wednesday, Friday (MWF)</option>
+                                                                <option value="TTh">Tuesday, Thursday (TTh)</option>
+                                                                <option value="MW">Monday, Wednesday (MW)</option>
+                                                                <option value="MF">Monday, Friday (MF)</option>
+                                                                <option value="WF">Wednesday, Friday (WF)</option>
+                                                                <option value="T">Tuesday Only (T)</option>
+                                                                <option value="Th">Thursday Only (Th)</option>
+                                                                <option value="M">Monday Only (M)</option>
+                                                                <option value="W">Wednesday Only (W)</option>
+                                                                <option value="F">Friday Only (F)</option>
+                                                            </optgroup>
+                                                            <optgroup label="Weekends">
+                                                                <option value="S">Saturday</option>
+                                                                <option value="Su">Sunday</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
 
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-md-4 control-label"> Mode of Instruction
+                                                    </label>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select name="mode_of_instruction" class="form-select" id="mode_of_instruction">
+                                                            <option value="blended">Blended</option>
+                                                            <option value="live">Live</option>
+                                                            <option value="in_person">In Person</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-md-4 control-label"> Area of Interest
+                                                    </label>
+                                                    <div class="col-lg-9 col-md-8">
+                                                        <select required name="interest_area" class="form-select" id="area_of_interest">
+                                                            <option value="Front-end Development">Front-end Development</option>
+                                                            <option value="Backend Development">Back-end Development</option>
+                                                            <option value="Full Stack Development">Full Stack Development</option>
+                                                            <option value="Mobile App Development">Mobile App Development</option>
+                                                            <option value="Embedded Systems">Embedded Systems</option>
+                                                            <option value="Artificial Intelligence">Artificial Intelligence</option>
+                                                            <option value="Machine Learning">Machine Learning</option>
+                                                            <option value="Data Science">Data Science</option>
+                                                            <option value="Cyber Security">Cyber Security</option>
+                                                            <option value="Cloud Computing">Cloud Computing</option>
+                                                            <option value="Networking">Networking</option>
+                                                            <option value="Blockchain">Blockchain</option>
+                                                            <option value="Robotics">Robotics</option>
+                                                            <option value="Game Development">Game Development</option>
+                                                            <option value="Ui Ux Design">UI/UX Design</option>
+                                                            <option value="Virtual Reality">Virtual Reality</option>
+                                                            <option value="Augmented Reality">Augmented Reality</option>
+                                                            <option value="Quantum Computing">Quantum Computing</option>
+                                                            <option value="Internet Of Things">Internet of Things</option>
+                                                            <option value="Ethical Hacking">Ethical Hacking</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                <div class="form-actions">
+                                                    <div class="row">
+                                                        <div class="offset-md-3 col-md-9">
+                                                            <button type="submit"
+                                                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-circle btn-primary">Submit</button>
+                                                            <button type="button"
+                                                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-circle btn-danger">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- END PROFILE CONTENT -->
                     </div>
-                    @endforeach
                 </div>
             </div>
         </div>

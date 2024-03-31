@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class StudentProfile extends Model
 {
@@ -28,6 +30,16 @@ class StudentProfile extends Model
     public function student() : BelongsTo
     {
         return $this->belongsTo(Student::class);
+    }
+
+    public function concentrations() : BelongsTo
+    {
+        return $this->belongsTo(Concentration::class, 'concentration_code', 'concentration_code');
+    }
+
+    public function campus() : BelongsTo
+    {
+        return $this->belongsTo(Campus::class, 'campus_id');
     }
 }
 

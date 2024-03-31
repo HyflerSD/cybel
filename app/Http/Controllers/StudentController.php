@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Campus;
-use App\Models\Student;
+use App\Models\Concentration;
+use App\Models\StudentProfile;
 use App\Service\StudentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Service\CampusService;
+use League\Csv\Exception;
+
 class StudentController extends Controller
 {
     /**
@@ -19,6 +20,7 @@ class StudentController extends Controller
     public function __construct(
         protected StudentService $studentService,
         protected CampusService $campusService,
+        protected  Request $request
     )
     {
         $this->middleware('auth');
@@ -34,12 +36,26 @@ class StudentController extends Controller
         return view('student.dashboard');
 
     }
-    public function profile()
+    public function showProfiles()
     {
-        return view('student.profile');
+        $student = (session()->get('student'));
+        $studentProfiles = $this->studentService->getProfiles($student->user_id);
+        return view('student.profile', compact('studentProfiles'));
 
     }
 
+    public function createProfile(Request $request)
+    {
+        return view('student.create-profile');
+
+    }
+    public function editProfile(Request $request)
+    {
+        $student = (session()->get('student'));
+        $studentProfiles = $this->studentService->getProfiles($student->user_id);
+        return view('student.edit-profile', compact('studentProfiles'));
+
+    }
     public function showCreateMap()
     {
         return view('student.create-map');
@@ -58,7 +74,7 @@ class StudentController extends Controller
         $mergedProfile = $profileData->merge([
             'user_id' => $student->user_id,
             'campus_id' => $campus->id,
-            'priority' => $campus->id,
+            'priority' => $profileData['priority'],
             'interest_area' => $profileData['interest_area'],
             'days_of_week' => json_encode($profileData['days_of_week']),
             'time_of_day' => json_encode($profileData['time_of_day']),
@@ -79,5 +95,6 @@ class StudentController extends Controller
         return redirect()->route('student.profile');
 //        return redirect()->withErrors('Unable to save profile.')->withInput(); TODO: fix redirect
     }
+
 
 }

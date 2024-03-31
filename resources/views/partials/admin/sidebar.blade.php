@@ -101,7 +101,15 @@ $user = auth()->user();
                             <span class="title">Profile</span><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li class="nav-item">
-                                <a href="{{ route('student.profile')  }}" class="nav-link "> <span class="title">View Profile</span>
+                                <a href="{{ route('student.profile')  }}" class="nav-link "> <span class="title">View Profiles</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('student.create-profile')  }}" class="nav-link "> <span class="title">Create Profile</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('student.edit-profile')  }}" class="nav-link "> <span class="title">Edit Profile</span>
                                 </a>
                             </li>
                         </ul>

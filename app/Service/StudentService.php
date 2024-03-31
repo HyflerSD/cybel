@@ -9,6 +9,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use League\Csv\Exception;
 use League\Csv\Reader;
 class StudentService extends Seeder
 {
@@ -103,5 +104,20 @@ class StudentService extends Seeder
         }
         return false;
         //logic will be written here to handle the storing of this data to the database
+    }
+
+    public function getProfiles(int $userId) : mixed
+    {
+        try
+        {
+            return StudentProfile::with(['concentrations', 'campus'])
+                ->where('user_id', $userId)
+                ->get();
+        } catch (\Exception $e)
+        {
+            Log::error($e->getMessage());
+            Log::error($e);
+        }
+        return [];
     }
 }
