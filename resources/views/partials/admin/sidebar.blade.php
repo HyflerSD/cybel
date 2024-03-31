@@ -15,7 +15,7 @@ $user = auth()->user();
                 <li class="sidebar-user-panel">
                     <div class="sidebar-user">
                         <div class="sidebar-user-picture">
-                            <img alt="image" src="/admin/assets/img/user/user8.jpg">
+                            <img alt="image" src="/admin/assets/img/user/profile_pic.jpg">
                         </div>
                         <div class="sidebar-user-details">
                             <div class="user-name">{{ $user->fname  . ' ' . $user->lname }}</div>
