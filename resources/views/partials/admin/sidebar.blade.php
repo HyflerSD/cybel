@@ -189,12 +189,14 @@ $user = auth()->user();
                     <a href="#" class="nav-link nav-toggle"> <i data-feather="briefcase"></i>
                         <span class="title">Department</span> <span class="arrow"></span>
                     </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a class="nav-link"> <span class="title">{{ session('advisorDepartment')->name }}</span>
-                            </a>
-                        </li>
-                    </ul>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://mdc.edu/entec/programs.aspx?gad_source=1&gclid=Cj0KCQjwk6SwBhDPARIsAJ59Gwc3EypEBg_x8PRbw_DSqrzS-pVyHnaEhyQzqMOFhvofTEgYm-OBNzwaAnkPEALw_wcB&gclsrc=aw.ds" target="_blank">
+                                    <span class="title">{{ session('advisorDepartment')->name }}</span>
+                                </a>
+                            </li>
+                        </ul>
+
                     @endif
                 </li>
                 @if($user->is_advisor)
