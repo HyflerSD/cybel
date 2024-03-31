@@ -15,14 +15,15 @@ $user = auth()->user();
                 <li class="sidebar-user-panel">
                     <div class="sidebar-user">
                         <div class="sidebar-user-picture">
-                            <img alt="image" src="/admin/assets/img/pages/Cybel logo.png">
+                            <img alt="image" src="/admin/assets/img/user/user8.jpg">
                         </div>
                         <div class="sidebar-user-details">
                             <div class="user-name">{{ $user->fname  . ' ' . $user->lname }}</div>
                             <div class="user-role">
-                                @if($user->is_advisor) Advisor
+                                @if($user->is_advisor)
+                                    <strong>Campus: </strong>{{session('advisorCampus')->description}}
                                 @else
-                                    <strong>Student ID:</strong> {{ session('student')->student_id }}
+                                    <strong>Student ID: </strong> {{ session('student')->student_id }}
                                 @endif
 
                             </div>
@@ -182,7 +183,7 @@ $user = auth()->user();
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item">
-                            <a class="nav-link "> <span class="title">Entec</span>
+                            <a class="nav-link"> <span class="title">{{ session('advisorDepartment')->name }}</span>
                             </a>
                         </li>
                     </ul>
@@ -194,7 +195,7 @@ $user = auth()->user();
                         <i data-feather="mail"></i>
                         <span class="title">Email</span>
                         <span class="arrow"></span>
-                        <span class="label label-rouded label-menu label-danger">new</span>
+{{--                        <span class="label label-rouded label-menu label-danger">new</span>--}}
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item">
