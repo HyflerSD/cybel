@@ -2,9 +2,11 @@
 
 namespace App\Service;
 use App\Models\DegreeMap;
+use App\Models\StudentProfile;
 use App\Models\User;
 use App\Models\Student;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use League\Csv\Reader;
@@ -85,5 +87,21 @@ class StudentService extends Seeder
             Log::error($e->getMessage());
         }
         return $advisor;
+    }
+
+    public function saveProfileModel(Collection $profileData) : bool
+    {
+        try
+        {
+            StudentProfile::create($profileData->toArray());
+            return true;
+        } catch (\Exception $e)
+        {
+            Log::error($e->getMessage());
+            Log::error($e);
+
+        }
+        return false;
+        //logic will be written here to handle the storing of this data to the database
     }
 }

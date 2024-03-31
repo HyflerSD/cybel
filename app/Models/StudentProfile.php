@@ -21,6 +21,8 @@ class StudentProfile extends Model
         'total_credits_earned',
         'expected_graduation_date',
     ];
+
+    public $timestamps = true;
     use HasFactory;
 
     public function student() : BelongsTo

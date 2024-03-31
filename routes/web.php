@@ -60,6 +60,7 @@ Route::group(['prefix' => 'student', 'middleware' => IsStudentUser::class], func
     });
     Route::group(['prefix' => 'profile'], function (){
         Route::get('/', [StudentController::class, 'profile'])->name('student.profile');
+        Route::post('/save-profile', [StudentController::class, 'saveProfile'])->name('student.save-profile');
     });
 });
 Auth::routes();
