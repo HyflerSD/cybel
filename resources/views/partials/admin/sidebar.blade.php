@@ -15,7 +15,7 @@ $user = auth()->user();
                 <li class="sidebar-user-panel">
                     <div class="sidebar-user">
                         <div class="sidebar-user-picture">
-                            <img alt="image" src="/admin/assets/img/user/user8.jpg">
+                            <img alt="image" src="/admin/assets/img/user/profile_pic.jpg">
                         </div>
                         <div class="sidebar-user-details">
                             <div class="user-name">{{ $user->fname  . ' ' . $user->lname }}</div>
@@ -102,7 +102,15 @@ $user = auth()->user();
                             <span class="title">Profile</span><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li class="nav-item">
-                                <a href="{{ route('student.profile')  }}" class="nav-link "> <span class="title">View Profile</span>
+                                <a href="{{ route('student.profile')  }}" class="nav-link "> <span class="title">View Profiles</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('student.create-profile')  }}" class="nav-link "> <span class="title">Create Profile</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('student.edit-profile')  }}" class="nav-link "> <span class="title">Edit Profile</span>
                                 </a>
                             </li>
                         </ul>
@@ -181,12 +189,14 @@ $user = auth()->user();
                     <a href="#" class="nav-link nav-toggle"> <i data-feather="briefcase"></i>
                         <span class="title">Department</span> <span class="arrow"></span>
                     </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a class="nav-link"> <span class="title">{{ session('advisorDepartment')->name }}</span>
-                            </a>
-                        </li>
-                    </ul>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://mdc.edu/entec/programs.aspx?gad_source=1&gclid=Cj0KCQjwk6SwBhDPARIsAJ59Gwc3EypEBg_x8PRbw_DSqrzS-pVyHnaEhyQzqMOFhvofTEgYm-OBNzwaAnkPEALw_wcB&gclsrc=aw.ds" target="_blank">
+                                    <span class="title">{{ session('advisorDepartment')->name }}</span>
+                                </a>
+                            </li>
+                        </ul>
+
                     @endif
                 </li>
                 @if($user->is_advisor)

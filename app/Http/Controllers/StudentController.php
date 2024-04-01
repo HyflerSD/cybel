@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Student;
+use App\Models\Concentration;
+use App\Models\StudentProfile;
+use App\Service\StudentService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use App\Service\CampusService;
+use League\Csv\Exception;
 
 class StudentController extends Controller
 {
@@ -13,7 +17,11 @@ class StudentController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(
+        protected StudentService $studentService,
+        protected CampusService $campusService,
+        protected  Request $request
+    )
     {
         $this->middleware('auth');
     }
@@ -28,19 +36,84 @@ class StudentController extends Controller
         return view('student.dashboard');
 
     }
-    public function profile()
+    public function showProfiles()
     {
-        return view('student.profile');
+        $student = (session()->get('student'));
+        $studentProfiles = $this->studentService->getProfiles($student->user_id);
+        return view('student.profile', compact('studentProfiles'));
 
     }
 
+    public function createProfile(Request $request)
+    {
+        return view('student.create-profile');
+
+    }
+    public function editProfile(Request $request)
+    {
+        $student = (session()->get('student'));
+        $studentProfiles = $this->studentService->getProfiles($student->user_id);
+        return view('student.edit-profile', compact('studentProfiles'));
+
+    }
     public function showCreateMap()
     {
-        return view('student.create-map');
+        $student = (session()->get('student'));
+        $studentProfiles = $this->studentService->getProfiles($student->user_id);
+        return view('student.create-map', compact('studentProfiles'));
     }
     public function show()
     {
         return view('student.completed-courses');
     }
+
+    public function saveProfile(Request $request) : RedirectResponse
+    {
+        $student = (session()->get('student'));
+        $profileData = $request->collect()->except('_token');
+        $campus = $this->campusService->getCampusByCode($profileData->get('campus_code'));
+
+        $mergedProfile = $profileData->merge([
+            'user_id' => $student->user_id,
+            'campus_id' => $campus->id,
+            'priority' => $profileData['priority'],
+            'interest_area' => $profileData['interest_area'],
+            'days_of_week' => json_encode($profileData['days_of_week']),
+            'time_of_day' => json_encode($profileData['time_of_day']),
+        ])->except('campus_code');
+
+        try
+        {
+            $result = $this->studentService->saveProfileModel($mergedProfile);
+            if($result)
+            {
+                return redirect()
+                    ->route('student.profile')
+                    ->with(
+                        'success',
+                        'Successfully Added Profile!'
+                    );
+            }
+        } catch (\Exception $e)
+        {
+            Log::error($e->getMessage());
+            Log::error($e);
+        }
+        return redirect()->back()
+            ->with(
+                'error',
+                'Locked until version 2.0!'
+            );
+    }
+    public function updateProfile(Request $request) : RedirectResponse
+    {
+        return redirect()
+            ->route('student.edit-profile')
+            ->with(
+                'error',
+                'Locked until version 2.0!'
+            );
+    }
+
 
 }
