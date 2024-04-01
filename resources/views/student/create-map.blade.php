@@ -52,7 +52,6 @@
                                                     @if($profile->priority == 1)
                                                         <option value="1">{{ $profile->concentrations->name }}</option>
                                                     @else
-
                                                         <option disabled value="1">{{ $profile->concentrations->name }}</option>
                                                     @endif
                                                 @endforeach

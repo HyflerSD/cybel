@@ -41,13 +41,11 @@
                                                     <thead>
                                                     <tr>
                                                         <th></th>
-                                                        <th> Roll No </th>
                                                         <th> Name </th>
                                                         <th> Department </th>
                                                         <th> Mobile </th>
                                                         <th> Email </th>
                                                         <th>Admission Date</th>
-                                                        <th> Action </th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -55,9 +53,8 @@
                                                     @foreach($students as  $student)
                                                     <tr class="odd gradeX">
                                                         <td class="patient-img">
-                                                            <img src="../assets/img/user/user1.jpg" alt="">
+                                                            <img alt="image" src="/admin/assets/img/user/profile_pic.jpg">
                                                         </td>
-                                                        <td class="left">18</td>
                                                         <td>{{ $student->user->fname . ' ' .  $student->user->lname}}</td>
                                                         <td class="left">Software Engineering</td>
                                                         <td><a href="tel:4444565756">
@@ -65,14 +62,6 @@
                                                         <td><a href="mailto:shuxer@gmail.com">
                                                                 {{ $student->user->email }} </a></td>
                                                         <td class="left">{{ $student->start_date }}</td>
-                                                        <td>
-                                                            <a href="edit_student.html" class="tblEditBtn">
-                                                                <i class="fa fa-pencil"></i>
-                                                            </a>
-                                                            <a class="tblDelBtn">
-                                                                <i class="fa fa-trash-o"></i>
-                                                            </a>
-                                                        </td>
                                                     </tr>
                                                     @endforeach
                                                     </tbody>

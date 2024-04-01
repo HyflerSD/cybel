@@ -190,7 +190,7 @@
                 <li class="dropdown dropdown-user">
                     <a class="dropdown-toggle" data-bs-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
-                        <img alt="" class="img-circle" src="/admin/assets/img/user/user8.jpg" />
+                        <img alt="" class="img-circle" src="/admin/assets/img/user/profile_pic.jpg" />
 
                         <span class="username username-hide-on-mobile"> {{ $user->fname . ' ' . $user->lname }}
                     </a>
