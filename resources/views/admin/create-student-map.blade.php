@@ -39,18 +39,21 @@
 {{--                                    here</li>--}}
 {{--                            </ul>--}}
                         </div>
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <div class="card-body" id="bar-parent">
                             <form method="POST" action="{{ route('admin.handle-create-student-map') }}" id="form_sample_1" class="form-horizontal">
                                 @csrf
                                 <div class="form-body">
-                                    <div class="form-group row">
-                                        <label class="control-label col-md-3">Concentration
-                                            <span class="required"> * </span>
-                                        </label>
-                                        <div class="col-md-5">
-                                            <input readonly type="text" id="concentration_code" placeholder="Concentration Code" name="concentration_code"
-                                                   class="form-control input-height" /> </div>
-                                    </div>
                                     <div class="form-group row">
                                         <label class="control-label col-md-3">Student<span class="required"> *
 													</span>
@@ -68,36 +71,6 @@
                                                 @endforeach
                                             </select>
                                             <input readonly hidden type="text" id="student_id" name="student_id" class="form-control input-height" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="control-label col-md-3">Courses Per Semester<span class="required"> *
-													</span>
-                                        </label>
-                                        <div class="col-md-5">
-                                            <select required class="form-select input-height" name="courses_per_semester">
-                                                <option value="">Select...</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="control-label col-md-3">Topic Of Interest<span class="required">
-														* </span>
-                                        </label>
-                                        <div class="col-md-5">
-                                            <select class="form-select input-height"  name="elective_interests">
-                                                <option value="">Select...</option>
-                                                <option value="game_development">Game Development</option>
-                                                <option value="artificial_intelligence">Artificial Intelligence</option>
-                                                <option value="micro_processors">Micro Processors</option>
-                                                <option value="operating_systems">Operating System</option>
-                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-actions">

@@ -161,13 +161,13 @@ $user = auth()->user();
                                     </a>
                             </li>
                         <li class="nav-item">
-                            <a href="add_course.html" class="nav-link "> <span class="title">Add
+                            <a href="#" class="nav-link "> <span class="title">Add
 												Course</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="edit_course.html" class="nav-link "> <span class="title">Edit
+                            <a href="#" class="nav-link "> <span class="title">Edit
 												Course</span>
                             </a>
                         </li>

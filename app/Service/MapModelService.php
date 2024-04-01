@@ -5,6 +5,7 @@ use App\Models\MapModel;
 use Carbon\Carbon;
 use Cassandra\Map;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -27,14 +28,18 @@ class MapModelService
         return '';
     }
 
-    public function prepareMapData(mixed $profile, bool $advisorGenerated, bool $genericMap = false) : array
+    public function prepareMapData(mixed $profile, bool $advisorGenerated, bool $genericMap = false) : RedirectResponse
     {
         $cybelData['data'] = [
            'student_profile' => $profile,
            'generic' => $genericMap
         ];
-        dd($cybelData);
-        return [];
+        return redirect()
+            ->route('admin.create-student-map-form')
+            ->with(
+                'success',
+                'Successfully Generated Student Map'
+            );
     }
 
    public function saveDegreeModel($modelData) : JsonResponse

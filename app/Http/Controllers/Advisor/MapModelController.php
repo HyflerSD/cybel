@@ -133,14 +133,14 @@ class MapModelController extends Controller
                 $preparedData = $this->mapModelService->prepareMapData($studentProfile, true);
             }
 
-            $response = $this->cybelService->generateMap($preparedData);
-            if($response)
+            $response = $this->cybelService->generateMap($preparedData->content());
+            if($response->status() == 200)
             {
                 return redirect()
-                    ->route('admin.dashboard')
+                    ->route('admin.create-student-map-form')
                     ->with(
                         'success',
-                        'Map generated'
+                        $response->getData()->message
                     );
             }
 
@@ -151,7 +151,7 @@ class MapModelController extends Controller
         }
 
         return redirect()
-            ->route('admin.dashboard')
+            ->route('admin.create-student-map-form')
             ->with(
                 'error',
                 'Error, generating map'
