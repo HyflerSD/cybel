@@ -39,11 +39,11 @@ Route::group(['prefix' => 'admin', 'middleware' => IsValidUser::class], function
     Route::group(['prefix' => 'models'], function () {
         Route::get('/', [MapModelController::class, 'index'])->name('admin.models');
         Route::get('/create-model', [MapModelController::class, 'createModel'])->name('admin.create-model');
+        Route::post('/create-model', [MapModelController::class, 'saveModel'])->name('admin.create-model');
         Route::get('/advisee-maps', [MapModelController::class, 'adviseeMaps'])->name('admin.advisee-maps');
         Route::get('/create-student-map', [MapModelController::class, 'createStudentMap'])->name('admin.create-student-map-form');
         Route::post('/create-student-map', [MapModelController::class, 'generateMap'])->name('admin.handle-create-student-map');
         Route::post('/approve-student-map', [MapModelController::class, 'approveStudentMap'])->name('admin.approve-student-map');
-        Route::post('/create-model', [MapModelController::class, 'print'])->name('admin.create-model');
 //        Route::post('', [MapModelController::class, 'print'])->name('admin.create-model');
     });
 });

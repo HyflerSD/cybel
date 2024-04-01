@@ -11,4 +11,9 @@ class CybelService
     {
         return [];
     }
+
+    public function syncDegreeModel(string $preparedData) : bool
+    {
+        return false;
+    }
 }

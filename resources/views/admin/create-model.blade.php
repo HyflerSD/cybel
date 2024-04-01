@@ -48,7 +48,6 @@
                                         <option value="6">6</option>
                                     </select>
                                 </td>
-<!--                                  <td><input type="hidden" name="courses[${index}][course_level]" value="${level}"/>${level}</td>-->
                               </tr>`;
                         $(".models-table tbody").append(newRow);
                         index++;
@@ -183,6 +182,17 @@
                     </div>
                 </div>
             </div>
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-head">
@@ -198,13 +208,27 @@
                             <div class="col-md-6 col-sm-6 col-6">
                                 <div class="btn-group">
                                     <button id="remove-course" class="btn btn-danger">
-                                        Remove Course <i class="fa fa-plus"></i>
+                                        Remove Course <i class="fa fa-minus"></i>
                                     </button>
                                 </div>
                             </div>
+
                         </div>
                         <form method="POST" id="create-model" action="{{ route('admin.create-model') }}" >
                             @csrf <!-- Can't hack me son -->
+                            <div style="margin-bottom: 8px" class="col-md-4 col-sm-4 col-4 d-flex pull-right"> <!-- Use d-flex and align-items-center for proper alignment -->
+                                <label class="me-2">Concentration</label> <!-- me-2 adds a margin to the right of the label -->
+                                <select required class="form-select" id="selitemIcon" name="concentration">
+                                    @foreach($concentrations as $concentration)
+                                        @if($concentration->concentration_code == 'S9501')
+                                            <option disabled value="">{{ "Concentration" }}</option>
+                                            <option value="{{ $concentration->concentration_code }}">{{ $concentration->name }}</option>
+                                        @else
+                                            <option disabled value="">{{ $concentration->name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
                             <table id="example4"
                                    class="table models-table table-striped table-bordered table-hover table-checkable order-column"
                                    style="width: 100%">
