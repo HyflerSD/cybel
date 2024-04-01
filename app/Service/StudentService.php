@@ -130,4 +130,15 @@ class StudentService extends Seeder
                 ->where('user_id', $userId)
                 ->count() >= 1;
     }
+
+    /**
+     * @param mixed $user_id
+     * @param int $profilePriority
+     * @return mixed
+     */
+    public function getProfileByPriority(mixed $user_id, int $profilePriority)
+    {
+        return StudentProfile::where('user_id', $user_id )
+            ->where('priority',$profilePriority)->first();
+    }
 }

@@ -2,14 +2,14 @@
 @section('title') {{'Advisor Dashboard'}} @endsection
 @section('content')
 
-    <style>
+{{--    <style>--}}
 
-        .card:hover {
-            box-shadow: 0 0 10px rgba(173, 216, 230, 0.8); /* Add a box-shadow effect */
-            border: 2px solid #f0f0f0; /* Add a border */
-            cursor: pointer; /* Change cursor to pointer */
-        }
-    </style>
+{{--        .card:hover {--}}
+{{--            box-shadow: 0 0 10px rgba(173, 216, 230, 0.8); /* Add a box-shadow effect */--}}
+{{--            border: 2px solid #f0f0f0; /* Add a border */--}}
+{{--            cursor: pointer; /* Change cursor to pointer */--}}
+{{--        }--}}
+{{--    </style>--}}
 
     <!-- start page content -->
     <div class="page-content-wrapper">
@@ -39,7 +39,7 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col mt-0">
-                                                    <h4 class="info-box-title">Total Students</h4>
+                                                    <h4 class="info-box-title">Assigned Students</h4>
                                                 </div>
                                                 <div class="col-auto">
                                                     <div class="l-bg-green info-icon">
@@ -49,17 +49,6 @@
                                             </div>
                                             <h1 class="mt-3 mb-3 info-box-title col-green">{{ $students->count() }}</h1>
                                             <div class="content" style="max-height: 100px; overflow-y: auto;">
-                                                <style>
-                                                    .content::-webkit-scrollbar {
-                                                        display: none; /* Hide scrollbar by default */
-                                                    }
-                                                    .content:hover::-webkit-scrollbar {
-                                                        display: block; /* Show scrollbar on hover */
-                                                    }
-                                                </style>
-                                                @foreach($students as $student)
-                                                    <div>{{ $student->user->fname . ' ' .  $student->user->lname}}</div>
-                                                @endforeach
                                             </div>
                                         </div>
                                     </div>

@@ -11,11 +11,29 @@
                             </div>
                         </div>
                     </div>
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    @foreach($degreeModels as $degreeModel)
+                        @php
+                        $courses = json_decode($degreeModel->courses, true);
+                        @endphp
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-head">
-                                    <header>{{ 'Concentration Code: S9501 | Effective Date: 09-22-2029' }}</header>
+                                    <header>{{
+                                    'Concentration Code: ' . $degreeModel['concentration_code']
+                                    . ' | Effective Date: ' .  $degreeModel['effective_date']
+                                    }}</header>
                                     <div class="tools">
                                         <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                                         <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
@@ -23,21 +41,21 @@
                                 </div>
                                 <div class="card-body ">
                                     <table
-                                        class="table table-striped table-bordered table-hover table-checkable order-column"
-                                        style="width: 100%" id="example4">
+                                        class="table table-striped search-table table-bordered table-hover table-checkable order-column"
+                                        style="width: 100%">
                                         <thead>
                                         <tr>
                                             <th>
                                             </th>
-                                            <th> Course Name </th>
-                                            <th> Course Code </th>
-                                            <th> Course Level </th>
-                                            <th> Type </th>
-                                            <th> Credits </th>
+                                            <th>Code</th>
+                                            <th>Priority Index </th>
+                                            <th>Level</th>
+                                            <th>Level Combination</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr class="odd gradeX">
+
                                             @foreach($courses as $course)
 {{--                                             todo: fill this with actual model data @foreach($models as $model)--}}
                                                 <td>
@@ -46,22 +64,10 @@
                                                         <span></span>
                                                     </label>
                                                 </td>
-                                                <td> {{ $course->course_name }} </td>
-                                                <td> {{ $course->course_code }} </td>
-                                                <td>
-                                                    <span class="label label-sm label-warning"> {{ $course->course_level }} </span>
-                                                </td>
-                                                @switch($course)
-                                                    @case($course->core_ed == 1)
-                                                        <td> {{ 'Core' }} </td>
-                                                        @break
-                                                    @case($course->elective_ed == 1)
-                                                        <td> {{ 'Elective' }} </td>
-                                                        @break
-                                                    @default
-                                                        <td> {{ 'General' }} </td>
-                                                @endswitch
-                                                <td> {{ $course->credits }} </td>
+                                                <td> {{ $course['course_code'] }} </td>
+                                                <td> {{ $course['priority_index'] }} </td>
+                                                <td> {{ $course['course_level'] }} </td>
+                                                <td> {{ implode(',', json_decode($course['level_combination'])) }} </td>
                                         </tr>
                                         @endforeach
                                         </tbody>
@@ -70,6 +76,7 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
             <!-- end page content -->

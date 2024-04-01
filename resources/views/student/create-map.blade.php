@@ -27,6 +27,17 @@
                         <div class="card-head">
                             <header>Generate Map</header>
                         </div>
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <div class="card-body" id="bar-parent">
                             <form method="POST" action="{{ route('student.create-map') }}" id="form_sample_1" class="form-horizontal">
                                 @csrf
@@ -40,9 +51,7 @@
                                                 @foreach($studentProfiles as $profile)
                                                     @if($profile->priority == 1)
                                                         <option value="1">{{ $profile->concentrations->name }}</option>
-                                                        <option hidden selected value="1"></option>
                                                     @else
-
                                                         <option disabled value="1">{{ $profile->concentrations->name }}</option>
                                                     @endif
                                                 @endforeach
