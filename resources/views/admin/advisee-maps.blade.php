@@ -24,8 +24,8 @@
                                 </div>
                                 <div class="card-body ">
                                     <table
-                                        class="table table-striped table-bordered table-hover table-checkable order-column"
-                                        style="width: 100%" id="example4">
+                                        class="table search-table table-striped table-bordered table-hover table-checkable order-column"
+                                        style="width: 100%">
                                         <thead>
                                             <tr>
                                                 <th>

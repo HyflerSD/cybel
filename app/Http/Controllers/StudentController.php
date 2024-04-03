@@ -1,14 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Concentration;
-use App\Models\StudentProfile;
 use App\Service\StudentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Service\CampusService;
-use League\Csv\Exception;
 
 class StudentController extends Controller
 {
@@ -60,6 +57,15 @@ class StudentController extends Controller
     {
         $student = (session()->get('student'));
         $studentProfiles = $this->studentService->getProfiles($student->user_id);
+        if(!$studentProfiles->count())
+        {
+            return redirect()
+                ->route('student.create-profile')
+                ->with(
+                    'error',
+                    'You must create a profile before generating a map'
+                );
+        }
         return view('student.create-map', compact('studentProfiles'));
     }
     public function show()
@@ -88,7 +94,7 @@ class StudentController extends Controller
             if($result)
             {
                 return redirect()
-                    ->route('student.profile')
+                    ->route('student.create-map')
                     ->with(
                         'success',
                         'Successfully Added Profile!'

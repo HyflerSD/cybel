@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\DB;
 
 class CybelService
 {
@@ -13,7 +12,7 @@ class CybelService
         return response()->json([
             'message' => 'Successfully Generated Student Map',
             'data' => 'succesdata' //TODO send data to cybel
-            ]);
+            ], 200);
     }
 
     public function syncDegreeModel(string $preparedData) : bool
