@@ -2,14 +2,10 @@
 
 namespace App\Service;
 use App\Models\MapModel;
+use App\Models\StudentHistory;
 use Carbon\Carbon;
-use Cassandra\Map;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-use League\Csv\Reader;
 
 class MapModelService
 {
@@ -28,18 +24,40 @@ class MapModelService
         return '';
     }
 
-    public function prepareMapData(mixed $profile, bool $advisorGenerated, bool $genericMap = false) : RedirectResponse
+    public function prepareMapData(mixed $profile, bool $advisorGenerated, bool $genericMap = false) : string
     {
-        $cybelData['data'] = [
-           'student_profile' => $profile,
-           'generic' => $genericMap
+        $studentHistory = StudentHistory::where('user_id', $profile['user_id'])->get();
+        $preparedHistory = [];
+        $preparedProfile = [
+            'user_id' => $profile['user_id'],
+            'priority' => $profile['priority'],
+            'expected_graduation_date' => '',
+            'time_of_day' => $profile['time_of_day'],
+            'days_of_week' => $profile['days_of_week'],
+            'interest_area' => $profile['interest_area'],
+            'concentration_code' => $profile['concentration_code'],
+            'mode_of_instruction' => $profile['mode_of_instruction'],
+            'courses_per_semester' => $profile['courses_per_semester'],
         ];
-        return redirect()
-            ->route('admin.create-student-map-form')
-            ->with(
-                'success',
-                'Successfully Generated Student Map'
-            );
+
+
+         /**
+          * TODO: Only add courses where the student actually passed, create a function that checks for passing grade
+          * Function must return a boolean
+          * */
+        foreach ($studentHistory as $item)
+        {
+            $preparedHistory['courses'][] = [
+              'course_code' => $item['course_code'],
+            ];
+        }
+        $cybelData['data'] = [
+            'campus_id' => $profile['campus_id'],
+            'student_profile' => json_encode($preparedProfile, true),
+            'student_history' => json_encode($preparedHistory, true),
+            'generic' => $genericMap,
+        ];
+        return json_encode($cybelData, true);
     }
 
    public function saveDegreeModel($modelData) : JsonResponse

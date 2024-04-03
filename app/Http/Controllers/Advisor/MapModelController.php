@@ -12,7 +12,6 @@ use App\Service\StudentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use function PHPUnit\Framework\isEmpty;
 
@@ -42,7 +41,7 @@ class MapModelController extends Controller
         }
         else
         {
-            return $this->studentGeneratedMap($user->id);
+            return $this->studentGeneratedMap();
         }
     }
     public function createModel()
@@ -73,7 +72,7 @@ class MapModelController extends Controller
         return view('admin.models', compact('degreeModels'));
     }
 
-    public function studentGeneratedMap(int $profilePriority) : RedirectResponse
+    public function studentGeneratedMap() : RedirectResponse
     {
         $student = session('student');
         $hasProfile = $this->studentService->maxProfileCount($student->user_id);
@@ -89,7 +88,8 @@ class MapModelController extends Controller
 
         try
         {
-            $profile = $this->studentService->getProfileByPriority($student->user_id, $profilePriority);
+            $profile = $this->studentService->getProfileByPriority($student->user_id, 1);
+
             if($profile)
             {
                 $preparedData = $this->mapModelService->prepareMapData($profile, false);
@@ -102,7 +102,7 @@ class MapModelController extends Controller
             Log::error($e->getMessage());
         }
 
-        if($response)
+        if($response->isSuccessful())
         {
             return redirect()
                 ->route('student.profile')
@@ -112,7 +112,7 @@ class MapModelController extends Controller
                 );
         }
         return redirect()
-            ->route('student.profile')
+            ->route('student.create-map')
             ->with(
                 'error',
                 'Error occurred while generated map. Please try again later'
