@@ -54,6 +54,7 @@ class MapModelController extends Controller
 
     public function createStudentMap()
     {
+
         $advisorId = Auth::user()->id;
         $students = $this->studentService->assignedStudents($advisorId);
         return view('admin.create-student-map', compact('students'));
@@ -134,7 +135,7 @@ class MapModelController extends Controller
             }
 
             $response = $this->cybelService->generateMap($preparedData->content());
-            if($response->status() == 200)
+            if($response->isSuccessful())
             {
                 return redirect()
                     ->route('admin.create-student-map-form')
