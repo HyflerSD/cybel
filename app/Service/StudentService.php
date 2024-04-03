@@ -141,5 +141,4 @@ class StudentService extends Seeder
         return StudentProfile::where('user_id', $user_id )
             ->where('priority',$profilePriority)->first();
     }
-
 }
