@@ -134,7 +134,7 @@ class MapModelController extends Controller
                 $preparedData = $this->mapModelService->prepareMapData($studentProfile, true);
             }
 
-            $response = $this->cybelService->generateMap($preparedData->content());
+            $response = $this->cybelService->generateMap($preparedData);
             if($response->isSuccessful())
             {
                 return redirect()
