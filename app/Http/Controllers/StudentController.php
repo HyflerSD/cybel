@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Service\StudentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Service\CampusService;
+
 
 class StudentController extends Controller
 {
@@ -14,6 +16,7 @@ class StudentController extends Controller
      *
      * @return void
      */
+
     public function __construct(
         protected StudentService $studentService,
         protected CampusService $campusService,
@@ -68,10 +71,14 @@ class StudentController extends Controller
         }
         return view('student.create-map', compact('studentProfiles'));
     }
-    public function show()
+    public function show(Request $request)
     {
-        return view('student.completed-courses');
+        $studentId = $request->session()->get('student')->student_id;
+        $coursesHistory = $this->studentService->getStudentHistory($studentId);
+
+        return view('student.completed-courses', compact('coursesHistory'));
     }
+
 
     public function saveProfile(Request $request) : RedirectResponse
     {
