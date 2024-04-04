@@ -15,14 +15,15 @@ $user = auth()->user();
                 <li class="sidebar-user-panel">
                     <div class="sidebar-user">
                         <div class="sidebar-user-picture">
-                            <img alt="image" src="/admin/assets/img/pages/Cybel logo.png">
+                            <img alt="image" src="/admin/assets/img/user/profile_pic.jpg">
                         </div>
                         <div class="sidebar-user-details">
                             <div class="user-name">{{ $user->fname  . ' ' . $user->lname }}</div>
                             <div class="user-role">
-                                @if($user->is_advisor) Advisor
+                                @if($user->is_advisor)
+                                    <strong>Campus: </strong>{{session('advisorCampus')->description}}
                                 @else
-                                    <strong>Student ID:</strong> {{ session('student')->student_id }}
+                                    <strong>Student ID: </strong> {{ session('student')->student_id }}
                                 @endif
 
                             </div>
@@ -31,7 +32,7 @@ $user = auth()->user();
                 </li>
                 <li class="nav-item">
                     @if($user->is_advisor)
-                    <a href="event.html" class="nav-link nav-toggle"> <i data-feather="calendar"></i>
+                    <a href="#" class="nav-link nav-toggle"> <i data-feather="calendar"></i>
                         <span class="title">Appointments</span>
                     </a>
                     @endif
@@ -77,12 +78,12 @@ $user = auth()->user();
 
                         <ul class="sub-menu">
                             <li class="nav-item">
-                                <a href="google_maps.html" class="nav-link ">
+                                <a href="#" class="nav-link ">
                                     <span class="title">View Map</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="vector_maps.html" class="nav-link ">
+                                <a href="#" class="nav-link ">
                                     <span class="title">Edit Map</span>
                                 </a>
                             </li>
@@ -101,7 +102,15 @@ $user = auth()->user();
                             <span class="title">Profile</span><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li class="nav-item">
-                                <a href="{{ route('student.profile')  }}" class="nav-link "> <span class="title">View Profile</span>
+                                <a href="{{ route('student.profile')  }}" class="nav-link "> <span class="title">View Profiles</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('student.create-profile')  }}" class="nav-link "> <span class="title">Create Profile</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('student.edit-profile')  }}" class="nav-link "> <span class="title">Edit Profile</span>
                                 </a>
                             </li>
                         </ul>
@@ -123,7 +132,7 @@ $user = auth()->user();
                     @else
 
 
-                        <a href="" class="nav-link nav-toggle"> <i data-feather="user"></i>
+                        <a href="#" class="nav-link nav-toggle"> <i data-feather="user"></i>
                             <span class="title">Advisor</span> <span class="arrow"></span>
                         </a>
                         <ul class="sub-menu">
@@ -152,13 +161,13 @@ $user = auth()->user();
                                     </a>
                             </li>
                         <li class="nav-item">
-                            <a href="add_course.html" class="nav-link "> <span class="title">Add
+                            <a href="#" class="nav-link "> <span class="title">Add
 												Course</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="edit_course.html" class="nav-link "> <span class="title">Edit
+                            <a href="#" class="nav-link "> <span class="title">Edit
 												Course</span>
                             </a>
                         </li>
@@ -180,12 +189,14 @@ $user = auth()->user();
                     <a href="#" class="nav-link nav-toggle"> <i data-feather="briefcase"></i>
                         <span class="title">Department</span> <span class="arrow"></span>
                     </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a class="nav-link "> <span class="title">Entec</span>
-                            </a>
-                        </li>
-                    </ul>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://mdc.edu/entec/programs.aspx?gad_source=1&gclid=Cj0KCQjwk6SwBhDPARIsAJ59Gwc3EypEBg_x8PRbw_DSqrzS-pVyHnaEhyQzqMOFhvofTEgYm-OBNzwaAnkPEALw_wcB&gclsrc=aw.ds" target="_blank">
+                                    <span class="title">{{ session('advisorDepartment')->name }}</span>
+                                </a>
+                            </li>
+                        </ul>
+
                     @endif
                 </li>
                 @if($user->is_advisor)
@@ -194,21 +205,21 @@ $user = auth()->user();
                         <i data-feather="mail"></i>
                         <span class="title">Email</span>
                         <span class="arrow"></span>
-                        <span class="label label-rouded label-menu label-danger">new</span>
+{{--                        <span class="label label-rouded label-menu label-danger">new</span>--}}
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item">
-                            <a href="email_inbox.html" class="nav-link ">
+                            <a href="#" class="nav-link ">
                                 <span class="title">Inbox</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="email_view.html" class="nav-link ">
+                            <a href="#" class="nav-link ">
                                 <span class="title">View Mail</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="email_compose.html" class="nav-link ">
+                            <a href="#" class="nav-link ">
                                 <span class="title">Compose Mail</span>
                             </a>
                         </li>

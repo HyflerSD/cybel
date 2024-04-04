@@ -15,24 +15,29 @@ class DegreeSeeder extends Seeder
     {
         $degrees = [
             [
-                'name' => "Bachelors",
                 'code' => "BD",
                 'type' => "Science",
+                'name' => "Bachelors",
             ],
             [
-                'name' => "Bachelors",
                 'code' => "BD",
                 'type' => "Arts",
+                'name' => "Bachelors",
             ],
             [
-                'name' => "Associate",
                 'code' => "AD",
                 'type' => "Science",
+                'name' => "Associate",
             ],
             [
-                'name' => "Associate",
                 'code' => "AD",
                 'type' => "Arts",
+                'name' => "Associate",
+            ],
+            [
+                'code' => "CCC",
+                'type' => "College Credit",
+                'name' => "College Credit Certificate",
             ],
         ];
 

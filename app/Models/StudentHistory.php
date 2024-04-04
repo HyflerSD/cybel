@@ -11,11 +11,10 @@ class StudentHistory extends Model
     use HasFactory;
 
     protected $fillable = [
-        'student_id',
-        'term_code',
-        'concentration_code',
-        'course_code',
         'grade',
+        'user_id',
+        'term_code',
+        'course_code',
         'credits_earned',
         'credits_attempted',
     ];
@@ -29,5 +28,4 @@ class StudentHistory extends Model
     {
         return $this->belongsTo(Course::class, 'course_code');
     }
-
 }

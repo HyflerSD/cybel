@@ -15,11 +15,13 @@ class SeedCommand extends Command
     {
         $seeders = [
             'DegreeSeeder',
+            'DepartmentSeeder',
             'ProgramSeeder',
             'MajorSeeder',
             'ConcentrationSeeder',
             'TermSeeder',
             'CampusSeeder',
+            'AdvisorSeeder',
         ];
 
         foreach ($seeders as $seeder) {

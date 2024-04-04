@@ -26,72 +26,88 @@
                     <div class="card card-box">
                         <div class="card-head">
                             <header>Generate Map</header>
-{{--                            May use this if we have time to print maps as pdf file to email students --}}
-{{--                            <button id="panel-button"--}}
-{{--                                    class="mdl-button mdl-js-button mdl-button--icon pull-right"--}}
-{{--                                    data-upgraded=",MaterialButton">--}}
-{{--                                <i class="material-icons">more_vert</i>--}}
-{{--                            </button>--}}
-{{--                            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"--}}
-{{--                                data-mdl-for="panel-button">--}}
-{{--                                <li class="mdl-menu__item"><i class="material-icons">assistant_photo</i>Action--}}
-{{--                                </li>--}}
-{{--                                <li class="mdl-menu__item"><i class="material-icons">print</i>Another action--}}
-{{--                                </li>--}}
-{{--                                <li class="mdl-menu__item"><i class="material-icons">favorite</i>Something else--}}
-{{--                                    here</li>--}}
-{{--                            </ul>--}}
                         </div>
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <div class="card-body" id="bar-parent">
                             <form method="POST" action="{{ route('student.create-map') }}" id="form_sample_1" class="form-horizontal">
                                 @csrf
                                 <div class="form-body">
                                     <div class="form-group row">
-                                        <label class="control-label col-md-3">Concentration:
+                                        <label class="control-label col-md-3">Profile:
                                             <span class="required"> * </span>
                                         </label>
                                         <div class="col-md-5">
-                                            <input readonly type="text" id="concentration_code" placeholder="Concentration Code" name="concentration_code"
-                                                   class="form-control input-height" value="{{ session('student')->concentration_code }}" /> </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="control-label col-md-3">Courses Per Semester:<span class="required"> *
-													</span>
-                                        </label>
-                                        <div class="col-md-5">
-                                            <select class="form-select input-height" name="courses_per_semester">
-                                                <option value="">Select...</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
+                                            <select required class="form-select input-height" name="priority">
+                                                @foreach($studentProfiles as $profile)
+                                                    @if($profile->priority == 1)
+                                                        <option value="1">{{ $profile->concentrations->name }}</option>
+                                                    @else
+                                                        <option disabled value="1">{{ $profile->concentrations->name }}</option>
+                                                    @endif
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
+                                    @php
+                                        $sProfiles = $studentProfiles->first();
+                                    @endphp
                                     <div class="form-group row">
-                                        <label class="control-label col-md-3">Topic Of Interest:<span class="required">
-														* </span>
+                                        <label class="col-lg-3 col-md-4 control-label">Campus
                                         </label>
                                         <div class="col-md-5">
-                                            <select class="form-select input-height" name="elective_interests">
-                                                <option value="">Select...</option>
-                                                <option value="game_development">Game Development</option>
-                                                <option value="artificial_intelligence">Artificial Intelligence</option>
-                                                <option value="micro_processors">Micro Processors</option>
-                                                <option value="operating_systems">Operating System</option>
-                                            </select>
-                                        </div>
+                                            <input readonly disabled type="text" value="{{ $sProfiles->campus->description }}" name=""
+                                                   class="form-control input-height" /> </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-md-4 control-label">Time of Day
+                                        </label>
+                                        <div class="col-md-5">
+                                            <input readonly disabled type="text" value="{{ implode(',', json_decode($sProfiles->time_of_day)) }}"
+                                                   class="form-control input-height" /> </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-md-4 control-label">Days of Week
+                                        </label>
+                                        <div class="col-md-5">
+                                            <input readonly disabled type="text" value="{{ implode(',', json_decode($sProfiles->days_of_week)) }}"
+                                                   class="form-control input-height" /> </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-md-4 control-label">Area Of Interest
+                                        </label>
+                                        <div class="col-md-5">
+                                            <input readonly disabled type="text" value="{{ $sProfiles->interest_area }}"
+                                                   class="form-control input-height" /> </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-md-4 control-label">Mode of Instruction
+                                        </label>
+                                        <div class="col-md-5">
+                                            <input readonly disabled type="text" value="{{ ucfirst($profile->mode_of_instruction) }}"
+                                                   class="form-control input-height" /> </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-md-4 control-label">Courses Per Semester
+                                        </label>
+                                        <div class="col-md-5">
+                                            <input readonly disabled type="text" value="{{ $sProfiles->courses_per_semester }}"
+                                                   class="form-control input-height" /> </div>
                                     </div>
                                     <div class="form-actions">
                                         <div class="row">
                                             <div class="offset-md-3 col-md-9">
                                                 <button type="submit"
-                                                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-circle btn-primary">Submit</button>
-                                                <button type="button"
-                                                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-circle btn-danger">Cancel</button>
-                                            </div>
+                                                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-circle btn-primary">Generate Map</button>
                                         </div>
                                     </div>
                                 </div>

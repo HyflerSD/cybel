@@ -5,9 +5,7 @@ use App\Http\Controllers\Advisor\MapModelController;
 use App\Http\Controllers\Advisor\ProfessorsController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\StudentController;
-use App\Http\Middleware\IsAdminUser;
-use App\Http\Middleware\IsStudentUser;
-use App\Http\Middleware\UserRedirect;
+use App\Http\Middleware\IsValidUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (){})->middleware('user.type');
 
-Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function (){
+Route::group(['prefix' => 'admin', 'middleware' => IsValidUser::class], function (){
     Route::get('/dashboard', [App\Http\Controllers\AdvisorsController::class, 'index'])->name('admin.dashboard');
     Route::group(['prefix' => 'professors'], function (){
         Route::get('/', [ProfessorsController::class, 'index'])->name('admin.professors');
@@ -41,16 +39,16 @@ Route::group(['prefix' => 'admin', 'middleware' => IsAdminUser::class], function
     Route::group(['prefix' => 'models'], function () {
         Route::get('/', [MapModelController::class, 'index'])->name('admin.models');
         Route::get('/create-model', [MapModelController::class, 'createModel'])->name('admin.create-model');
+        Route::post('/create-model', [MapModelController::class, 'saveModel'])->name('admin.create-model');
         Route::get('/advisee-maps', [MapModelController::class, 'adviseeMaps'])->name('admin.advisee-maps');
         Route::get('/create-student-map', [MapModelController::class, 'createStudentMap'])->name('admin.create-student-map-form');
         Route::post('/create-student-map', [MapModelController::class, 'generateMap'])->name('admin.handle-create-student-map');
         Route::post('/approve-student-map', [MapModelController::class, 'approveStudentMap'])->name('admin.approve-student-map');
-//        Route::post('post-model', [MapModelController::class, 'print'])->name('admin.create-model');
 //        Route::post('', [MapModelController::class, 'print'])->name('admin.create-model');
     });
 });
 
-Route::group(['prefix' => 'student', 'middleware' => IsStudentUser::class], function (){
+Route::group(['prefix' => 'student', 'middleware' => IsValidUser::class], function (){
     Route::get('/dashboard', [App\Http\Controllers\StudentController::class, 'index'])->name('student.dashboard');
     Route::get('/create-map', [StudentController::class, 'showCreateMap'])->name('student.create-map');
     Route::get('/completed-courses', [StudentController::class,'show'])->name('student.completed-courses');
@@ -59,7 +57,11 @@ Route::group(['prefix' => 'student', 'middleware' => IsStudentUser::class], func
         Route::get('/', [CoursesController::class, 'index'])->name('student.courses');
     });
     Route::group(['prefix' => 'profile'], function (){
-        Route::get('/', [StudentController::class, 'profile'])->name('student.profile');
+        Route::get('/', [StudentController::class, 'showProfiles'])->name('student.profile');
+        Route::get('/create', [StudentController::class, 'createProfile'])->name('student.create-profile');
+        Route::get('/edit', [StudentController::class, 'editProfile'])->name('student.edit-profile');
+        Route::post('/update-profile', [StudentController::class, 'updateProfile'])->name('student.update-profile');
+        Route::post('/save-profile', [StudentController::class, 'saveProfile'])->name('student.save-profile');
     });
 });
 Auth::routes();

@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('pre_registrations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('degree_map_id')->constrained();
+            $table->boolean('is_approved')->default(false);
         });
     }
 

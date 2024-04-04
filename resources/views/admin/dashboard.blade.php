@@ -1,6 +1,16 @@
 @extends('layouts.admin')
 @section('title') {{'Advisor Dashboard'}} @endsection
 @section('content')
+
+{{--    <style>--}}
+
+{{--        .card:hover {--}}
+{{--            box-shadow: 0 0 10px rgba(173, 216, 230, 0.8); /* Add a box-shadow effect */--}}
+{{--            border: 2px solid #f0f0f0; /* Add a border */--}}
+{{--            cursor: pointer; /* Change cursor to pointer */--}}
+{{--        }--}}
+{{--    </style>--}}
+
     <!-- start page content -->
     <div class="page-content-wrapper">
         <div class="page-content">
@@ -11,42 +21,39 @@
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
                         <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
-                                                               href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                            href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
                         </li>
                         <li class="active">Dashboard</li>
                     </ol>
                 </div>
             </div>
+
             <!-- start widget -->
             <div class="row">
                 <div class="col-xl-5">
                     <div class="w-100">
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col mt-0">
-                                                <h4 class="info-box-title">Total Students</h4>
-                                            </div>
-                                            <div class="col-auto">
-                                                <div class="l-bg-green info-icon">
-                                                    <i class="fa fa-users pull-left col-orange font-30"></i>
+                                <div class="card-container">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col mt-0">
+                                                    <h4 class="info-box-title">Assigned Students</h4>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="l-bg-green info-icon">
+                                                        <i class="fa fa-users pull-left col-orange font-30"></i>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <h1 class="mt-1 mb-3 info-box-title">
-                                            {{ $students->count() }}
-                                        </h1>
-                                        <div class="mb-0">
-													<span class="text-success m-r-10"><i
-                                                            class="material-icons col-green align-middle">trending_up</i>
-														10.32%
-													</span>
-                                            <span class="text-muted">Since last week</span>
+                                            <h1 class="mt-3 mb-3 info-box-title col-green">{{ $students->count() }}</h1>
+                                            <div class="content" style="max-height: 100px; overflow-y: auto;">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -59,7 +66,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h1 class="mt-1 mb-3 info-box-title">103</h1>
+                                        <h1 class="mt-1 mb-3 info-box-title col-green">103</h1>
                                         <div class="mb-0">
 													<span class="text-danger m-r-10"><i
                                                             class="material-icons col-red align-middle">trending_down</i>
@@ -83,7 +90,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h1 class="mt-1 mb-3 info-box-title">323</h1>
+                                        <h1 class="mt-1 mb-3 info-box-title col-green">323</h1>
                                         <div class="mb-0">
 													<span class="text-success m-r-10"><i
                                                             class="material-icons col-green align-middle">trending_up</i>
@@ -105,7 +112,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h1 class="mt-1 mb-3 info-box-title">2,352</h1>
+                                        <h1 class="mt-1 mb-3 info-box-title col-green">2,352</h1>
                                         <div class="mb-0">
 													<span class="text-danger m-r-10"><i
                                                             class="material-icons col-red align-middle">trending_down</i>

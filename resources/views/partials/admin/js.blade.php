@@ -30,8 +30,8 @@
 <script src="/admin/assets/plugins/chart-js/Chart.min.js"></script>
 <script src="/admin/assets/plugins/chart-js/utils.js"></script>
 <script src="/admin/assets/js/pages/chart/chartjs/home-data2.js"></script>
-<script src="../assets/plugins/select2/js/select2.js"></script>
-<script src="../assets/js/pages/select2/select2-init.js"></script>
+<script src="/admin/assets/plugins/select2/js/select2.js"></script>
+<script src="/admin/assets/js/pages/select2/select2-init.js"></script>
 
 {{-- Data tables --}}
 <script src="/admin/assets/plugins/datatables/jquery.dataTables.min.js"></script>

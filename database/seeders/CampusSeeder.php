@@ -15,16 +15,20 @@ class CampusSeeder extends Seeder
     {
         $campuses = [
             [
-                'description' => 'North Campus'
+                'description' => 'North Campus',
+                'code' => 'nc'
             ],
             [
-                'description' => 'Wolfson Campus'
+                'description' => 'Wolfson Campus',
+                'code' => 'wc',
             ],
             [
-                'description' => 'Kendall Campus'
+                'description' => 'Kendall Campus',
+                'code' => 'kc',
             ],
             [
-                'description' => 'Doral Campus'
+                'description' => 'Doral Campus',
+                'code' => 'dc',
             ],
         ];
         DB::table('campuses')->insert($campuses);

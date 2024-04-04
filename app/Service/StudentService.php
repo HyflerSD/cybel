@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Service;
+
 use App\Models\DegreeMap;
 use App\Models\StudentHistory;
+use App\Models\StudentProfile;
 use App\Models\User;
 use App\Models\Student;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use League\Csv\Reader;
@@ -26,16 +29,11 @@ class StudentService extends Seeder
                     "phone" => $student['phone'],
                     "address" => $student['address'],
                     "email" => $student['student_email'],
-                    "concentration_code" => $student['concentration_code'], //@todo may update this to be dynamic but not right now
                     "gpa" => $student['gpa'],
                     "birthdate" => $student['birthdate'],
                     "enrollment_status" => $student['enrollment_status'],
                     "academic_standing" => $student['academic_standing'],
                     "start_date" => $student['start_date'],
-                    "expected_graduation_date" => $student['expected_graduation_date'],
-                    "total_credits_earned" => $student['total_credits_earned'],
-                    "interests" => json_encode($student['interests'], true),
-//                    "advisor_email" => $student['advisor_email'],
                 ];
             }
             DB::table('students')->insert($studentsToInsert);
@@ -104,5 +102,49 @@ class StudentService extends Seeder
 
         }
         return $studentHistory;
+    }
+
+    public function saveProfileModel(Collection $profileData) : bool
+    {
+        try
+        {
+            if (!$this->maxProfileCount($profileData['user_id']))
+            {
+                StudentProfile::create($profileData->toArray());
+                return true;
+            }
+        } catch (\Exception $e)
+        {
+            Log::error($e->getMessage());
+            Log::error($e);
+
+        }
+        return false;
+        //logic will be written here to handle the storing of this data to the database
+    }
+
+    public function getProfiles(int $userId) : \Illuminate\Database\Eloquent\Collection
+    {
+        return StudentProfile::with(['concentrations', 'campus'])
+            ->where('user_id', $userId)
+            ->get();
+    }
+    public function maxProfileCount(int $userId) : bool
+    {
+        //TODO: Limiting users to 1 profile for now.
+            return StudentProfile::with(['concentrations', 'campus'])
+                ->where('user_id', $userId)
+                ->count() >= 1;
+    }
+
+    /**
+     * @param mixed $user_id
+     * @param int $profilePriority
+     * @return mixed
+     */
+    public function getProfileByPriority(mixed $user_id, int $profilePriority)
+    {
+        return StudentProfile::where('user_id', $user_id )
+            ->where('priority',$profilePriority)->first();
     }
 }
