@@ -32,10 +32,13 @@
                                   <td><input required max="45" type="number" name="courses[${index}][priority_index]"/></td>
                                   <td>
                                     <select style="display:none;" name="courses[${index}][level_combination][]" multiple="multiple" class="form-control">
-                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="1000"> 1000</label>
-                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="2000"> 2000</label>
-                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="3000"> 3000</label>
-                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="4000"> 4000</label>                                     </select>
+                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="1"> 1</label>
+                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="2"> 2</label>
+                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="3"> 3</label>
+                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="4"> 4</label>
+                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="5"> 5</label>
+                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="6"> 6</label>
+                                    </select>
                                  </td>
                                   <td><input type="hidden" name="courses[${index}][course_type]" value="${type}"/>${type}</td>
                                 <td>
@@ -59,10 +62,24 @@
 
             $("#create-model").submit(function(e) {
                 //Make sure at least one level combination is selected
-                var isChecked = $('input[name^="courses["][name$="][level_combination][]"]:checked').length > 0;
-                if (!isChecked) {
+                let isFormValid = true;
+
+                // Iterate over each row in the models table
+                $(".models-table tbody tr").each(function() {
+                    // For each row, check if there's at least one level_combination checkbox checked
+                    let isCheckedInRow = $(this).find('input[type="checkbox"][name^="courses["][name$="][level_combination][]"]:checked').length > 0;
+
+                    // If no checkbox is checked in the current row, mark the form as invalid
+                    if (!isCheckedInRow) {
+                        isFormValid = false;
+                    }
+                });
+
+                // If the form is invalid, prevent submission and alert the user
+                if (!isFormValid) {
                     e.preventDefault();
-                    alert('Please check at least one level combination.');
+                    alert('Please check at least one level combination for every course.');
+                    return; // Stop further execution
                 }
 
                 let priorityIndices = [];
@@ -144,7 +161,7 @@
                                     </th>
                                     <th> Course Name </th>
                                     <th> Course Code </th>
-                                    <th> Course Level </th>
+{{--                                    <th> Course Level </th>--}}
                                     <th> Type </th>
                                     <th> Credits </th>
                                 </tr>
@@ -160,9 +177,9 @@
                                         </td>
                                         <td> {{ $course->course_name }} </td>
                                         <td> {{ $course->course_code }} </td>
-                                        <td>
-                                            <span class="label label-sm label-warning"> {{ $course->course_level }} </span>
-                                        </td>
+{{--                                        <td>--}}
+{{--                                            <span class="label label-sm label-warning"> {{ $course->course_level }} </span>--}}
+{{--                                        </td>--}}
                                         @switch($course)
                                             @case($course->core_ed == 1)
                                                 <td> {{ 'Core' }} </td>
