@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Service;
+
 use App\Models\DegreeMap;
+use App\Models\StudentHistory;
 use App\Models\StudentProfile;
 use App\Models\User;
 use App\Models\Student;
@@ -87,6 +89,19 @@ class StudentService extends Seeder
             Log::error($e->getMessage());
         }
         return $advisor;
+    }
+
+    public function getStudentHistory(int $studentId): mixed
+    {
+        $studentHistory = [];
+        try
+        {
+            $studentHistory = StudentHistory::where('student_id', $studentId)
+                ->get();
+        }catch (\Exception $e){
+
+        }
+        return $studentHistory;
     }
 
     public function saveProfileModel(Collection $profileData) : bool
