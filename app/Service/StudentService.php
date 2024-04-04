@@ -9,7 +9,6 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use League\Csv\Exception;
 use League\Csv\Reader;
 class StudentService extends Seeder
 {
@@ -109,19 +108,11 @@ class StudentService extends Seeder
         //logic will be written here to handle the storing of this data to the database
     }
 
-    public function getProfiles(int $userId) : mixed
+    public function getProfiles(int $userId) : \Illuminate\Database\Eloquent\Collection
     {
-        try
-        {
-            return StudentProfile::with(['concentrations', 'campus'])
-                ->where('user_id', $userId)
-                ->get();
-        } catch (\Exception $e)
-        {
-            Log::error($e->getMessage());
-            Log::error($e);
-        }
-        return [];
+        return StudentProfile::with(['concentrations', 'campus'])
+            ->where('user_id', $userId)
+            ->get();
     }
     public function maxProfileCount(int $userId) : bool
     {
@@ -129,5 +120,16 @@ class StudentService extends Seeder
             return StudentProfile::with(['concentrations', 'campus'])
                 ->where('user_id', $userId)
                 ->count() >= 1;
+    }
+
+    /**
+     * @param mixed $user_id
+     * @param int $profilePriority
+     * @return mixed
+     */
+    public function getProfileByPriority(mixed $user_id, int $profilePriority)
+    {
+        return StudentProfile::where('user_id', $user_id )
+            ->where('priority',$profilePriority)->first();
     }
 }

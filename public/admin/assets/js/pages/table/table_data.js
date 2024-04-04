@@ -48,6 +48,9 @@ $(document).ready(function () {
     columnDefs: [{ width: 10, targets: 0 }],
   });
 
+    $(".search-table").DataTable({
+        columnDefs: [{ width: 10, targets: 0 }],
+    });
   $(document).ready(function () {
     $("#example").DataTable();
   });

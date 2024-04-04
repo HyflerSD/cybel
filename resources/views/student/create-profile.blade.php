@@ -89,13 +89,6 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="control-label col-md-3">Expected Graduation
-                                                    </label>
-                                                    <div class="col-md-5">
-                                                        <input readonly disabled type="text" value="" name="expected_graduation_date" placeholder="pending map generation"
-                                                               class="form-control input-height" /> </div>
-                                                </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label class="col-lg-3 col-md-4 control-label">Time Of Day
@@ -182,8 +175,6 @@
                                                         <div class="offset-md-3 col-md-9">
                                                             <button type="submit"
                                                                     class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-circle btn-primary">Submit</button>
-                                                            <button type="button"
-                                                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-circle btn-danger">Cancel</button>
                                                         </div>
                                                     </div>
                                                 </div>

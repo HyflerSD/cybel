@@ -32,7 +32,7 @@ $user = auth()->user();
                 </li>
                 <li class="nav-item">
                     @if($user->is_advisor)
-                    <a href="event.html" class="nav-link nav-toggle"> <i data-feather="calendar"></i>
+                    <a href="#" class="nav-link nav-toggle"> <i data-feather="calendar"></i>
                         <span class="title">Appointments</span>
                     </a>
                     @endif
@@ -78,12 +78,12 @@ $user = auth()->user();
 
                         <ul class="sub-menu">
                             <li class="nav-item">
-                                <a href="google_maps.html" class="nav-link ">
+                                <a href="#" class="nav-link ">
                                     <span class="title">View Map</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="vector_maps.html" class="nav-link ">
+                                <a href="#" class="nav-link ">
                                     <span class="title">Edit Map</span>
                                 </a>
                             </li>
@@ -132,7 +132,7 @@ $user = auth()->user();
                     @else
 
 
-                        <a href="" class="nav-link nav-toggle"> <i data-feather="user"></i>
+                        <a href="#" class="nav-link nav-toggle"> <i data-feather="user"></i>
                             <span class="title">Advisor</span> <span class="arrow"></span>
                         </a>
                         <ul class="sub-menu">
@@ -161,13 +161,13 @@ $user = auth()->user();
                                     </a>
                             </li>
                         <li class="nav-item">
-                            <a href="add_course.html" class="nav-link "> <span class="title">Add
+                            <a href="#" class="nav-link "> <span class="title">Add
 												Course</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="edit_course.html" class="nav-link "> <span class="title">Edit
+                            <a href="#" class="nav-link "> <span class="title">Edit
 												Course</span>
                             </a>
                         </li>
@@ -209,17 +209,17 @@ $user = auth()->user();
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item">
-                            <a href="email_inbox.html" class="nav-link ">
+                            <a href="#" class="nav-link ">
                                 <span class="title">Inbox</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="email_view.html" class="nav-link ">
+                            <a href="#" class="nav-link ">
                                 <span class="title">View Mail</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="email_compose.html" class="nav-link ">
+                            <a href="#" class="nav-link ">
                                 <span class="title">Compose Mail</span>
                             </a>
                         </li>

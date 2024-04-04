@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Models\Course;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -33,9 +34,6 @@ class CourseService extends Seeder
 
                     if(!$exists)
                     {
-                        $courseCode = $course['course_code'];
-                        $courseLevel = (int) substr($courseCode, strpos($courseCode, '-') + 1 );
-                        $courseLevel = (($courseLevel / 1000) % 10) * 1000;
                         $coursesToInsert[] = [
                             'course_code' => $course['course_code'],
                             'course_name' => $course['course_name'],
@@ -44,7 +42,6 @@ class CourseService extends Seeder
                             'course_description' => $course['course_description'] ?? null,
                             'core_ed' =>  $course['core_ed'] ?? null,
                             'elective_ed' => $course['elective_ed'] ?? null,
-                            'course_level' => $courseLevel,
                         ];
                     }
                 }
@@ -120,13 +117,10 @@ class CourseService extends Seeder
     }
     public function insertMissingCourse(string$courseCode) : void
     {
-        $courseLevel = (int) substr($courseCode, strpos($courseCode, '-') + 1 );
-        $courseLevel = (($courseLevel / 1000) % 10) * 1000;
         DB::table('courses')->insert([
             'course_code' => $courseCode,
             'course_name' => "Some Name",
             'credits' =>  "4",
-            'course_level' => $courseLevel,
         ]);
         Log::channel('courses')->info("Attempting to insert non existing course: " . $courseCode);
     }
@@ -191,23 +185,27 @@ class CourseService extends Seeder
             $missingCourses = [];
             foreach ($courses as $course)
             {
-//                $missingCourse = DB::table('courses')
-//                    ->where('course_code', $course['pre_req_course_code'])
-//                    ->doesntExist();
-//                if($missingCourse)
-//                {
-//                    Log::channel('courses')->info("Attempting to insert non existing course: " . $course['pre_req_course_code']);
-//                }
-//
+                $missingCourse = DB::table('courses')
+                    ->where('course_code', $course['course_code'])
+                    ->doesntExist();
+                if($missingCourse)
+                {
+                    Log::channel('courses')->info("Attempting to insert non existing course: " . $course['course_code']);
+                    $missingCourses[] = [
+                        'course_code' => $course['course_code'],
+                        'course_name' => 'External ' . $course['course_code'],
+                        'credits' => $course['credits_attempted']
+                    ];
+                }
+
 //                $exists = DB::table('course_prerequisites')
 //                    ->where('course_code',$course['course_code'])
 //                    ->where('pre_req_course_code',$course['pre_req_course_code'])
 //                    ->exists();
-
+                $userId = Student::where('student_id', $course['student_id'])->value('user_id');
                 $coursesToInsert[] = [
-                    'student_id' => $course['student_id'],
+                    'user_id' => $userId,
                     'term_code' => $course['term_code'],
-                    'concentration_code' => $course['concentration_code'],
                     'course_code' => $course['course_code'],
                     'grade' => $course['grade'],
                     'credits_earned' => $course['credits_earned'],
@@ -217,8 +215,9 @@ class CourseService extends Seeder
             //Insert Bulk data
             if(!empty($coursesToInsert))
             {
+                DB::table('courses')->insert($missingCourses);
                 DB::table('student_histories')->insert($coursesToInsert);
-                Log::channel('courses')->info('Successfully inserted ' . count($coursesToInsert) . ' pre reqs');
+                Log::channel('courses')->info('Successfully inserted ' . count($coursesToInsert) . ' student histories');
             }
         }catch (\Exception $e)
         {
