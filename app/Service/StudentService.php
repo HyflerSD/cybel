@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Models\Concentration;
 use App\Models\DegreeMap;
 use App\Models\StudentHistory;
 use App\Models\StudentProfile;
@@ -125,6 +126,22 @@ class StudentService extends Seeder
         return (int) $totalCredits;
     }
 
+    public function getStudentsMajor(int $studentId): string
+    {
+        try
+        {
+            $studentHistory = Student::where('student_id', $studentId)->with('user')->first();
+            $studentConcentrationCode = StudentProfile::where('user_id', $studentHistory->user->id)->first()->concentration_code;
+            $studentMajor =  Concentration::where('concentration_code', $studentConcentrationCode)->first()->name;
+//            dd($studentMajor);
+        } catch (\Exception $e)
+        {
+            Log::error($e->getMessage());
+            Log::error($e);
+        }
+
+        return $studentMajor;
+    }
     public function saveProfileModel(Collection $profileData) : bool
     {
         try

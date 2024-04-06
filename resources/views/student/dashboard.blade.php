@@ -106,6 +106,10 @@
                                         <div class="col mt-0">
                                             <h4 class="info-box-title">Major</h4>
                                         </div>
+
+                                        <h3
+                                            class="mt-1 mb-3 info-box-title col-green">{{ $studentsMajor }}
+                                        </h3>
 {{--                                        Todo: Once we have the student profile data this filed will be populated--}}
 {{--                                        <h3 class="mt-1 mb-3 info-box-title col-green">{{ session('student')->concentration->name }}</h3>--}}
                                     </div>
@@ -118,7 +122,6 @@
                             <div class="card-body" style="text-align: center; display: flex; justify-content: center; align-items: center; height: 100%;">
                                 <p>Click here for more information on the <a href="https://mdc.edu/softwareengineering/" target="_blank" style="color: blue;">Software Engineering</a> major.</p>
                             </div>
-
                         </div>
                     </div>
                 </div>
