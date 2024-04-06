@@ -33,9 +33,11 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('student.dashboard');
-
+        $studentId = session('student')->student_id;
+        $totalCreditsEarned = $this->studentService->getTotalCreditsEarned($studentId);
+        return view('student.dashboard', compact('totalCreditsEarned'));
     }
+
     public function showProfiles()
     {
         $student = (session()->get('student'));
@@ -78,6 +80,13 @@ class StudentController extends Controller
 
         return view('student.completed-courses', compact('coursesHistory'));
     }
+
+//    public function showTotalCreditsEarned(Request $request)
+//    {
+//        $studentId = $request->session()->get('student')->student_id;
+//        $totalCreditsEarned = $this->studentService->getTotalCreditsEarned($studentId);
+//        return view('dashboard', compact('totalCreditsEarned'));
+//    }
 
 
     public function saveProfile(Request $request) : RedirectResponse

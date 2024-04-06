@@ -65,7 +65,6 @@ class StudentService extends Seeder
         {
             $student = Student::where('email', '=', $studentEmail)
                                 ->with('concentration')->first();
-
         } catch(\Exception $e)
         {
             Log::channel('student')->error(' error get student ' . $e->getMessage());
@@ -102,6 +101,28 @@ class StudentService extends Seeder
 
         }
         return $studentHistory;
+    }
+
+    public function getTotalCreditsEarned(int $studentId): int
+    {
+        $totalCredits = 0;
+
+        try
+        {
+            $studentHistory = Student::where('student_id', $studentId)->with('user')->first();
+
+            if ($studentHistory)
+            {
+                $creditsEarned = StudentHistory::where('user_id', $studentHistory->user->id)->sum('credits_earned');
+                $totalCredits = $studentHistory->total_credits + $creditsEarned;
+            }
+        } catch (\Exception $e)
+        {
+            Log::error($e->getMessage());
+            Log::error($e);
+        }
+
+        return (int) $totalCredits;
     }
 
     public function saveProfileModel(Collection $profileData) : bool
