@@ -80,15 +80,7 @@ class StudentController extends Controller
 
         return view('student.completed-courses', compact('coursesHistory'));
     }
-
-//    public function showTotalCreditsEarned(Request $request)
-//    {
-//        $studentId = $request->session()->get('student')->student_id;
-//        $totalCreditsEarned = $this->studentService->getTotalCreditsEarned($studentId);
-//        return view('dashboard', compact('totalCreditsEarned'));
-//    }
-
-
+    
     public function saveProfile(Request $request) : RedirectResponse
     {
         $student = (session()->get('student'));
