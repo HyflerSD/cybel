@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Advisor;
 use App\Http\Controllers\Controller;
+use App\Models\Advisor;
+use App\Models\Campus;
 use App\Models\Concentration;
 use App\Models\Course;
 use App\Models\MapModel;
@@ -37,7 +39,8 @@ class MapModelController extends Controller
         $studentId =  $request->get('student_id');
         if($user->is_advisor)
         {
-           return $this->adminGeneratedMap($studentId);
+            $campusID = Advisor::where('user_id', $user->id)->value('campus_id');
+           return $this->adminGeneratedMap($studentId, "MDC", $campusID);
         }
         else
         {
@@ -119,15 +122,15 @@ class MapModelController extends Controller
             );
     }
 
-    public function adminGeneratedMap($studentUserId) : RedirectResponse
+    public function adminGeneratedMap($studentUserId, string $institution, string $campusID) : RedirectResponse
     {
         $studentProfile = StudentProfile::where('user_id', $studentUserId)->where('priority', 1)->first();
         try
         {
-            if(isEmpty($studentProfile))
+            if(is_null($studentProfile))
             {
                 //TODO if no profile, generate generic map
-                $preparedData = $this->mapModelService->prepareMapData($studentProfile, true, true);
+                $preparedData = $this->mapModelService->prepareGenericMapData($studentUserId, "S9501", $campusID);
             }
             else
             {
@@ -159,16 +162,16 @@ class MapModelController extends Controller
             );
 
     }
-    public function saveModel(Request $request)
+    public function saveModel(Request $request) : RedirectResponse
     {
         try
         {
             $courses = $request->except('_token');
             $preparedData = $this->mapModelService->saveDegreeModel($courses);
-            if($preparedData->status() == 201)
+            if($preparedData->isSuccessful())
             {
-                $response = $this->cybelService->syncDegreeModel($preparedData->content());
-                if (!$response)
+                $response = $this->cybelService->syncDegreeModel($preparedData->getData());
+                if (!$response->isSuccessful())
                 {
                     Log::error("Failed to sync model to cybel engine.");
                 }

@@ -53,6 +53,7 @@ class MapModelService
         }
         $cybelData['data'] = [
             'campus_id' => $profile['campus_id'],
+            'institution' => "MDC",
             'student_profile' => json_encode($preparedProfile, true),
             'student_history' => json_encode($preparedHistory, true),
             'generic' => $genericMap,
@@ -95,12 +96,48 @@ class MapModelService
            }
            $toDb['identifier_key'] = $newIdentifierKey;
            MapModel::create($toDb);
-           return response()->json(['message' => 'Successfully Saved Model', 'data' => $toDb], 201);
+           //TODO send map model over to engine, will be via cronjob in the future
+           $toDb['courses'] = $coursesList;
+           $this->prepareMapModelData();
+           return response()->json(['message' => 'Successfully Saved Model', 'data' => $toDb]);
        } catch (\Exception $e)
        {
            Log::error($e);
            Log::error($e->getMessage());
        }
-       return response()->json(['message' => 'Error Saving Model'], 418) ;
+       return response()->json(['message' => 'Error Saving Model']) ;
    }
+
+   private function prepareMapModelData()
+   {
+
+
+   }
+
+    public function prepareGenericMapData(string $studentID, string $concentrationCode, string $campusID) : array
+    {
+        $preparedHistory = [];
+        $preparedProfile = [
+            'user_id' => $studentID,
+            'expected_graduation_date' => '',
+            'concentration_code' => $concentrationCode,
+        ];
+
+        $studentHistory = StudentHistory::where('user_id', $studentID)->get();
+
+        foreach ($studentHistory as $item)
+        {
+            $preparedHistory['courses'][] = [
+                'course_code' => $item['course_code'],
+            ];
+        }
+        $cybelData['data'] = [
+            'campus_id' => $campusID,
+            'institution' => "MDC",
+            'student_profile' => $preparedProfile,
+            'student_history' => $preparedHistory,
+            'generic' => true,
+        ];
+        return $cybelData;
+    }
 }
