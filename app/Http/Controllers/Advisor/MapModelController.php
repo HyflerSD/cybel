@@ -105,7 +105,7 @@ class MapModelController extends Controller
             Log::error($e->getMessage());
         }
 
-        if(true)//$response->isSuccessful())
+        if($response->isSuccessful())
         {
             return redirect()
                 ->route('student.profile')
