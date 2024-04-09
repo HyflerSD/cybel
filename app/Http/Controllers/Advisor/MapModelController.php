@@ -40,7 +40,7 @@ class MapModelController extends Controller
         if($user->is_advisor)
         {
             $campusID = Advisor::where('user_id', $user->id)->value('campus_id');
-           return $this->adminGeneratedMap($studentId, "MDC", $campusID);
+           return $this->adminGeneratedMap((int)$studentId, "MDC", (int)$campusID);
         }
         else
         {
@@ -96,7 +96,7 @@ class MapModelController extends Controller
             if($profile)
             {
                 $preparedData = $this->mapModelService->prepareMapData($profile, false);
-                $response = $this->cybelService->generateMap($preparedData);
+                $response = $this->cybelService->generateMap($preparedData, true);
             }
 
         } catch (\Exception $e)
@@ -122,7 +122,7 @@ class MapModelController extends Controller
             );
     }
 
-    public function adminGeneratedMap($studentUserId, string $institution, string $campusID) : RedirectResponse
+    public function adminGeneratedMap(int $studentUserId, string $institution, int $campusID) : RedirectResponse
     {
         $studentProfile = StudentProfile::where('user_id', $studentUserId)->where('priority', 1)->first();
         try
@@ -131,13 +131,14 @@ class MapModelController extends Controller
             {
                 //TODO if no profile, generate generic map
                 $preparedData = $this->mapModelService->prepareGenericMapData($studentUserId, "S9501", $campusID);
+                $response = $this->cybelService->generateMap($preparedData, false);
             }
             else
             {
                 $preparedData = $this->mapModelService->prepareMapData($studentProfile, true);
+                $response = $this->cybelService->generateMap($preparedData, true);
             }
 
-            $response = $this->cybelService->generateMap($preparedData);
             if($response->isSuccessful())
             {
                 return redirect()
