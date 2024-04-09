@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Service;
+
+use App\Models\Concentration;
 use App\Models\DegreeMap;
+use App\Models\StudentHistory;
 use App\Models\StudentProfile;
 use App\Models\User;
 use App\Models\Student;
@@ -63,7 +66,6 @@ class StudentService extends Seeder
         {
             $student = Student::where('email', '=', $studentEmail)
                                 ->with('concentration')->first();
-
         } catch(\Exception $e)
         {
             Log::channel('student')->error(' error get student ' . $e->getMessage());
@@ -89,6 +91,56 @@ class StudentService extends Seeder
         return $advisor;
     }
 
+    public function getStudentHistory(int $studentId): mixed
+    {
+        $studentHistory = [];
+        try
+        {
+            $studentHistory = StudentHistory::where('student_id', $studentId)
+                ->get();
+        }catch (\Exception $e){
+
+        }
+        return $studentHistory;
+    }
+
+    public function getTotalCreditsEarned(int $studentId): int
+    {
+        $totalCredits = 0;
+
+        try
+        {
+            $studentHistory = Student::where('student_id', $studentId)->with('user')->first();
+
+            if ($studentHistory)
+            {
+                $creditsEarned = StudentHistory::where('user_id', $studentHistory->user->id)->sum('credits_earned');
+                $totalCredits = $studentHistory->total_credits + $creditsEarned;
+            }
+        } catch (\Exception $e)
+        {
+            Log::error($e->getMessage());
+            Log::error($e);
+        }
+
+        return (int) $totalCredits;
+    }
+
+    public function getStudentsMajor(int $studentId): string
+    {
+        try
+        {
+            $studentHistory = Student::where('student_id', $studentId)->with('user')->first();
+            $studentConcentrationCode = StudentProfile::where('user_id', $studentHistory->user_id)->first();
+            $studentMajor =  Concentration::where('concentration_code', $studentConcentrationCode)->first()->name ?? 'None yet';
+        } catch (\Exception $e)
+        {
+            Log::error($e->getMessage());
+            Log::error($e);
+        }
+
+        return $studentMajor;
+    }
     public function saveProfileModel(Collection $profileData) : bool
     {
         try

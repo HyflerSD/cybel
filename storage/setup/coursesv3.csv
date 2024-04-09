@@ -1,0 +1,228 @@
+course_code,course_name,credits,prerequisites,sequence,course_description,gen_ed,core_ed,elective_ed
+ZOO-1010,Zoology,3,Co-Req ZOO 1010L,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+WOH-2022,History of World Civilization from 1789,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+WOH-2012,History of World Civilization to 1789,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+THE-2000,Theatre Appreciation,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+SYG-2000,Introduction to Sociology,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+STA-2023,Statistical Methods,3,Pre-Req MAT 1033 or MGF 1131,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+SPC-2608,Introduction to Public Speaking (Gw),3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+SPC-1017,Fundamentals of Speech Communications (Gw),3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+PSY-2012,Introduction to Psychology,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+PSC-1515,Energy in the Natural Environment,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+PSC-1121,General Education Physical Science,3,Pre-Req MAT 1033,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+POS-2041,American Federal Government,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+PHY-2053,Physics (without Calculus) 1,3,"Pre/Co-Req MAC1147, 1114, 1140/PHY2053L",,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+PHY-2048,Physics with Calculus 1,4,"Pre/Co-Req HS physics, or PHY1025 or 2053, or dept. approval, and MAC2311/PHY2048L",,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+PHY-1025,Physics 1,3,,,,1,0,0
+PHY-1020,General Education Physics,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+PHI-2604,Critical Thinking/Ethics,3,ENC 1101,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+PHI-2010,Introduction to Philosophy,3,ENC 1101,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+PCB-2340C,Field Biology,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+PCB-2033,Introduction to Ecology,3,Pre-Req PSC1515 or BSC2011,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+OCB-1010,Introduction to Marine Biology,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+MUL-2380,Jazz & Popular Music in America,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+MUL-1010,Music Appreciation,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+MUH-2112,Survey of Music History 2,3,MUH 2111,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+MUH-2111,Survey of Music History 1,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+MAD-2104,Discrete Mathematics,3,"Pre-req MAC 1106, MAC 1140, or MAC 1147",,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+MAD-1100,Discrete Mathematics for Computer Science,3,Pre-req MAC 1105,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+MAC-2311,Calculus 1,3,,,,1,0,0
+MAC-1105,College Algebra,3,Pre-Req MAT 1033,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+LIT-2120,A Survey of World Literature 2,3,"ENC 1101, 1102",,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+LIT-2000,Introduction to Literature,3,ENC 1101,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ISS-1161,The Individual in Society,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ISS-1120,The Social Environment,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+IND-1130,History of Interiors 2,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+IND-1100,History of Interiors 1,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+HUN-1201,Essentials of Human Nutrition,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+HUM-1020,Introduction to Humanities,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+EVR-1001,Introduction to Environmental Science,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ESC-1000,General Education Earth Science,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ENC-1102,English Composition 2 (Gw),3,Pre-Req ENC 1101,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ENC-1101,English Composition 1 (Gw),3,Appropriate college placement,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ECO-2023,Principles of Economics (Micro),3,Pre-Req MAT 1033,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ECO-2013,Principles of Economics (Macro) (Gw),3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+DEP-2000,Human Growth and Development,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+DAN-2130,Dance History 1,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+DAN-2100,Dance Appreciation,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+CTS-4955,Networking Capstone,4,Department Permission Required,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CTS-3452,Business Intelligence,4,Department Consent Required,,,0,0,1
+CTS-2652,Ccna 3: Advanced Routing And Switching,4,CTS1651,,,0,0,1
+CTS-2466C,Internet of Things (IoT) Development with C#,4,CEN2211,,,0,0,1
+CTS-2451,Business Intelligence: Integration Services & Reporting,4,CTS1437 or CTS2433,,,0,0,1
+CTS-2450,Business Intelligence: Analysis Services And Data Mining,4,CTS1437 o r CTS2433 or CTS2451,,,0,0,1
+CTS-2433,Microsoft Sql Implementation,4,,,,0,0,1
+CTS-2375C,Cloud Infrastructure And Services,4,Prerequisite of CTS 1145; Corequisite CTS 2960,,,0,0,1
+CTS-2314,Network Defense and Countermeasures,4,CTS1120 and CTS1134 or CTS1650,,,0,0,1
+CTS-2306,Windows Networking Services,4,,,,0,0,1
+CTS-2303,Windows Server Administration,4,,,,0,0,1
+CTS-2192C,Microsoft Azure Administration,4,,,,0,0,1
+CTS-2154,IT Help Desk Support,4,"CGS 1060, CGS 2108",,,0,0,1
+CTS-2153,Supporting Windows Users & Applications,4,CTS 1328,,,0,0,1
+CTS-2143C,Server Administration,4,,,,0,0,1
+CTS-1651,Ccna 2: Routing And Switching,4,Pre/Co- Requisite CTS 1650,,,0,0,1
+CTS-1650,CCNA: Cisco Fundamentals,4,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CTS-1437,Microsoft Sql Administration,4,,,,0,0,1
+CTS-1328,Supporting Microsoft Clients,4,CGS1060C,,,0,0,1
+CTS-1145,Cloud Essentials,4,,,,0,0,1
+CTS-1134,Networking Technologies,4,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CTS-1131,A+ Computer Essentials & Support,4,CGS 1560,,,0,0,1
+CTS-1111,Linux +,4,CGS 1060,,,0,0,1
+COT-4400,Design and Analysis of Algorithms,4,Pre COP 2800 and Co COP 3530,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+COP-4807,Web Programming with Java,4,COP3530,,,0,0,1
+COP-3530,Data Structures,4,Pre COP 2800,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+COP-2842,Developing Websites Using Php/Mysql,4,COP 1332 or COP 1334,,,0,0,1
+COP-2805C,Java Programming 2,4,COP 2800,,,0,0,1
+COP-2800,Java Programming,4,Pre-req COP 1334 or COP 2270,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+COP-2662,Android Application Development 2,4,,,,0,0,1
+COP-2660,Android Application Development 1,4,,,,0,0,1
+COP-2658,phone Application Development 2,4,COP 2654,,,0,0,1
+COP-2654,Iphone Application Development 1,4,COP 1332 or COP 1334,,,0,0,1
+COP-2335,Object Oriented Programming Using C++,4,Pre-Requisite COP 1334,,,0,0,1
+COP-2270,C for Engineers,4,MAC1105.,,,0,0,1
+COP-1334,Introduction to C++ Programming,4,Pre/Co CGS 1060C,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+COP-1332,Introduction To Visual Basic Programming,4,Pre/Co-Requisite CGS 1060C.,,,0,0,1
+COP-1047C,Introduction to Python Programming,4,,,,0,0,1
+CNT-4702,Network Design and Planning,4,Pre CIS 3360,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CNT-4603,System Administration and Maintenance,4,Pre CTS 1134 or CTS 1650,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CNT-3526C,Wireless and Mobile Networking,4,Pre CTS 1134 or CTS 1650,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CNT-3409C,Network Security,4,Pre CIS 3360,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CLP-1006,Psychology of Personal Effectiveness,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+CIS-4388,Advanced Computer Forensics,4,CIS 4366,,,0,0,1
+CIS-4378,Ethical Hacking II,4,CIS 4204,,,0,0,1
+CIS-4366,Computer Forensics,4,CIS 3360,,,0,0,1
+CIS-4364,Intrusion Detection and Incident Response,4,CIS 3360,,,0,0,1
+CIS-4347,Information Storage Management,4,Pre CGS 1540C,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CIS-4204,Ethical Hacking I,4,CIS 3360,,,0,0,1
+CIS-3510,IT Project Management,4,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CIS-3368,Data Security & Governance,4,,,,0,0,1
+CIS-3360,Principles of Information Security,4,Pre CTS 1134 or CTS 1650,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CIS-3215,Ethics in Cybersecurity,4,Department approval required,,,0,0,1
+CIS-2991C,Cloud Developer,4,COP 1047C and CTS 2375C,,,0,0,1
+CIS-2900,Directed Study It,1,Department approval required,,,0,0,1
+CIS-2430C,Remote IT and Security Management,4,CTS1134 and CTS1120,,,0,0,1
+CIS-2350,Cybersecurity Analysis (CySA+),4,CTS1120 and CTS1134.,,,0,0,1
+CIS-1531,Introduction to Secure Scripting,4,,,,0,0,1
+CHM-1045,General Chemistry and Qualitative Analysis,3,Pre/Co-Req CHM1025 & MAC1105/CHM1045L,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+CHM-1020,General Education Chemistry,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+CGS-3763,Operating System Principles,4,Pre COP 1334,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CGS-2108,Advanced Desktop Applications,4,CGS 1060C,,,0,0,1
+CGS-2091,Professional Ethics And Social Issues In Cs,4,,,,0,0,1
+CGS-1700,Introduction to Operating Systems,4,,,,0,0,1
+CGS-1560,A+ Computer Operating Systems,4,,,,0,0,1
+CGS-1540C,Database Concepts Design,4,,,,0,0,1
+CGS-1060C,Introduction to Computer Technology & Applications,4,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CET-4663C,Electronic Security,3,CET 2123C and COP 2270,,,0,0,1
+CET-3383C,Software Engineering I,4,Pre COP 2800 or CET 2369C,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CET-3126C,Computer Architecture,4,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CET-2880C,Digital Forensics,4,,,,0,0,1
+CET-2588C,Server + Service And Maintenance,3,,,,0,0,1
+CET-2113C,Advanced Digital Circuits,4,,,,0,0,1
+CET-1487C,Network+,3,MAT 1033,,,0,0,1
+CET-1178C,A+ Computer Hardware Service,3,CET1171.,,,0,0,1
+CET-1171,Introduction To Computer Service And Maintenance,3,,,,0,0,1
+CET-1110C,Digital Circuits,4,Pre/CoMAC 1105,,,0,0,1
+CEN-4090C,Software Engineering Capstone,4,Department Permission Required,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CEN-4025C,Software Engineering II,4,Pre CET 3383C,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",0,1,0
+CEN-2212C,Introduction to Programming the Internet of Things (IoT),4,CEN 2211 and EET 1033C,,,0,0,1
+CAP-4936,Special Topics in Data Analytics,4,,,,0,0,1
+CAP-4910,Data Analytics Capstone,4,"CAP 4767, CAP 4744, CAP 4633C",,,0,0,1
+CAP-4784,Big Data,4,CAP 1788 and CAP 2761C,,,0,0,1
+CAP-4767,Data Mining,4,CAP 1788 and CAP2761,,,0,0,1
+CAP-4744,Data Visualization,4,CAP 1788 and CAP 2761C,,,0,0,1
+CAP-4633C,Machine Learning for Data Analytics II,4,CAP 4631C,,,0,0,1
+CAP-4631C,Machine Learning for Data Analytics I,4,"COP 1047C, STA 3164 or CAP 3330",,,0,0,1
+CAP-3321C,Data Wrangling,4,CAP 1788 and CAP 2761C,,,0,0,1
+CAP-2920C,Game Development Project II,3,"CAP 2048, DIG 1712 or DIG 2113",,,0,0,1
+CAP-2791C,Power BI - Data Preparation and Modeling,4,CAP 1788 and CGS 1540C,,,0,0,1
+CAP-2761C,Intermediate Analytics,4,f CAP 1788 and CGS 1540C,,,0,0,1
+CAP-2743C,Power BI - Data Visualization and Analysis,4,CAP 2791C,,,0,0,1
+CAP-2047,User Interface Design,4,"DIG 1710 and DIG 1729C,Corequisite of COP 2335 ",,,0,0,1
+CAP-1788,Introduction to Data Analytics,4,,,,0,0,1
+BSC-2250,Natural History of South Florida,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+BSC-2085,Human Anatomy and Physiology 1,3,Co-Req BSC2085L,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+BSC-2020,Human Biology: Fundamental of Anatomy & Physiology,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+BSC-2010,Principles of Biology,3,Pre/Co-Req CHM 1045/BSC 2010L,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+BSC-1084,Functional Human Anatomy,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+BSC-1050,Biology & Environment,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+BSC-1030,Social Issues in Biology,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+BSC-1005,General Education Biology,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+BOT-1010,Botany,3,Co-Req BOT 1010L,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+AST-1002,Descriptive Astronomy,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ARH-2740,Cinema Appreciation,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ARH-2051,Art History 2,3,ARH 2050,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ARH-2050,Art History 1,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ARH-1000,Art Appreciation,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ARC-2702,History of Architecture 2,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ARC-2701,History of Architecture 1,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ANT-2410,Introduction to Cultural Anthropology,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+ANT-2000,Introduction to Anthropology,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+AMH-2020,History of the US Since 1877,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+AMH-2010,History of the US to 1877,3,,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",1,0,0
+MAT-1033,Intermediate Algebra,3,,,"The student will learn the concepts of
+linear equations, quadratic equations",1,0,0
+MAC-1140,Pre-Calculus Algebra,3,,,"This course will cover properties and graphs
+of algebraic, exponential, and logarithmic
+functions, piecewise-defined functions,
+the Fundamental Theorem of Algebra,
+solutions of polynomial equations, conic
+sections, systems of equations, matrices,
+and determinants, arithmetic and geo-
+metric sequences and series, the Binomial
+Theorem, and corresponding applications
+and modeling. Prerequisite: MAC 1105 with
+a grade of ""C"" or better or equivalent.
+Fulfills Gordon Rule computational require-
+ment.",1,0,0
+MAC-1114,Trigonometry,3,,,"This course will cover the analysis and
+graph of trigonometric functions and
+inverse trigonometric functions, the fun-
+damental trigonometric identities, solu-
+tions to conditional trigonometric equa-
+tions, solutions for both right and oblique
+triangles, operations on complex numbers
+in trigonometric form, work with vectors,
+graph both polar and parametric equa-
+tions, and solutions of applications and
+modeling problems related to the above
+topics. Prerequisite: MAC 1105 or MAC 1106
+with a grade of ""C"" or better. Special fee.
+Fulfills Gordon Rule computational require-
+ment.",1,0,0
+MAC-1147,"Pre-Calculus Algebra and
+Trigonometry",5,,,"The course will cover the properties and
+graphs of algebraic, exponential and loga-
+rithmic functions, piecewise-defined func-
+tions, the Fundamental Theorem of Algebra,
+solutions of polynomial equations, conic
+sections, systems of equations, matrices
+and determinants, arithmetic and geo-
+metric sequences and series, the Binomial
+Theorem, graph of trigonometric functions
+and inverse trigonometric functions",1,0,0
+CHM-1025,Introductory Chemistry,3,,,"This course will provide beginning students
+with certain basic knowledge and skills,
+which will enable them to be successful
+in the first semester of General Chemistry
+I, CHM 1045. The students will learn ele-
+mentary principles of modern chemistry,
+including basic measurements, chemical
+bonding, chemical reactions, stoichiometry,
+concentration of solutions, and chemical
+nomenclature. Prerequisite MAT 1033.",1,0,0
+BSC-2085L,Human Anatomy and Physiology 1,1,,,"In this laboratory course, student will learn
+to apply the concepts covered in BSC2085
+as it pertains to structure and function
+of the human body from an experiential
+approach. Corequisite: BSC2085",1,0,0
+MAC-1106,"Integrated College and Precalculus
+Algebra",5,,,"The student will learn to analyze linear,
+quadratic, polynomial, rational, radical,
+absolute value, composite, inverse, piece-
+wise, exponential, and logarithmic func-
+tions, conic sections, systems of equations/
+inequalities, matrices and determinants,
+sequences & series, the Binomial Theorem,
+and applications of mathematical mod-
+eling including exponential growth and
+decay. Prerequisite: MAT1033 with a grade",1,0,0
