@@ -41,17 +41,19 @@ class MapModelService
         ];
 
 
-         /**
-          * TODO: Only add courses where the student actually passed, create a function that checks for passing grade
-          * Function must return a boolean
-          * */
-        foreach ($studentHistory as $item)
-        {
-            $preparedHistory['courses'][] = [
-              'course_code' => $item['course_code'],
-            ];
-        }
-        $cybelData['data'] = [
+        /**
+         * TODO: Only add courses where the student actually passed, create a function that checks for passing grade
+         * Function must return a boolean
+         * */
+        foreach ($studentHistory as $item) {
+            if ($this->passed($item['grade'])) {
+
+
+                $preparedHistory['courses'][] = [
+                    'course_code' => $item['course_code'],
+                ];
+            }
+            $cybelData['data'] = [
             'campus_id' => $profile['campus_id'],
             'institution' => "MDC",
             'student_profile' => $preparedProfile,
@@ -59,6 +61,15 @@ class MapModelService
             'generic' => $genericMap,
         ];
         return $cybelData;
+        }
+
+
+
+
+    public function passed(string $grade)
+    {
+       $passingGrades = ['A','B','C'];
+       return in_array($grade, $passingGrades);
     }
 
    public function saveDegreeModel($modelData) : JsonResponse
