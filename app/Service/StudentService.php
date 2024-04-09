@@ -131,8 +131,8 @@ class StudentService extends Seeder
         try
         {
             $studentHistory = Student::where('student_id', $studentId)->with('user')->first();
-            $studentConcentrationCode = StudentProfile::where('user_id', $studentHistory->user->id)->first()->concentration_code;
-            $studentMajor =  Concentration::where('concentration_code', $studentConcentrationCode)->first()->name;
+            $studentConcentrationCode = StudentProfile::where('user_id', $studentHistory->user_id)->first();
+            $studentMajor =  Concentration::where('concentration_code', $studentConcentrationCode)->first()->name ?? 'None yet';
         } catch (\Exception $e)
         {
             Log::error($e->getMessage());

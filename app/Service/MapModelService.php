@@ -24,16 +24,16 @@ class MapModelService
         return '';
     }
 
-    public function prepareMapData(mixed $profile, bool $advisorGenerated, bool $genericMap = false) : string
+    public function prepareMapData(mixed $profile, bool $advisorGenerated, bool $genericMap = false) : array
     {
         $studentHistory = StudentHistory::where('user_id', $profile['user_id'])->get();
-        $preparedHistory = [];
+        $preparedHistory['courses'] = [];
         $preparedProfile = [
             'user_id' => $profile['user_id'],
-            'priority' => $profile['priority'],
+//            'priority' => $profile['priority'], //TODO don't really need this going to the api , doesn't use it
             'expected_graduation_date' => '',
-            'time_of_day' => $profile['time_of_day'],
-            'days_of_week' => $profile['days_of_week'],
+            'time_of_day' => json_decode($profile['time_of_day'], true),
+            'days_of_week' => json_decode($profile['days_of_week'], true),
             'interest_area' => $profile['interest_area'],
             'concentration_code' => $profile['concentration_code'],
             'mode_of_instruction' => $profile['mode_of_instruction'],
@@ -53,11 +53,12 @@ class MapModelService
         }
         $cybelData['data'] = [
             'campus_id' => $profile['campus_id'],
-            'student_profile' => json_encode($preparedProfile, true),
-            'student_history' => json_encode($preparedHistory, true),
+            'institution' => "MDC",
+            'student_profile' => $preparedProfile,
+            'student_history' => $preparedHistory,
             'generic' => $genericMap,
         ];
-        return json_encode($cybelData, true);
+        return $cybelData;
     }
 
    public function saveDegreeModel($modelData) : JsonResponse
@@ -95,12 +96,47 @@ class MapModelService
            }
            $toDb['identifier_key'] = $newIdentifierKey;
            MapModel::create($toDb);
-           return response()->json(['message' => 'Successfully Saved Model', 'data' => $toDb], 201);
+           //TODO send map model over to engine, will be via cronjob in the future
+           $toDb['courses'] = $coursesList;
+           $this->prepareMapModelData();
+           return response()->json(['message' => 'Successfully Saved Model', 'data' => $toDb]);
        } catch (\Exception $e)
        {
            Log::error($e);
            Log::error($e->getMessage());
        }
-       return response()->json(['message' => 'Error Saving Model'], 418) ;
+       return response()->json(['message' => 'Error Saving Model']);
    }
+
+   private function prepareMapModelData()
+   {
+
+
+   }
+
+    public function prepareGenericMapData(int $studentID, string $concentrationCode, int $campusID) : array
+    {
+        $preparedHistory['courses'] = [];
+        $preparedProfile = [
+            'user_id' => $studentID,
+            'expected_graduation_date' => '',
+            'concentration_code' => $concentrationCode,
+        ];
+
+        $studentHistory = StudentHistory::where('user_id', $studentID)->get();
+        foreach ($studentHistory as $item)
+        {
+            $preparedHistory['courses'][] = [
+                'course_code' => $item['course_code'],
+            ];
+        }
+        $cybelData['data'] = [
+            'campus_id' => $campusID,
+            'institution' => "MDC",
+            'student_profile' => $preparedProfile,
+            'student_history' => $preparedHistory,
+            'generic' => true,
+        ];
+        return $cybelData;
+    }
 }
