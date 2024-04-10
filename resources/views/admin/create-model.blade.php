@@ -32,12 +32,12 @@
                                   <td><input required max="45" type="number" name="courses[${index}][priority_index]"/></td>
                                   <td>
                                     <select style="display:none;" name="courses[${index}][level_combination][]" multiple="multiple" class="form-control">
-                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="1"> 1</label>
-                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="2"> 2</label>
-                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="3"> 3</label>
-                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="4"> 4</label>
-                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="5"> 5</label>
-                                        <label><input type="checkbox" name="courses[${index}][level_combination][]" value="6"> 6</label>
+                                        <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="1"> 1</label>
+                                        <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="2"> 2</label>
+                                        <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="3"> 3</label>
+                                        <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="4"> 4</label>
+                                        <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="5"> 5</label>
+                                        <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="6"> 6</label>
                                     </select>
                                  </td>
                                   <td><input type="hidden" name="courses[${index}][course_type]" value="${type}"/>${type}</td>
@@ -67,8 +67,8 @@
                 // Iterate over each row in the models table
                 $(".models-table tbody tr").each(function() {
                     // For each row, check if there's at least one level_combination checkbox checked
-                    let isCheckedInRow = $(this).find('input[type="checkbox"][name^="courses["][name$="][level_combination][]"]:checked').length > 0;
-
+                    // let isCheckedInRow = $(this).find('input[type="checkbox"][name^="courses["][name$="][level_combination][]"]:checked').length > 0;
+                    let isCheckedInRow = $(this).find('.level-combination:checked').length > 0;
                     // If no checkbox is checked in the current row, mark the form as invalid
                     if (!isCheckedInRow) {
                         isFormValid = false;
@@ -79,7 +79,6 @@
                 if (!isFormValid) {
                     e.preventDefault();
                     alert('Please check at least one level combination for every course.');
-                    return; // Stop further execution
                 }
 
                 let priorityIndices = [];
@@ -105,12 +104,14 @@
 
             //Remove COurses
             $('#remove-course').click(function() {
-                $(".table-checkable tbody input[type='checkbox']:checked").each(function() {
-                    $((this).closest("tr")).empty()
-                    $(".table-checkable input[type='checkbox']:checked").each(function() {
-                    }).prop('checked', false);
+                // $(".table-checkable tbody input[type='checkbox']:checked").each(function() {
+                //     $((this).closest("tr")).empty()
+                //     $(".table-checkable input[type='checkbox']:checked").each(function() {
+                //     }).prop('checked', false);
+                // });
+                $(".table-checkable tbody input[type='checkbox']:not(.level-combination):checked").each(function() {
+                    $(this).closest("tr").remove(); // Use .remove() instead of .empty() to remove the row entirely
                 });
-                saveModelTableData();
             });
 
             $('#select-all-courses').change(function() {

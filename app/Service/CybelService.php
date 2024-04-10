@@ -40,7 +40,7 @@ class CybelService
             ]);
     }
 
-    public function syncDegreeModel(array $preparedData) : JsonResponse
+    public function syncDegreeModel(mixed $preparedData) : JsonResponse
     {
         return response()->json();
     }

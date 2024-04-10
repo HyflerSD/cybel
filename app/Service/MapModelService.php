@@ -62,6 +62,7 @@ class MapModelService
         ];
         return $cybelData;
         }
+    }
 
 
 
