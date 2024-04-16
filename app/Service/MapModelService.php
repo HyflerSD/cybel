@@ -27,10 +27,8 @@ class MapModelService
     public function prepareMapData(mixed $profile, bool $advisorGenerated, bool $genericMap = false) : array
     {
         $studentHistory = StudentHistory::where('user_id', $profile['user_id'])->get();
-        $preparedHistory['courses'] = [];
         $preparedProfile = [
             'user_id' => $profile['user_id'],
-//            'priority' => $profile['priority'], //TODO don't really need this going to the api , doesn't use it
             'expected_graduation_date' => '',
             'time_of_day' => json_decode($profile['time_of_day'], true),
             'days_of_week' => json_decode($profile['days_of_week'], true),
@@ -40,19 +38,12 @@ class MapModelService
             'courses_per_semester' => $profile['courses_per_semester'],
         ];
 
-
-        /**
-         * TODO: Only add courses where the student actually passed, create a function that checks for passing grade
-         * Function must return a boolean
-         * */
+        $preparedHistory = [];
         foreach ($studentHistory as $item) {
             if ($this->passed($item['grade'])) {
-
-
-                $preparedHistory['courses'][] = [
-                    'course_code' => $item['course_code'],
-                ];
+                $preparedHistory["courses"][] = $item['course_code'];
             }
+        }
             $cybelData['data'] = [
             'campus_id' => $profile['campus_id'],
             'institution' => "MDC",
@@ -61,12 +52,7 @@ class MapModelService
             'generic' => $genericMap,
         ];
         return $cybelData;
-        }
     }
-
-
-
-
     public function passed(string $grade)
     {
        $passingGrades = ['A','B','C'];
@@ -75,7 +61,6 @@ class MapModelService
 
    public function saveDegreeModel($modelData) : JsonResponse
    {
-       //TODO: Add total credits to model? hhhmmmm
        $concentrationCode = $modelData['concentration'];
        $toDb['concentration_code'] = $concentrationCode;
        $toDb['institution'] = "MDC";
@@ -88,7 +73,7 @@ class MapModelService
            $coursesList[] = [
                "course_code" => $course['course_code'],
                "priority_index" => $course['priority_index'],
-               "level_combination" => json_encode($course['level_combination'], true),
+               "level_combination" => $course['level_combination'],
                "course_level" => $course['course_level'],
            ];
        }
@@ -106,24 +91,16 @@ class MapModelService
            } else {
                $newIdentifierKey = 1;
            }
-           $toDb['identifier_key'] = $newIdentifierKey;
+           $toDb['identifier_key'] = (int)$newIdentifierKey;
            MapModel::create($toDb);
-           //TODO send map model over to engine, will be via cronjob in the future
            $toDb['courses'] = $coursesList;
-           $this->prepareMapModelData();
-           return response()->json(['message' => 'Successfully Saved Model', 'data' => $toDb]);
+           return response()->json(['data' => $toDb]);
        } catch (\Exception $e)
        {
            Log::error($e);
            Log::error($e->getMessage());
        }
        return response()->json(['message' => 'Error Saving Model']);
-   }
-
-   private function prepareMapModelData()
-   {
-
-
    }
 
     public function prepareGenericMapData(int $studentID, string $concentrationCode, int $campusID) : array
