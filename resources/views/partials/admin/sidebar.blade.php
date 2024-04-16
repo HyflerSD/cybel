@@ -79,6 +79,7 @@ $user = auth()->user();
                         <ul class="sub-menu">
                             <li class="nav-item">
                                 <a href="#" class="nav-link ">
+                                    <a href="{{ route('student.view-map')  }}" class="nav-link ">
                                     <span class="title">View Map</span>
                                 </a>
                             </li>

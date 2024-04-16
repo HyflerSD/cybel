@@ -50,6 +50,7 @@ Route::group(['prefix' => 'admin', 'middleware' => IsValidUser::class], function
 
 Route::group(['prefix' => 'student', 'middleware' => IsValidUser::class], function (){
     Route::get('/dashboard', [App\Http\Controllers\StudentController::class, 'index'])->name('student.dashboard');
+    Route::get('/view-map', [StudentController::class, 'viewMap'])->name('student.view-map');
     Route::get('/create-map', [StudentController::class, 'showCreateMap'])->name('student.create-map');
     Route::get('/completed-courses', [StudentController::class,'show'])->name('student.completed-courses');
     Route::post('/create-map', [MapModelController::class, 'generateMap'])->name('student.handle-create-map');

@@ -75,6 +75,23 @@ class StudentController extends Controller
         }
         return view('student.create-map', compact('studentProfiles'));
     }
+
+    public function viewMap()
+    {
+        $student = (session()->get('student'));
+        $studentProfiles = $this->studentService->getProfiles($student->user_id);
+        if(!$studentProfiles->count())
+        {
+            return redirect()
+                ->route('student.create-map')
+                ->with(
+                    'error',
+                    'You must create a map'
+                );
+        }
+        return view('student.view-map', compact('studentProfiles'));
+    }
+
     public function show(Request $request)
     {
         $studentId = $request->session()->get('student')->student_id;
