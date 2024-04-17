@@ -97,6 +97,16 @@ class MapModelController extends Controller
             {
                 $preparedData = $this->mapModelService->prepareMapData($profile, false);
                 $response = $this->cybelService->generateMap($preparedData, true);
+                if($response->isSuccessful())
+                {
+                    $this->mapModelService->saveStudentMap($response->getData());
+                    return redirect()
+                        ->route('student.view-map')
+                        ->with(
+                            'success',
+                            $response->getData()->message
+                        );
+                }
             }
 
         } catch (\Exception $e)
@@ -105,15 +115,7 @@ class MapModelController extends Controller
             Log::error($e->getMessage());
         }
 
-        if($response->isSuccessful())
-        {
-            return redirect()
-                ->route('student.profile')
-                ->with(
-                    'success',
-                    'Map Successfully Generated!'
-                );
-        }
+
         return redirect()
             ->route('student.create-map')
             ->with(

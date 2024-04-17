@@ -89,7 +89,8 @@ class StudentController extends Controller
                     'You must create a map'
                 );
         }
-        return view('student.view-map', compact('studentProfiles'));
+        $semesters = $this->studentService->getStudentMaps($student->user_id);
+        return view('student.view-map', compact('studentProfiles', 'semesters'));
     }
 
     public function show(Request $request)

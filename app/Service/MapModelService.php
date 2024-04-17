@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use function PHPUnit\Framework\isEmpty;
 
 class MapModelService
 {
@@ -46,6 +47,10 @@ class MapModelService
             if ($this->passed($item['grade'])) {
                 $preparedHistory["courses"][] = $item['course_code'];
             }
+        }
+        if(isEmpty($preparedHistory))
+        {
+            $preparedHistory['courses'] = [];
         }
             $cybelData['data'] = [
             'campus_id' => $profile['campus_id'],
@@ -137,9 +142,9 @@ class MapModelService
         $sCount = count($mapData);
         $semesters = $this->getNextSemesters($sCount);
         $studentProfileBuild = [];
+        $idx = 0;
         foreach ($mapData as $semester)
         {
-            $idx = 0;
             foreach ($semester as $course)
             {
                 $studentProfileBuild[] = [
@@ -153,8 +158,8 @@ class MapModelService
                     'course_code' => $course,
                     'updated_by' => "system"
                 ];
-                $idx++;
             }
+            $idx++;
         }
         return $studentProfileBuild;
     }
@@ -164,7 +169,6 @@ class MapModelService
         $origStudentData = (array) $mapData->student_profile;
         $origStudentData['campus_id'] = $mapData->campus_id;
         $preparedData = $this->prepMapForDB($decodedMap, $origStudentData);
-
 
         try
         {

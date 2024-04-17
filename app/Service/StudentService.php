@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Models\Concentration;
+use App\Models\Course;
 use App\Models\DegreeMap;
 use App\Models\StudentHistory;
 use App\Models\StudentProfile;
@@ -54,7 +55,21 @@ class StudentService extends Seeder
 
     public function getStudentMaps(int $studentUserID)
     {
-        return DegreeMap::with('roadMap')->where('user_id', $studentUserID)->get();
+        $map = DegreeMap::with('student')
+            ->where('user_id', $studentUserID)
+            ->orderBy('id', 'asc')
+            ->get()
+            ->groupBy('term_code');
+
+        $termArray = [];
+        foreach ($map as $termCode => $term) {
+            foreach ($term as $value) {
+                $termArray[$termCode][] = [
+                    Course::where('course_code', $value->course_code)->first()
+                ];
+            }
+        }
+        return $termArray;
     }
     /**
      * @param string $studentEmail
