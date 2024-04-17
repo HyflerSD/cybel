@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Service;
+use App\Models\DegreeMap;
 use App\Models\MapModel;
 use App\Models\StudentHistory;
+use App\Models\Term;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class MapModelService
@@ -128,4 +131,92 @@ class MapModelService
         ];
         return $cybelData;
     }
+
+    public function prepMapForDB(array $mapData, mixed $studentProfile) : array
+    {
+        $sCount = count($mapData);
+        $semesters = $this->getNextSemesters($sCount);
+        $studentProfileBuild = [];
+        foreach ($mapData as $semester)
+        {
+            $idx = 0;
+            foreach ($semester as $course)
+            {
+                $studentProfileBuild[] = [
+                    "term_code" => $semesters[$idx],
+                    "user_id" => $studentProfile['user_id'],
+//                    "time_of_day" => $studentProfile['time_of_day'] ?? "none",
+//                    "days_of_week" => $studentProfile['days_of_week'] ?? "",
+                    "concentration_code" => $studentProfile['concentration_code'],
+//                    "mode_of_instruction" => $studentProfile['mode_of_instruction'] ?? "none",
+                    "campus_id" => $studentProfile['campus_id'],
+                    'course_code' => $course,
+                    'updated_by' => "system"
+                ];
+                $idx++;
+            }
+        }
+        return $studentProfileBuild;
+    }
+    public function saveStudentMap(mixed $mapData) : void
+    {
+        $decodedMap = json_decode($mapData->data, true);
+        $origStudentData = (array) $mapData->student_profile;
+        $origStudentData['campus_id'] = $mapData->campus_id;
+        $preparedData = $this->prepMapForDB($decodedMap, $origStudentData);
+
+
+        try
+        {
+            DB::table("degree_maps")->insert($preparedData);
+        }catch (\Exception $e)
+        {
+            Log::error($e);
+            Log::error($e->getMessage());
+        }
+
+    }
+
+    private function getNextSemesters(int $count) : array
+    {
+        $sMap = [
+            "spring" => ["january", "february", "march", "april"],
+            "summer" => ["may", "june", "july", "august"],
+            "fall" => ["september", "october", "november", "december"],
+        ];
+
+        $nextSemesterMap = [
+            "spring" => "summer",
+            "summer" => "fall",
+            "fall" => "spring"
+        ];
+
+        $currentMonth = strtolower(Carbon::now()->format('F'));
+        $currentYear = Carbon::now()->format('Y');
+
+        $currentSemester = null;
+        foreach ($sMap as $semester => $months) {
+            if (in_array($currentMonth, $months)) {
+                $currentSemester = $semester;
+                break;
+            }
+        }
+
+        $semesters = [];
+        if ($currentSemester) {
+            $semester = $nextSemesterMap[$currentSemester];
+            for ($i = 0; $i < $count; $i++) {
+                if ($semester == 'spring' && $currentSemester == 'fall') {
+                    $currentYear++;
+                }
+                $semesters[] = $semester . '_' . $currentYear;
+                $currentSemester = $semester;
+                $semester = $nextSemesterMap[$semester];
+            }
+        }
+
+        return $semesters;
+    }
+
+
 }

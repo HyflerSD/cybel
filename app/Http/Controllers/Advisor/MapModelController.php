@@ -141,6 +141,7 @@ class MapModelController extends Controller
 
             if($response->isSuccessful())
             {
+                $this->mapModelService->saveStudentMap($response->getData());
                 return redirect()
                     ->route('admin.create-student-map-form')
                     ->with(
