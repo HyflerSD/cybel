@@ -15,16 +15,25 @@ class CybelService
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ])->post('http://127.0.0.1:8080/map-generate', $data);
-            dd($response->body());
+
+            if($response->successful())
+            {
+                return response()->json([
+                    'message' => 'Successfully Generated Student Map',
+                    'data' => $response->body(),
+                    'student_profile' => $data['data']['student_profile'],
+                    'campus_id' => $data['data']['campus_id'],
+                ]);
+            }
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             Log::error($e->getTraceAsString());
         }
 
         return response()->json([
-            'message' => 'Successfully Generated Student Map',
-            'data' => $response ?? ''
-        ]);
+            'message' => 'Error Generating Student Map',
+            'data' => $response->body()
+        ], 400);
     }
 
     public function syncDegreeModel(mixed $preparedData): JsonResponse

@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('degree_maps', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('term_code');
-            $table->json('days_of_week');
-            $table->string('time_of_day');
-            $table->string('updated_by');
+            $table->string('term_code')->default("spring_2024")->nullable();
+            $table->json('days_of_week')->nullable();
+            $table->string('time_of_day')->nullable();
+            $table->string('updated_by')->nullable();
             $table->string('course_code');
             $table->string('substitution_course_code')->nullable();
-            $table->unsignedBigInteger('map_id')->unique();
-            $table->string('mode_of_instruction');
+            $table->unsignedBigInteger('map_id')->nullable();
+            $table->string('mode_of_instruction')->nullable();
             $table->string('concentration_code')->nullable();
             $table->boolean('is_internal')->default(true);
             $table->boolean('generated_by_advisor')->default(false);
