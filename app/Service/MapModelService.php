@@ -3,8 +3,8 @@
 namespace App\Service;
 use App\Models\DegreeMap;
 use App\Models\MapModel;
+use App\Models\PreRegistration;
 use App\Models\StudentHistory;
-use App\Models\Term;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
@@ -137,7 +137,7 @@ class MapModelService
         return $cybelData;
     }
 
-    public function prepMapForDB(array $mapData, mixed $studentProfile) : array
+    public function prepMapForDB(int $id, array $mapData, mixed $studentProfile) : array
     {
         $sCount = count($mapData);
         $semesters = $this->getNextSemesters($sCount);
@@ -150,10 +150,12 @@ class MapModelService
                 $studentProfileBuild[] = [
                     "term_code" => $semesters[$idx],
                     "user_id" => $studentProfile['user_id'],
-//                    "time_of_day" => $studentProfile['time_of_day'] ?? "none",
-//                    "days_of_week" => $studentProfile['days_of_week'] ?? "",
+                    "generated_by_advisor" => $studentProfile['generated_by_advisor'],
+                    "map_id" => $id,
+                    "time_of_day" => json_encode($studentProfile['time_of_day'], true),
+                    "days_of_week" => json_encode($studentProfile['days_of_week'], true),
                     "concentration_code" => $studentProfile['concentration_code'],
-//                    "mode_of_instruction" => $studentProfile['mode_of_instruction'] ?? "none",
+                    "mode_of_instruction" => $studentProfile['mode_of_instruction'],
                     "campus_id" => $studentProfile['campus_id'],
                     'course_code' => $course,
                     'updated_by' => "system"
@@ -163,16 +165,31 @@ class MapModelService
         }
         return $studentProfileBuild;
     }
-    public function saveStudentMap(mixed $mapData) : void
+    public function saveStudentMap(mixed $mapData, $byAdvisor) : void
     {
         $decodedMap = json_decode($mapData->data, true);
         $origStudentData = (array) $mapData->student_profile;
         $origStudentData['campus_id'] = $mapData->campus_id;
-        $preparedData = $this->prepMapForDB($decodedMap, $origStudentData);
+        $origStudentData['generated_by_advisor'] = $byAdvisor;
+        $id = DegreeMap::all()->sortDesc()->first();
+        $id = $id?->id;
+        if(is_null($id ))
+        {
+            $id = 1;
+        }
+        else
+        {
+            $id++;
+        }
+        $preparedData = $this->prepMapForDB($id, $decodedMap, $origStudentData);
 
         try
         {
             DB::table("degree_maps")->insert($preparedData);
+            PreRegistration::insert([
+                "degree_map_id" => $id,
+                "is_approved" => false
+            ]);
         }catch (\Exception $e)
         {
             Log::error($e);
