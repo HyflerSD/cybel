@@ -6,6 +6,7 @@ use App\Models\Advisor;
 use App\Models\Campus;
 use App\Models\Concentration;
 use App\Models\Course;
+use App\Models\DegreeMap;
 use App\Models\MapModel;
 use App\Models\StudentProfile;
 use App\Service\CybelService;
@@ -79,6 +80,15 @@ class MapModelController extends Controller
     {
         $student = session('student');
         $hasProfile = $this->studentService->maxProfileCount($student->user_id);
+        $hasMap = DegreeMap::where('user_id', $student->user_id)->count();
+        if($hasMap > 0)
+        {
+            return redirect()->back()
+                ->with(
+                    'error',
+                    'Multiple Roadmaps Locked until version 2.0!'
+                );
+        }
         if(!$hasProfile)
         {
             return redirect()
@@ -127,6 +137,16 @@ class MapModelController extends Controller
     public function adminGeneratedMap(int $studentUserId, string $institution, int $campusID) : RedirectResponse
     {
         $studentProfile = StudentProfile::where('user_id', $studentUserId)->where('priority', 1)->first();
+
+        $hasMap = DegreeMap::where('user_id', $studentUserId)->count();
+        if($hasMap > 0)
+        {
+            return redirect()->back()
+                ->with(
+                    'error',
+                    'Multiple Student Roadmaps Locked until version 2.0!'
+                );
+        }
         try
         {
             if(is_null($studentProfile))
