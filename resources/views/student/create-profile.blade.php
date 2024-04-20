@@ -94,10 +94,10 @@
                                                     <label class="col-lg-3 col-md-4 control-label">Time Of Day
                                                     </label>
                                                     <div class="col-lg-9 col-md-8">
-                                                        <select required name="time_of_day[]" id="time_of_day" class="form-control select2-multiple" multiple>
-                                                            <option value="Morning">Morning</option>
-                                                            <option value="Afternoon">Afternoon</option>
+                                                        <select required name="time_of_day[]" id="time_of_day" class="form-control select2-multiple">
+                                                            <option value="Day">Day</option>
                                                             <option value="Night">Night</option>
+                                                            <option value="Weekend">Weekend</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -105,22 +105,21 @@
                                                     <label class="col-lg-3 col-md-4 control-label">Days Of Week
                                                     </label>
                                                     <div class="col-lg-9 col-md-8">
-                                                        <select required name="days_of_week[]" id="days_of_week" class="form-control select2-multiple" multiple>
+                                                        <select required name="days_of_week[]" id="days_of_week" class="form-control select2-multiple">
+                                                            <optgroup label="Weekends">
+                                                                <option value="SF">Friday/Saturday</option>
+                                                            </optgroup>
                                                             <optgroup label="WeekDays">
                                                                 <option value="MWF">Monday, Wednesday, Friday (MWF)</option>
                                                                 <option value="TTh">Tuesday, Thursday (TTh)</option>
-                                                                <option value="MW">Monday, Wednesday (MW)</option>
-                                                                <option value="MF">Monday, Friday (MF)</option>
-                                                                <option value="WF">Wednesday, Friday (WF)</option>
-                                                                <option value="T">Tuesday Only (T)</option>
-                                                                <option value="Th">Thursday Only (Th)</option>
-                                                                <option value="M">Monday Only (M)</option>
-                                                                <option value="W">Wednesday Only (W)</option>
-                                                                <option value="F">Friday Only (F)</option>
-                                                            </optgroup>
-                                                            <optgroup label="Weekends">
-                                                                <option value="S">Saturday</option>
-                                                                <option value="Su">Sunday</option>
+                                                                <option disabled value="MW">Monday, Wednesday (MW)</option>
+                                                                <option disabled value="MF">Monday, Friday (MF)</option>
+                                                                <option disabled value="WF">Wednesday, Friday (WF)</option>
+                                                                <option disabled value="T">Tuesday Only (T)</option>
+                                                                <option disabled value="Th">Thursday Only (Th)</option>
+                                                                <option disabled value="M">Monday Only (M)</option>
+                                                                <option disabled value="W">Wednesday Only (W)</option>
+                                                                <option disabled value="F">Friday Only (F)</option>
                                                             </optgroup>
                                                         </select>
                                                     </div>
