@@ -8,6 +8,7 @@ use App\Models\Concentration;
 use App\Models\Course;
 use App\Models\DegreeMap;
 use App\Models\MapModel;
+use App\Models\PreRegistration;
 use App\Models\StudentProfile;
 use App\Service\CybelService;
 use App\Service\MapModelService;
@@ -29,9 +30,23 @@ class MapModelController extends Controller
     }
 
 
-    public function approveStudentMap()
+    public function approveStudentMap(Request $request)
     {
-        dd('approved');
+        $mapId = $request->get('map_id');
+        try
+        {
+            PreRegistration::where('degree_map_id', $mapId)
+                          ->update(['is_approved' => true]);
+        } catch (\Exception $e)
+        {
+            Log::error($e->getMessage());
+            Log::error($e);
+        }
+        return redirect()->back()
+            ->with(
+                'success',
+                'Approval Notice Sent to Student'
+            );
     }
 
     public function generateMap(Request $request) : RedirectResponse
@@ -65,9 +80,8 @@ class MapModelController extends Controller
     public function adviseeMaps()
     {
         $advisorId = Auth::user()->id;
-        $students = $this->studentService->assignedStudents($advisorId);
-        $studentMaps = [];
-        return view('admin.advisee-maps', compact('studentMaps', 'students'));
+        $studentMaps = $this->studentService->assignedStudents($advisorId);
+        return view('admin.advisee-maps', compact('studentMaps'));
     }
 
     public function index()
@@ -109,7 +123,7 @@ class MapModelController extends Controller
                 $response = $this->cybelService->generateMap($preparedData, true);
                 if($response->isSuccessful())
                 {
-                    $this->mapModelService->saveStudentMap($response->getData());
+                    $this->mapModelService->saveStudentMap($response->getData(),false);
                     return redirect()
                         ->route('student.view-map')
                         ->with(
@@ -163,7 +177,7 @@ class MapModelController extends Controller
 
             if($response->isSuccessful())
             {
-                $this->mapModelService->saveStudentMap($response->getData());
+                $this->mapModelService->saveStudentMap($response->getData(), true);
                 return redirect()
                     ->route('admin.create-student-map-form')
                     ->with(

@@ -26,9 +26,13 @@ class Student extends Model
     ];
 
 
+    public function degreeMaps() : HasMany
+    {
+        return $this->hasMany(DegreeMap::class, 'user_id');
+    }
     public function studentProfiles() : HasMany
     {
-        return $this->hasMany(StudentProfile::class);
+        return $this->hasMany(StudentProfile::class, 'user_id');
     }
     public function advisor() : BelongsTo
     {
