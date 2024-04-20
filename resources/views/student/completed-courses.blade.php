@@ -36,7 +36,7 @@
                                             </label>
                                         </th>
                                         <th> Course Code</th>
-                                        <th> Course Name</th>
+{{--                                        <th> Course Name</th>--}}
                                         <th>Credits</th>
                                         <th> Grade </th>
                                         <th> Semester </th>
@@ -52,9 +52,9 @@
                                             </label>
                                         </td>
                                         <td> {{ $course->course_code }} </td>
-                                        <td>
-                                            <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>
-                                        </td>
+{{--                                        <td>--}}
+{{--                                            <a href="mailto:shuxer@gmail.com"> shuxer@gmail.com </a>--}}
+{{--                                        </td>--}}
                                         <td> {{ $course->credits_attempted }} </td>
                                         <td>
                                             @if($course->grade != 'null')
@@ -63,7 +63,13 @@
                                                 {{ 'in progress' }}
                                             @endif
                                         </td>
-                                        <td> {{ $course->term_code }} </td>
+                                        <td>
+                                            @php
+                                                $p = explode('_', $course->term_code);
+                                                $cSemester = ucfirst($p[0]) . ' '  . $p[1];
+                                            @endphp
+                                            {{ $cSemester }}
+                                        </td>
                                     </tr>
                                     @endforeach
                                     </tbody>
@@ -72,9 +78,6 @@
                                     @csrf
                                     <input type="hidden" name="student_email" value="{{ 'student email' }}"/>
                                     <div class="btn-group pull-left">
-                                        <button type="submit" id="add-button" class="btn btn-circle btn-success">
-                                            Approve <i class="fa"></i>
-                                        </button>
                                     </div>
                                 </form>
                             </div>
