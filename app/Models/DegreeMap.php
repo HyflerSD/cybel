@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class DegreeMap extends Model
 {
@@ -26,4 +27,8 @@ class DegreeMap extends Model
     {
         return $this->belongsTo(Student::class, 'user_id');
     }
+   public function preRegistrations(): HasOne
+   {
+       return $this->hasOne(PreRegistration::class, 'degree_map_id', 'map_id');
+   }
 }

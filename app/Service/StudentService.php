@@ -5,6 +5,7 @@ namespace App\Service;
 use App\Models\Concentration;
 use App\Models\Course;
 use App\Models\DegreeMap;
+use App\Models\PreRegistration;
 use App\Models\StudentHistory;
 use App\Models\StudentProfile;
 use App\Models\User;
@@ -50,9 +51,13 @@ class StudentService extends Seeder
      */
     public function assignedStudents(int $advisor_id)
     {
-        return Student::with('user')->where('advisor_id', $advisor_id)->get();
+        return Student::with('user')->where('advisor_id', $advisor_id)->with(['degreeMaps.preRegistrations', 'studentProfiles'])->get();
     }
 
+    public function isMapApproved(int $studentId) : bool
+    {
+        return PreRegistration::with('degreeMap')->find($studentId)->is_approved == 1;
+    }
     public function getStudentMaps(int $studentUserID) : array
     {
         $map = DegreeMap::with('student')
@@ -60,7 +65,6 @@ class StudentService extends Seeder
             ->orderBy('id', 'asc')
             ->get()
             ->groupBy('term_code');
-
         $termArray = [];
         foreach ($map as $termCode => $term) {
             foreach ($term as $value) {

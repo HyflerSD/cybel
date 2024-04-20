@@ -6,6 +6,9 @@
         <div class="page-bar">
         </div>
         <div class="row">
+            @php
+            $status = $mapStatus ? "Approved" : "Pending Approval";
+            @endphp
             @foreach($semesters as $key => $semester)
                 @php
                 $p = explode('_', $key);
@@ -14,7 +17,7 @@
             <div class="col-lg-4 col-md-12 col-sm-12 col-12">
                 <div class="card  card-box">
                     <div class="card-head">
-                        <header>{{ $cSemester }}</header>
+                        <header>{{ $cSemester . " | " . $status }}</header>
                         <div class="tools">
                             <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                             <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>

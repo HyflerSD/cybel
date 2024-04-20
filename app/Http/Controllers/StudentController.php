@@ -90,7 +90,8 @@ class StudentController extends Controller
                 );
         }
         $semesters = $this->studentService->getStudentMaps($student->user_id);
-        return view('student.view-map', compact('studentProfiles', 'semesters'));
+        $mapStatus = $this->studentService->isMapApproved($student->user_id);
+        return view('student.view-map', compact('studentProfiles', 'semesters', 'mapStatus'));
     }
 
     public function show(Request $request)
