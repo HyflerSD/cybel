@@ -95,9 +95,8 @@ class StudentController extends Controller
 
     public function show(Request $request)
     {
-        $studentId = $request->session()->get('student')->student_id;
+        $studentId = $request->session()->get('student')->user_id;
         $coursesHistory = $this->studentService->getStudentHistory($studentId);
-
         return view('student.completed-courses', compact('coursesHistory'));
     }
 
