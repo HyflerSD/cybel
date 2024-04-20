@@ -111,7 +111,7 @@ class StudentService extends Seeder
         $studentHistory = [];
         try
         {
-            $studentHistory = StudentHistory::where('student_id', $studentId)
+            $studentHistory = StudentHistory::where('user_id', $studentId)
                 ->get();
         }catch (\Exception $e){
 
