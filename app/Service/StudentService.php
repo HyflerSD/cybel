@@ -53,7 +53,7 @@ class StudentService extends Seeder
         return Student::with('user')->where('advisor_id', $advisor_id)->get();
     }
 
-    public function getStudentMaps(int $studentUserID)
+    public function getStudentMaps(int $studentUserID) : array
     {
         $map = DegreeMap::with('student')
             ->where('user_id', $studentUserID)
