@@ -24,7 +24,7 @@
                     @endif
                     @foreach($degreeModels as $degreeModel)
                         @php
-                        $courses = json_decode($degreeModel->courses, true);
+                        $courses = json_decode($degreeModel['courses'], true);
                         @endphp
                     <div class="row">
                         <div class="col-md-12">
@@ -67,7 +67,7 @@
                                                 <td> {{ $course['course_code'] }} </td>
                                                 <td> {{ $course['priority_index'] }} </td>
                                                 <td> {{ $course['course_level'] }} </td>
-                                                <td> {{ implode(',', json_decode($course['level_combination'])) }} </td>
+                                                <td> {{ implode(',', $course['level_combination']) }} </td>
                                         </tr>
                                         @endforeach
                                         </tbody>
