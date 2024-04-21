@@ -56,7 +56,9 @@ class StudentService extends Seeder
 
     public function isMapApproved(int $studentId) : bool
     {
-        return PreRegistration::with('degreeMap')->find($studentId)->is_approved == 1;
+        $profile = DegreeMap::where('user_id', $studentId)->pluck('map_id')->first();
+        $s = PreRegistration::with('degreeMap')->where('degree_map_id', $profile)->first();
+        return $s?->is_approved ?? false;
     }
     public function getStudentMaps(int $studentUserID) : array
     {
