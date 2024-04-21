@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DegreeMap;
 use App\Service\StudentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -121,12 +122,24 @@ class StudentController extends Controller
             $result = $this->studentService->saveProfileModel($mergedProfile);
             if($result)
             {
+                $studentMap = DegreeMap::where('user_id', $student->user_id)->first();
+                if($studentMap->generated_by_advisor)
+                {
+                    return redirect()
+                        ->route('student.view-map')
+                        ->with(
+                            'success',
+                            'Successfully Added Profile!'
+                        );
+                }
+
                 return redirect()
                     ->route('student.create-map')
                     ->with(
                         'success',
                         'Successfully Added Profile!'
                     );
+
             }
         } catch (\Exception $e)
         {
