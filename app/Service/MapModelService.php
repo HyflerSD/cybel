@@ -145,6 +145,9 @@ class MapModelService
         $idx = 0;
         foreach ($mapData as $semester)
         {
+            $tod = json_encode(isset($studentProfile['time_of_day']) ? $studentProfile['time_of_day'] :  [], true);
+            $dow = json_encode(isset($studentProfile['days_of_week']) ? $studentProfile['days_of_week'] :  [], true);
+            $moi = isset($studentProfile['mode_of_instruction']) ? $studentProfile['mode_of_instruction'] : " ";
             foreach ($semester as $course)
             {
                 $studentProfileBuild[] = [
@@ -152,10 +155,10 @@ class MapModelService
                     "user_id" => $studentProfile['user_id'],
                     "generated_by_advisor" => $studentProfile['generated_by_advisor'],
                     "map_id" => $id,
-                    "time_of_day" => json_encode($studentProfile['time_of_day'], true),
-                    "days_of_week" => json_encode($studentProfile['days_of_week'], true),
+                    "time_of_day" => $tod,
+                    "days_of_week" => $dow,
                     "concentration_code" => $studentProfile['concentration_code'],
-                    "mode_of_instruction" => $studentProfile['mode_of_instruction'],
+                    "mode_of_instruction" => $moi,
                     "campus_id" => $studentProfile['campus_id'],
                     'course_code' => $course,
                     'updated_by' => "system"
@@ -172,7 +175,7 @@ class MapModelService
         $origStudentData['campus_id'] = $mapData->campus_id;
         $origStudentData['generated_by_advisor'] = $byAdvisor;
         $id = DegreeMap::all()->sortDesc()->first();
-        $id = $id?->id;
+        $id = $id?->map_id;
         if(is_null($id ))
         {
             $id = 1;
@@ -186,8 +189,9 @@ class MapModelService
         try
         {
             DB::table("degree_maps")->insert($preparedData);
-            $check = PreRegistration::where('degree_map_id', $id)->first();
-            if($check->count() < 1)
+            $check = PreRegistration::where('degree_map_id', $id)?->first();
+
+            if(!$check || $check->count() < 1)
             {
                 if($byAdvisor)
                 {
