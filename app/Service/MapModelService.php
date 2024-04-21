@@ -186,10 +186,26 @@ class MapModelService
         try
         {
             DB::table("degree_maps")->insert($preparedData);
-            PreRegistration::insert([
-                "degree_map_id" => $id,
-                "is_approved" => false
-            ]);
+            $check = PreRegistration::where('degree_map_id', $id)->first();
+            if($check->count() < 1)
+            {
+                if($byAdvisor)
+                {
+                    PreRegistration::insert([
+                        "degree_map_id" => $id,
+                        "is_approved" => false
+                    ]);
+
+                }
+                else
+                {
+                    PreRegistration::insert([
+                        "degree_map_id" => $id,
+                        "is_approved" => false
+                    ]);
+
+                }
+            }
         }catch (\Exception $e)
         {
             Log::error($e);
