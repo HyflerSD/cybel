@@ -86,7 +86,7 @@ class MapModelController extends Controller
 
     public function index()
     {
-        $degreeModels = MapModel::all();
+        $degreeModels = MapModel::all()->toArray();
         return view('admin.models', compact('degreeModels'));
     }
 
