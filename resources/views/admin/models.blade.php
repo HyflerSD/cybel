@@ -67,8 +67,6 @@
                                                 <td> {{ $course['course_code'] }} </td>
                                                 <td> {{ $course['priority_index'] }} </td>
                                                 <td> {{ $course['course_level'] }} </td>
-                                            @php
-                                            @endphp
                                                 <td> {{ implode(',',$course['level_combination']) }} </td>
                                         </tr>
                                         @endforeach
