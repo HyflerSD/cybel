@@ -29,7 +29,7 @@ class StudentProfile extends Model
 
     public function student() : BelongsTo
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(Student::class, 'user_id');
     }
 
     public function concentrations() : BelongsTo
