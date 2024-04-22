@@ -197,7 +197,7 @@
                     <ul class="dropdown-menu dropdown-menu-default">
                         @if(!$user->is_advisor)
                             <li>
-                                <a href="user_profile.html">
+                                <a href="{{ route('student.profile') }}">
                                     <i class="icon-user"></i> Profile </a>
                             </li>
                             <li>

@@ -42,8 +42,9 @@
         }
 
     </style>
-
-
+    @php
+        $hasProfile = $studentProfile->count();
+    @endphp
     <!-- start page content -->
     <div class="page-content-wrapper">
         <div class="page-content">
@@ -66,7 +67,7 @@
                                     </div>
                                 </div>
                                 <div class="profile-usertitle">
-                                    <div class="profile-usertitle-name">Computer Science</div>
+                                    <div class="profile-usertitle-name">{{ $hasProfile ? $studentProfile->concentrations->name  : "Computer Science" }}</div>
                                 </div>
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
@@ -127,7 +128,7 @@
                                 <div class="work-monitor work-progress">
                                     <div class="states">
                                         <div class="info">
-                                            <div class="desc pull-left">Software Engineering</div>
+                                            <div class="desc pull-left">{{ $hasProfile ? $studentProfile->interest_area : "Software Engineering" }}</div>
                                         </div>
                                         <div class="progress progress-xs">
                                             <div class="progress-bar progress-bar-danger progress-bar-striped active"
@@ -179,21 +180,25 @@
                                         <div class="tab-pane active fontawesome-demo" id="tab1">
                                             <div id="biography">
                                                 <div class="row">
-                                                    <div class="col-md-3 col-6 b-r"> <strong>Campus</strong>
+                                                    <div class="col-md-2 col-6 b-r"> <strong>Campus</strong>
                                                         <br>
-                                                        <p class="text-muted">Courses Per Semester</p>
+                                                        <p class="text-muted">{{ $hasProfile ? $studentProfile->campus->description : "Pending" }}</p>
                                                     </div>
-                                                    <div class="col-md-3 col-6 b-r"> <strong>Time Of Day</strong>
+                                                    <div class="col-md-2 col-6 b-r"> <strong>Time Of Day</strong>
                                                         <br>
-                                                        <p class="text-muted">(123) 456 7890</p>
+                                                        <p class="text-muted">{{ $hasProfile ? implode(",", json_decode($studentProfile->time_of_day, true)) : "Pending" }}</p>
                                                     </div>
-                                                    <div class="col-md-3 col-6 b-r"> <strong>Days Of Week</strong>
+                                                    <div class="col-md-2 col-6 b-r"> <strong>Days Of Week</strong>
                                                         <br>
-                                                        <p class="text-muted">test@example.com</p>
+                                                        <p class="text-muted">{{ $hasProfile ? implode(",", json_decode($studentProfile->days_of_week, true)) : "Pending" }}</p>
                                                     </div>
-                                                    <div class="col-md-3 col-6"> <strong>Mode of Instruction</strong>
+                                                    <div class="col-md-2 col-6"> <strong>Mode of Instruction</strong>
                                                         <br>
-                                                        <p class="text-muted">India</p>
+                                                        <p class="text-muted">{{ $hasProfile ? $studentProfile->mode_of_instruction : "Pending" }}</p>
+                                                    </div>
+                                                    <div class="col-md-2 col-6 b-r"> <strong>Courses Per Semester</strong>
+                                                        <br>
+                                                        <p class="text-muted">{{ $hasProfile ? $studentProfile->courses_per_semester : "Pending" }}</p>
                                                     </div>
                                                 </div>
                                             </div>

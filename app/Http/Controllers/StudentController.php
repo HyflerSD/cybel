@@ -37,14 +37,24 @@ class StudentController extends Controller
         $studentId = session('student')->student_id;
         $totalCreditsEarned = $this->studentService->getTotalCreditsEarned($studentId);
         $studentsMajor = $this->studentService->getStudentsMajor($studentId);
+        $studentProfile = $this->studentService->getProfiles(session('student')->user_id)[0];
 
-        return view('student.dashboard', compact('totalCreditsEarned', 'studentsMajor'));
+        return view('student.dashboard', compact('totalCreditsEarned', 'studentsMajor', 'studentProfile'));
     }
 
     public function showProfiles()
     {
         $student = (session()->get('student'));
         $studentProfiles = $this->studentService->getProfiles($student->user_id);
+        if(!$studentProfiles->count())
+        {
+            return redirect()
+                ->route('student.create-profile')
+                ->with(
+                    'error',
+                    'Please Create A Profile'
+                );
+        }
         return view('student.profile', compact('studentProfiles'));
 
     }
