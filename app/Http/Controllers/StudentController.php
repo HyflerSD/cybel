@@ -37,8 +37,11 @@ class StudentController extends Controller
         $studentId = session('student')->student_id;
         $totalCreditsEarned = $this->studentService->getTotalCreditsEarned($studentId);
         $studentsMajor = $this->studentService->getStudentsMajor($studentId);
-        $studentProfile = $this->studentService->getProfiles(session('student')->user_id)[0];
-
+        $studentProfile = $this->studentService->getProfiles(session('student')->user_id);
+        if($studentProfile->count())
+        {
+            $studentProfile = $studentProfile->first();
+        }
         return view('student.dashboard', compact('totalCreditsEarned', 'studentsMajor', 'studentProfile'));
     }
 
