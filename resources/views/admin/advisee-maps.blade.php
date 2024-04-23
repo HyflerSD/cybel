@@ -14,6 +14,18 @@
                     </div>
                 </div>
             </div>
+
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             @foreach($studentMaps as $student)
                 @if($student->degreeMaps->isNotEmpty())
                     <div class="row">
@@ -27,17 +39,6 @@
                                     </div>
                                 </div>
                                 <div class="card-body ">
-                                    @if(session('success'))
-                                        <div class="alert alert-success">
-                                            {{ session('success') }}
-                                        </div>
-                                    @endif
-
-                                    @if(session('error'))
-                                        <div class="alert alert-danger">
-                                            {{ session('error') }}
-                                        </div>
-                                    @endif
                                     <table
                                         class="table search-table table-striped table-bordered table-hover table-checkable order-column"
                                         style="width: 100%">
@@ -75,14 +76,14 @@
                                                     </label>
                                                 </td>
                                                 @php
-                                                $studentp = $student->studentProfiles[0];
+                                                $studentp = $student->studentProfiles;
                                                 @endphp
                                                 <td> {{ $s->concentration_code }} </td>
                                                 <td> {{ $s->course_code }} </td>
                                                 <td> {{ $s->term_code }} </td>
-                                                <td> {{ $studentp->mode_of_instruction}} </td>
-                                                <td> {{ implode(',', json_decode($studentp->days_of_week, true)) }} </td>
-                                                <td> {{ implode(',', json_decode($studentp->time_of_day, true)) }} </td>
+                                                <td> {{ sizeof($studentp) > 0 ? $studentp[0]->mode_of_instruction : ''}} </td>
+                                                <td> {{ implode(',', json_decode(sizeof($studentp) > 0 ? $studentp[0]->days_of_week : "[]", true)) }} </td>
+                                                <td> {{ implode(',', json_decode(sizeof($studentp) > 0 ? $studentp[0]->time_of_day : "[]", true)) }} </td>
                                             </tr>
                                         @endforeach
                                         </tbody>

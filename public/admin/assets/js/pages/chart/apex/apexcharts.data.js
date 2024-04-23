@@ -577,7 +577,7 @@ function chart7() {
       width: 360,
       type: "pie",
     },
-    labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+    labels: ["Business", "Computer Science", "Health", "Education", "Humanities"],
     series: [44, 55, 13, 43, 22],
     responsive: [
       {
