@@ -20,57 +20,57 @@ function barChart() {
   var chart = am4core.create("barChart", am4charts.XYChart);
   chart.scrollbarX = new am4core.Scrollbar();
 
-  // Add data
-  chart.data = [
-    {
-      country: "USA",
-      visits: 3025,
-    },
-    {
-      country: "China",
-      visits: 1882,
-    },
-    {
-      country: "Japan",
-      visits: 1809,
-    },
-    {
-      country: "Germany",
-      visits: 1322,
-    },
-    {
-      country: "UK",
-      visits: 1122,
-    },
-    {
-      country: "France",
-      visits: 1114,
-    },
-    {
-      country: "India",
-      visits: 984,
-    },
-    {
-      country: "Spain",
-      visits: 711,
-    },
-    {
-      country: "Netherlands",
-      visits: 665,
-    },
-    {
-      country: "Russia",
-      visits: 580,
-    },
-    {
-      country: "South Korea",
-      visits: 443,
-    },
-    {
-      country: "Canada",
-      visits: 441,
-    },
-  ];
+    // Add data
+    chart.data = [
+        {
+            country: "COP-3530",
+            visits: 88,
+        },
+        {
+            country: "COP-2800",
+            visits: 70,
+        },
+        {
+            country: "CET-3126C",
+            visits: 60,
+        },
+        {
+            country: "COP-1334",
+            visits: 50,
+        },
+        {
+            country: "CET-3383C",
+            visits: 44,
+        },
+        {
+            country: "CIS-3360",
+            visits: 44,
+        },
+        {
+            country: "CTS-1650",
+            visits: 33,
+        },
+        {
+            country: "CGS-3763",
+            visits: 28,
+        },
+        {
+            country: "COT-4400",
+            visits: 29,
+        },
+        {
+            country: "CEN-4090C",
+            visits: 8,
+        },
+        {
+            country: "MAD-1100",
+            visits: 14,
+        },
+        {
+            country: "CGS-1540C",
+            visits: 7,
+        },
+    ];
 
   // Create axes
   var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
