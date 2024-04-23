@@ -37,3 +37,11 @@
 <script src="/admin/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/admin/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.js"></script>
 <script src="/admin/assets/js/pages/table/table_data.js"></script>
+<script src="/admin/assets/plugins/amcharts4/core.js"></script>
+<script src="/admin/assets/plugins/amcharts4/charts.js"></script>
+<script src="/admin/assets/plugins/amcharts4/animated.js"></script>
+<script src="/admin/assets/plugins/amcharts4/worldLow.js"></script>
+<script src="/admin/assets/plugins/amcharts4/maps.js"></script>
+<script src="/admin/assets/js/pages/chart/amchart/amchart-data.js"></script>
+<script src="/admin/assets/plugins/apexcharts/apexcharts.min.js"></script>
+<script src="/admin/assets/js/pages/chart/apex/apexcharts.data.js"></script>
