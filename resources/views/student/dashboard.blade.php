@@ -102,7 +102,7 @@
                                         <div class="profile-desc-item pull-right">{{ session('student')->phone }}</div>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Date of Berf</b>
+                                        <b>Date of Birth</b>
                                         <div class="profile-desc-item pull-right">{{ session('student')->birthdate }}</div>
                                     </li>
                                 </ul>
