@@ -136,16 +136,16 @@ class StudentController extends Controller
             if($result)
             {
                 $studentMap = DegreeMap::where('user_id', $student->user_id)->first();
-                if($studentMap->generated_by_advisor)
-                {
-                    return redirect()
-                        ->route('student.view-map')
-                        ->with(
-                            'success',
-                            'Successfully Added Profile!'
-                        );
+                if($studentMap != null) {
+                    if ($studentMap->generated_by_advisor) {
+                        return redirect()
+                            ->route('student.view-map')
+                            ->with(
+                                'success',
+                                'Successfully Added Profile!'
+                            );
+                    }
                 }
-
                 return redirect()
                     ->route('student.create-map')
                     ->with(
