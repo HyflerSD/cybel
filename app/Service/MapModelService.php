@@ -9,7 +9,6 @@ use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use function PHPUnit\Framework\isEmpty;
 
 class MapModelService
 {
@@ -48,7 +47,7 @@ class MapModelService
                 $preparedHistory["courses"][] = $item['course_code'];
             }
         }
-        if(isEmpty($preparedHistory))
+        if(empty($preparedHistory))
         {
             $preparedHistory['courses'] = [];
         }
