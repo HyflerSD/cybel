@@ -56,27 +56,18 @@ class TermSeeder extends Seeder
             ["term_code" => "spring_2023"],
             ["term_code" => "summer_2023"],
             ["term_code" => "fall_2023"],
-            ["term_code" => "spring_2024"],
-            ["term_code" => "summer_2024"],
-            ["term_code" => "fall_2024"],
-            ["term_code" => "spring_2025"],
-            ["term_code" => "summer_2025"],
-            ["term_code" => "fall_2025"],
-            ["term_code" => "spring_2026"],
-            ["term_code" => "summer_2026"],
-            ["term_code" => "fall_2026"],
-            ["term_code" => "spring_2027"],
-            ["term_code" => "summer_2027"],
-            ["term_code" => "fall_2027"],
-            ["term_code" => "spring_2028"],
-            ["term_code" => "summer_2028"],
-            ["term_code" => "fall_2028"],
-            ["term_code" => "spring_2029"],
-            ["term_code" => "summer_2029"],
-            ["term_code" => "fall_2029"],
         ];
 
+        $sems = ["spring", "summer", "fall"];
+        $year = 2024;
+        for ($i = 0; $i < 12; $i++) {
+            foreach ($sems as $sem) {
+                $terms[] = [
+                    "term_code" => $sem . "_" . $year
+                ];
+            }
+            $year++;
+        }
         DB::table('terms')->insert($terms);
-
     }
 }

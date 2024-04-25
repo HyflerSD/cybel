@@ -139,6 +139,7 @@ class MapModelService
     public function prepMapForDB(int $id, array $mapData, mixed $studentProfile) : array
     {
         $sCount = count($mapData);
+        ksort($mapData);
         $semesters = $this->getNextSemesters($sCount);
         $studentProfileBuild = [];
         $idx = 0;
