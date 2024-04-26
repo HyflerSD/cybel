@@ -201,6 +201,13 @@ class MapModelController extends Controller
     }
     public function saveModel(Request $request) : RedirectResponse
     {
+        return redirect()
+            ->route('admin.create-model')
+            ->with(
+                'error',
+                'This functionality is locked for the Capstone Presentation'
+            );
+
         try
         {
             $courses = $request->except('_token');

@@ -30,17 +30,6 @@
                                   <td><input type="checkbox" class="checkboxes" value="1" /></td>
                                   <td><input type="hidden" name="courses[${index}][course_code]" value="${courseCode}"/>${courseCode}</td>
                                   <td><input required max="45" type="number" name="courses[${index}][priority_index]"/></td>
-                                  <td>
-                                    <select style="display:none;" name="courses[${index}][level_combination][]" multiple="multiple" class="form-control">
-                                        <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="1"> 1</label>
-                                        <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="2"> 2</label>
-                                        <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="3"> 3</label>
-                                        <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="4"> 4</label>
-                                        <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="5"> 5</label>
-                                        <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="6"> 6</label>
-                                    </select>
-                                 </td>
-                                  <td><input type="hidden" name="courses[${index}][course_type]" value="${type}"/>${type}</td>
                                 <td>
                                     <select required name="courses[${index}][course_level]" class="form-control">
                                         <option value="1">1</option>
@@ -65,15 +54,15 @@
                 let isFormValid = true;
 
                 // Iterate over each row in the models table
-                $(".models-table tbody tr").each(function() {
-                    // For each row, check if there's at least one level_combination checkbox checked
-                    // let isCheckedInRow = $(this).find('input[type="checkbox"][name^="courses["][name$="][level_combination][]"]:checked').length > 0;
-                    let isCheckedInRow = $(this).find('.level-combination:checked').length > 0;
-                    // If no checkbox is checked in the current row, mark the form as invalid
-                    if (!isCheckedInRow) {
-                        isFormValid = false;
-                    }
-                });
+                // $(".models-table tbody tr").each(function() {
+                //     // For each row, check if there's at least one level_combination checkbox checked
+                //     // let isCheckedInRow = $(this).find('input[type="checkbox"][name^="courses["][name$="][level_combination][]"]:checked').length > 0;
+                //     let isCheckedInRow = $(this).find('.level-combination:checked').length > 0;
+                //     // If no checkbox is checked in the current row, mark the form as invalid
+                //     if (!isCheckedInRow) {
+                //         isFormValid = false;
+                //     }
+                // });
 
                 // If the form is invalid, prevent submission and alert the user
                 if (!isFormValid) {
@@ -123,6 +112,16 @@
 
     </script>
     <!-- start page content -->
+{{--    <td>--}}
+{{--        <select style="display:none;" name="courses[${index}][level_combination][]" multiple="multiple" class="form-control">--}}
+{{--            <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="1"> 1</label>--}}
+{{--            <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="2"> 2</label>--}}
+{{--            <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="3"> 3</label>--}}
+{{--            <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="4"> 4</label>--}}
+{{--            <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="5"> 5</label>--}}
+{{--            <label><input type="checkbox" class="level-combination" name="courses[${index}][level_combination][]" value="6"> 6</label>--}}
+{{--        </select>--}}
+{{--    </td>--}}
     <div class="page-content-wrapper">
         <div class="page-content">
             <div class="page-bar">
@@ -140,7 +139,6 @@
                             <div class="tools">
                                 <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                                 <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
-                                <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
                             </div>
                         </div>
                         <div class="card-body ">
@@ -218,7 +216,6 @@
                         <div class="tools">
                             <a class="fa fa-repeat btn-color box-refresh" href="javascript:"></a>
                             <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:"></a>
-                            <a class="t-close btn-color fa fa-times" href="javascript:"></a>
                         </div>
                     </div>
                     <div class="card-body ">
@@ -261,8 +258,8 @@
                                     </th>
                                     <th> Course Code </th>
                                     <th> Priority Index </th>
-                                    <th> Level Combination </th>
-                                    <th> Type </th>
+{{--                                    <th> Level Combination </th>--}}
+{{--                                    <th> Type </th>--}}
                                     <th> Level </th>
                                 </tr>
                                 </thead>
