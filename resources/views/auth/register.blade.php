@@ -34,7 +34,7 @@
                         </div>
                         <div class="">
                             <div class="">
-                                <input name="is_advisor" type="hidden" value=""/>
+                                <input name="is_admin" type="hidden" value=""/>
                             </div>
                         </div>
                         <div class="form-group">

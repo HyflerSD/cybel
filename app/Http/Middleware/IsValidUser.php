@@ -21,7 +21,7 @@ class IsValidUser
         {
             return redirect()->route('login');
         }
-        if($user->is_advisor)
+        if($user->is_admin)
         {
             return $next($request);
         }

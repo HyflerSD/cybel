@@ -52,7 +52,7 @@ class MapModelController extends Controller
     {
         $user = Auth::user();
         $studentId =  $request->get('student_id');
-        if($user->is_advisor)
+        if($user->is_admin)
         {
             $campusID = Advisor::where('user_id', $user->id)->value('campus_id');
            return $this->adminGeneratedMap((int)$studentId, "MDC", (int)$campusID);

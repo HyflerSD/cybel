@@ -6,7 +6,7 @@
     <div class="page-header-inner ">
         <!-- logo start -->
         <div class="page-logo">
-            @if($user->is_advisor)
+            @if($user->is_admin)
                 <a href="{{ route('admin.dashboard') }}">
                     <span class="logo-icon material-icons "></span>
                     <span class="logo-default">Faculty</span></a>
@@ -195,7 +195,7 @@
                         <span class="username username-hide-on-mobile"> {{ $user->fname . ' ' . $user->lname }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
-                        @if(!$user->is_advisor)
+                        @if(!$user->is_admin)
                             <li>
                                 <a href="{{ route('student.profile') }}">
                                     <i class="icon-user"></i> Profile </a>

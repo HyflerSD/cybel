@@ -11,7 +11,7 @@ class AdvisorSeeder extends Seeder
      */
     public function run(): void
     {
-        $advisors = DB::table('users')->where('is_advisor', '=', 1)->get();
+        $advisors = DB::table('users')->where('is_admin', '=', 1)->get();
         $advisorToInsert = [];
         foreach ($advisors as $advisor)
         {

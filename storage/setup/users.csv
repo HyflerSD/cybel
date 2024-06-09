@@ -1,4 +1,4 @@
-fname,lname,email,email_verified_at,password,is_advisor,rememberToken,created_at,updated_at
+fname,lname,email,email_verified_at,password,is_admin,rememberToken,created_at,updated_at
 Deborah,Lowery,deborahlowery@cybel.com,,password,false,token,2024-02-20 13:06:43,2024-02-20 13:06:43
 Samuel,Valentine,samuelvalentine@cybel.com,,password,false,token,2024-02-20 13:06:43,2024-02-20 13:06:43
 Nicole,Dudley,nicoledudley@cybel.com,,password,false,token,2024-02-20 13:06:43,2024-02-20 13:06:43

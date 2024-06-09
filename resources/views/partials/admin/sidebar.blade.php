@@ -20,7 +20,7 @@ $user = auth()->user();
                         <div class="sidebar-user-details">
                             <div class="user-name">{{ $user->fname  . ' ' . $user->lname }}</div>
                             <div class="user-role">
-                                @if($user->is_advisor)
+                                @if($user->is_admin)
                                     <strong>Campus: </strong>{{session('advisorCampus')->description}}
                                 @else
                                     <strong>Student ID: </strong> {{ session('student')->student_id }}
@@ -31,14 +31,14 @@ $user = auth()->user();
                     </div>
                 </li>
                 <li class="nav-item">
-                    @if($user->is_advisor)
+                    @if($user->is_admin)
                     <a href="#" class="nav-link nav-toggle"> <i data-feather="calendar"></i>
                         <span class="title">Appointments</span>
                     </a>
                     @endif
                 </li>
                 <li class="nav-item">
-                    @if( $user->is_advisor)
+                    @if( $user->is_admin)
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i data-feather="map-pin"></i>
                         <span class="title">
@@ -97,7 +97,7 @@ $user = auth()->user();
 
                     @endif
                 </li>
-                @if(!$user->is_advisor)
+                @if(!$user->is_admin)
                     <li class="nav-item">
                         <a href="#" class="nav-link nav-toggle"><i data-feather="users"></i>
                             <span class="title">Profile</span><span class="arrow"></span></a>
@@ -119,7 +119,7 @@ $user = auth()->user();
 
                 @endif
                 <li class="nav-item">
-                    @if($user->is_advisor)
+                    @if($user->is_admin)
                     <a href="" class="nav-link nav-toggle"> <i data-feather="user"></i>
                         <span class="title">Advisees</span> <span class="arrow"></span>
                     </a>
@@ -155,7 +155,7 @@ $user = auth()->user();
 {{--                        <span class="label label-rouded label-menu label-success">new</span>--}}
                     </a>
                     <ul class="sub-menu">
-                      @if($user->is_advisor)
+                      @if($user->is_admin)
                             <li class="nav-item">
                                     <a href="{{ route('admin.courses')  }}" class="nav-link "> <span class="title">All
 												Courses</span>
@@ -186,7 +186,7 @@ $user = auth()->user();
                     </ul>
                 </li>
                 <li class="nav-item">
-                    @if($user->is_advisor)
+                    @if($user->is_admin)
                     <a href="#" class="nav-link nav-toggle"> <i data-feather="briefcase"></i>
                         <span class="title">Department</span> <span class="arrow"></span>
                     </a>
@@ -200,7 +200,7 @@ $user = auth()->user();
 
                     @endif
                 </li>
-                @if($user->is_advisor)
+                @if($user->is_admin)
                 <li class="nav-item">
                     <a href="#" class="nav-link nav-toggle">
                         <i data-feather="mail"></i>

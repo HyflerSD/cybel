@@ -51,7 +51,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         //check if admin and redirect to correct page
-        if($user->is_advisor)
+        if($user->is_admin)
         {
             $advisorUser = Auth::user();
             $advisor = DB::table('advisors')->where('user_id', $advisorUser->id)->first();

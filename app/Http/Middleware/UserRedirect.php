@@ -19,7 +19,7 @@ class UserRedirect
         {
             $user = Auth::user();
 
-            if($user->is_advisor)
+            if($user->is_admin)
             {
                 return redirect()->route('admin.dashboard');
             }

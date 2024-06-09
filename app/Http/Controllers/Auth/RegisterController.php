@@ -29,6 +29,7 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+    const ROLE = 'ext_student';
 
     /**
      * Create a new controller instance.
@@ -68,8 +69,9 @@ class RegisterController extends Controller
             'fname' => $data['fname'],
             'lname' => $data['lname'],
             'email' => $data['email'],
+            'role' => self::ROLE,
             'password' => Hash::make($data['password']),
-            'is_advisor' => true
+            'is_admin' => true
         ]);
     }
 }

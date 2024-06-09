@@ -25,7 +25,7 @@ class UserService
                     'lname' => $user['lname'],
                     'email' => $user['email'],
                     'password' => Hash::make($user['password']),
-                    'is_advisor' => ($user['is_advisor'] === 'false') ? 0 : 1
+                    'is_admin' => ($user['is_admin'] === 'false') ? 0 : 1
                 ];
             }
             if(!empty($usersToInsert))
